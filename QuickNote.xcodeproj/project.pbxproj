@@ -1,0 +1,282 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E13DDBC8155C7F87001C95C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13DDBC7155C7F87001C95C9 /* UIKit.framework */; };
+		E13DDBCA155C7F87001C95C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13DDBC9155C7F87001C95C9 /* Foundation.framework */; };
+		E13DDBCC155C7F87001C95C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13DDBCB155C7F87001C95C9 /* CoreGraphics.framework */; };
+		E13DDBD2155C7F87001C95C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E13DDBD0155C7F87001C95C9 /* InfoPlist.strings */; };
+		E13DDBD4155C7F87001C95C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E13DDBD3155C7F87001C95C9 /* main.m */; };
+		E13DDBD8155C7F87001C95C9 /* QuickNoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E13DDBD7155C7F87001C95C9 /* QuickNoteAppDelegate.m */; };
+		E13DDBDB155C7F87001C95C9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13DDBD9155C7F87001C95C9 /* MainStoryboard.storyboard */; };
+		E13DDBDE155C7F87001C95C9 /* QuickNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E13DDBDD155C7F87001C95C9 /* QuickNoteViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E13DDBC3155C7F87001C95C9 /* QuickNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E13DDBC7155C7F87001C95C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E13DDBC9155C7F87001C95C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E13DDBCB155C7F87001C95C9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E13DDBCF155C7F87001C95C9 /* QuickNote-Info.plist */ = {isa = PBXFileReference; path = "QuickNote-Info.plist"; sourceTree = "<group>"; };
+		E13DDBD1155C7F87001C95C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E13DDBD3155C7F87001C95C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E13DDBD5155C7F87001C95C9 /* QuickNote-Prefix.pch */ = {isa = PBXFileReference; path = "QuickNote-Prefix.pch"; sourceTree = "<group>"; };
+		E13DDBD6155C7F87001C95C9 /* QuickNoteAppDelegate.h */ = {isa = PBXFileReference; path = QuickNoteAppDelegate.h; sourceTree = "<group>"; };
+		E13DDBD7155C7F87001C95C9 /* QuickNoteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickNoteAppDelegate.m; sourceTree = "<group>"; };
+		E13DDBDA155C7F87001C95C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		E13DDBDC155C7F87001C95C9 /* QuickNoteViewController.h */ = {isa = PBXFileReference; path = QuickNoteViewController.h; sourceTree = "<group>"; };
+		E13DDBDD155C7F87001C95C9 /* QuickNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickNoteViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E13DDBC0155C7F87001C95C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E13DDBC8155C7F87001C95C9 /* UIKit.framework in Frameworks */,
+				E13DDBCA155C7F87001C95C9 /* Foundation.framework in Frameworks */,
+				E13DDBCC155C7F87001C95C9 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E13DDBB8155C7F87001C95C9 = {
+			isa = PBXGroup;
+			children = (
+				E13DDBCD155C7F87001C95C9 /* QuickNote */,
+				E13DDBC6155C7F87001C95C9 /* Frameworks */,
+				E13DDBC4155C7F87001C95C9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E13DDBC4155C7F87001C95C9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E13DDBC3155C7F87001C95C9 /* QuickNote.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E13DDBC6155C7F87001C95C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E13DDBC7155C7F87001C95C9 /* UIKit.framework */,
+				E13DDBC9155C7F87001C95C9 /* Foundation.framework */,
+				E13DDBCB155C7F87001C95C9 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E13DDBCD155C7F87001C95C9 /* QuickNote */ = {
+			isa = PBXGroup;
+			children = (
+				E13DDBD6155C7F87001C95C9 /* QuickNoteAppDelegate.h */,
+				E13DDBD7155C7F87001C95C9 /* QuickNoteAppDelegate.m */,
+				E13DDBD9155C7F87001C95C9 /* MainStoryboard.storyboard */,
+				E13DDBDC155C7F87001C95C9 /* QuickNoteViewController.h */,
+				E13DDBDD155C7F87001C95C9 /* QuickNoteViewController.m */,
+				E13DDBCE155C7F87001C95C9 /* Supporting Files */,
+			);
+			path = QuickNote;
+			sourceTree = "<group>";
+		};
+		E13DDBCE155C7F87001C95C9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E13DDBCF155C7F87001C95C9 /* QuickNote-Info.plist */,
+				E13DDBD0155C7F87001C95C9 /* InfoPlist.strings */,
+				E13DDBD3155C7F87001C95C9 /* main.m */,
+				E13DDBD5155C7F87001C95C9 /* QuickNote-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E13DDBC2155C7F87001C95C9 /* QuickNote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E13DDBE1155C7F87001C95C9 /* Build configuration list for PBXNativeTarget "QuickNote" */;
+			buildPhases = (
+				E13DDBBF155C7F87001C95C9 /* Sources */,
+				E13DDBC0155C7F87001C95C9 /* Frameworks */,
+				E13DDBC1155C7F87001C95C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickNote;
+			productName = QuickNote;
+			productReference = E13DDBC3155C7F87001C95C9 /* QuickNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E13DDBBA155C7F87001C95C9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = QuickNote;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = E13DDBBD155C7F87001C95C9 /* Build configuration list for PBXProject "QuickNote" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E13DDBB8155C7F87001C95C9;
+			productRefGroup = E13DDBC4155C7F87001C95C9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E13DDBC2155C7F87001C95C9 /* QuickNote */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E13DDBC1155C7F87001C95C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E13DDBD2155C7F87001C95C9 /* InfoPlist.strings in Resources */,
+				E13DDBDB155C7F87001C95C9 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E13DDBBF155C7F87001C95C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E13DDBD4155C7F87001C95C9 /* main.m in Sources */,
+				E13DDBD8155C7F87001C95C9 /* QuickNoteAppDelegate.m in Sources */,
+				E13DDBDE155C7F87001C95C9 /* QuickNoteViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E13DDBD0155C7F87001C95C9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E13DDBD1155C7F87001C95C9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E13DDBD9155C7F87001C95C9 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E13DDBDA155C7F87001C95C9 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E13DDBDF155C7F87001C95C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E13DDBE0155C7F87001C95C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E13DDBE2155C7F87001C95C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuickNote/QuickNote-Prefix.pch";
+				INFOPLIST_FILE = "QuickNote/QuickNote-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E13DDBE3155C7F87001C95C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuickNote/QuickNote-Prefix.pch";
+				INFOPLIST_FILE = "QuickNote/QuickNote-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E13DDBBD155C7F87001C95C9 /* Build configuration list for PBXProject "QuickNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E13DDBDF155C7F87001C95C9 /* Debug */,
+				E13DDBE0155C7F87001C95C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E13DDBE1155C7F87001C95C9 /* Build configuration list for PBXNativeTarget "QuickNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E13DDBE2155C7F87001C95C9 /* Debug */,
+				E13DDBE3155C7F87001C95C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E13DDBBA155C7F87001C95C9 /* Project object */;
+}
