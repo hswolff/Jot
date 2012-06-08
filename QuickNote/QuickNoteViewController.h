@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface QuickNoteViewController : UIViewController
+- (IBAction)hideKeyboard:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
 
 @end

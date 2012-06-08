@@ -22,14 +22,14 @@
 		E13DDBC7155C7F87001C95C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E13DDBC9155C7F87001C95C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E13DDBCB155C7F87001C95C9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E13DDBCF155C7F87001C95C9 /* QuickNote-Info.plist */ = {isa = PBXFileReference; path = "QuickNote-Info.plist"; sourceTree = "<group>"; };
+		E13DDBCF155C7F87001C95C9 /* QuickNote-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuickNote-Info.plist"; sourceTree = "<group>"; };
 		E13DDBD1155C7F87001C95C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E13DDBD3155C7F87001C95C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E13DDBD5155C7F87001C95C9 /* QuickNote-Prefix.pch */ = {isa = PBXFileReference; path = "QuickNote-Prefix.pch"; sourceTree = "<group>"; };
-		E13DDBD6155C7F87001C95C9 /* QuickNoteAppDelegate.h */ = {isa = PBXFileReference; path = QuickNoteAppDelegate.h; sourceTree = "<group>"; };
+		E13DDBD5155C7F87001C95C9 /* QuickNote-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickNote-Prefix.pch"; sourceTree = "<group>"; };
+		E13DDBD6155C7F87001C95C9 /* QuickNoteAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickNoteAppDelegate.h; sourceTree = "<group>"; };
 		E13DDBD7155C7F87001C95C9 /* QuickNoteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickNoteAppDelegate.m; sourceTree = "<group>"; };
 		E13DDBDA155C7F87001C95C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		E13DDBDC155C7F87001C95C9 /* QuickNoteViewController.h */ = {isa = PBXFileReference; path = QuickNoteViewController.h; sourceTree = "<group>"; };
+		E13DDBDC155C7F87001C95C9 /* QuickNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickNoteViewController.h; sourceTree = "<group>"; };
 		E13DDBDD155C7F87001C95C9 /* QuickNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickNoteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
