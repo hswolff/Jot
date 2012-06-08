@@ -21,6 +21,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    // Immediately show keyboard
+    [self.textView becomeFirstResponder];
+    
     // Copied from 'KeyboardAccessory'
     // Observe keyboard hide and show notifications to resize the text view appropriately.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -43,8 +46,15 @@
 }
 
 - (IBAction)hideKeyboard:(id)sender {
+    [self hideKeyboard];
+}
+
+- (void)hideKeyboard {
     [self.textView resignFirstResponder];
 }
+
+#pragma mark -
+#pragma mark Handle Keyboard showing/hiding events
 
 // Copied from 'KeyboardAccessory'
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -101,5 +111,26 @@
     
     [UIView commitAnimations];
 }
+
+#pragma mark -
+#pragma mark Handle Pan Gesture
+- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
+//    NSLog(@"Testing %@", recognizer);
+//    CGPoint translation = [recognizer translationInView:self.view];
+//    recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x, 
+//                                         recognizer.view.center.y + translation.y);
+//    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+    
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        CGPoint translation = [recognizer translationInView:self.view];
+//        NSLog(@"Final Translation in x,y: %f,%f", translation.x, translation.y);
+        if (translation.y >= 50.00) {
+            [self hideKeyboard];
+        } else if (translation.y <= -50.00) {
+            [self.textView becomeFirstResponder];
+        }
+    }
+}
+
 
 @end
