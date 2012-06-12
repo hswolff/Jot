@@ -13,8 +13,8 @@
     UIView *keyboardSuperView;  // reference to keyboard view
     int originalKeyboardY;
 }
+
 - (IBAction)hideKeyboard:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
-//@property (strong, nonatomic) UIView *keyboardAccessoryView;
 
 @end

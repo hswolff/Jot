@@ -21,6 +21,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    // Create inputAccessoryView for reference to keyboard
     self.textView.inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     
     // Immediately show keyboard
@@ -130,39 +131,13 @@
 #pragma mark -
 #pragma mark Handle Pan Gesture
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
-//    NSLog(@"Testing %@", recognizer);
-//    CGPoint translation = [recognizer translationInView:self.view];
-//    recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x, 
-//                                         recognizer.view.center.y + translation.y);
-//    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
-    
+
     if(recognizer.state == UIGestureRecognizerStateBegan){
         originalKeyboardY = keyboardSuperView.frame.origin.y;
     }
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-//        version 1
-//        
-//        CGPoint translation = [recognizer translationInView:self.view];
-////        NSLog(@"Final Translation in x,y: %f,%f", translation.x, translation.y);
-//        if (translation.y >= 50.00) {
-//            [self hideKeyboard];
-//        }
 
-//        version 2
-//        
-//        CGRect newFrame;
-//        CGRect bounds = [[UIScreen mainScreen] bounds];
-//        
-//        newFrame = keyboardSuperFrame;
-//        newFrame.origin.y = bounds.size.height;  
-//        
-//        if ((keyboardSuperView.superview))
-//            if (keyboardSuperFrame.origin.y != keyboardSuperView.frame.origin.y)
-//                [UIView  animateWithDuration:0.2
-//                                  animations:^{keyboardSuperView.frame = newFrame;}
-//                                  completion:^(BOOL finished){ keyboardSuperView.hidden = YES; keyboardSuperView.frame = keyboardSuperFrame; [self hideKeyboard]; }];
-//        
         CGPoint velocity = [recognizer velocityInView:self.view];
         if (velocity.y > 0) {
             [self animateKeyboardOffscreen];
@@ -170,7 +145,6 @@
             [self animateKeyboardReturnToOriginalPosition];
         }
         return;
-        
         
     } else {
         
