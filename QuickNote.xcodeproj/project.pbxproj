@@ -275,6 +275,7 @@
 				E13DDBE3155C7F87001C95C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuickNoteViewController : UIViewController
+@interface QuickNoteViewController : UIViewController <UIGestureRecognizerDelegate>
 - (IBAction)hideKeyboard:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 
