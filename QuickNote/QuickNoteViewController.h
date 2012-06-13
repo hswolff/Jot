@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface QuickNoteViewController : UIViewController <UIGestureRecognizerDelegate> {
-    CGRect keyboardSuperFrame; // frame of keyboard when initially displayed
-    UIView *keyboardSuperView;  // reference to keyboard view
+    CGRect keyboardFrame; // frame of keyboard when initially displayed
+    UIView *keyboardView;  // reference to keyboard view
     int originalKeyboardY;
 }
 

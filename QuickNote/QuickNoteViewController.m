@@ -8,9 +8,7 @@
 
 #import "QuickNoteViewController.h"
 
-@interface QuickNoteViewController ()
-
-@end
+static float FingerGrabHandleSize = 20.0f;
 
 @implementation QuickNoteViewController
 
@@ -65,7 +63,7 @@
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     
-    keyboardSuperView.hidden = NO;
+    keyboardView.hidden = NO;
     
     /*
      Copied from 'KeyboardAccessory'
@@ -123,8 +121,8 @@
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification {
-    keyboardSuperView  = self.textView.inputAccessoryView.superview;
-    keyboardSuperFrame = self.textView.inputAccessoryView.superview.frame;
+    keyboardView  = self.textView.inputAccessoryView.superview;
+    keyboardFrame = self.textView.inputAccessoryView.superview.frame;
     return;
 }
 
@@ -133,7 +131,7 @@
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
 
     if(recognizer.state == UIGestureRecognizerStateBegan){
-        originalKeyboardY = keyboardSuperView.frame.origin.y;
+        originalKeyboardY = keyboardView.frame.origin.y;
     }
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -146,47 +144,41 @@
         }
         return;
         
-    } else {
-        
-        CGPoint location = [recognizer locationInView:self.view];  
-        
-        if ((keyboardSuperView.superview)) {
-            CGFloat updateY = keyboardSuperView.frame.origin.y;
-            if (location.y < keyboardSuperFrame.origin.y)
-                return;
-            if ((location.y > updateY) || (location.y < updateY))
-                updateY = location.y;
-            if (keyboardSuperView.frame.origin.y != updateY)
-                keyboardSuperView.frame = CGRectMake(keyboardSuperFrame.origin.x, location.y, keyboardSuperFrame.size.width, keyboardSuperFrame.size.height);
-        };
-        
-        
-        
     }
+    
+    CGPoint location = [recognizer locationInView:self.view];  
+
+    if (location.y < (keyboardFrame.origin.y - FingerGrabHandleSize)) {
+        return;
+    }
+        
+    CGRect newFrame = keyboardFrame;
+    newFrame.origin.y = location.y + FingerGrabHandleSize;
+    keyboardView.frame = newFrame;
+    
     return;
 }
 
 - (void)animateKeyboardOffscreen {
-    [UIView animateWithDuration:0.3
-                          delay:0
-                        options:UIViewAnimationOptionCurveEaseOut
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut
+     
                      animations:^{
-                         CGRect newFrame = keyboardSuperView.frame;
-                         newFrame.origin.y = keyboardSuperView.window.frame.size.height;
-                         keyboardSuperView.frame = newFrame;
+                         CGRect newFrame = keyboardView.frame;
+                         newFrame.origin.y = keyboardView.window.frame.size.height;
+                         keyboardView.frame = newFrame;
                      }
      
                      completion:^(BOOL finished){
-                         keyboardSuperView.hidden = YES;
+                         keyboardView.hidden = YES;
                          [self hideKeyboard];
                      }];
 }
 
 - (void)animateKeyboardReturnToOriginalPosition {
     [UIView beginAnimations:nil context:NULL];
-    CGRect newFrame = keyboardSuperView.frame;
+    CGRect newFrame = keyboardView.frame;
     newFrame.origin.y = originalKeyboardY;
-    keyboardSuperView.frame = newFrame;
+    keyboardView.frame = newFrame;
     [UIView commitAnimations];
 }
 
