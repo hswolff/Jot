@@ -8,7 +8,7 @@
 
 #import "QuickNoteViewController.h"
 
-static float FingerGrabHandleSize = 20.0f;
+static float FingerGrabHandleSize = 0.0f;
 
 @implementation QuickNoteViewController
 
@@ -30,6 +30,10 @@ static float FingerGrabHandleSize = 20.0f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    panRecognizer.delegate = self;
+    [self.view addGestureRecognizer:panRecognizer];
 }
 
 - (void)viewDidUnload
@@ -40,6 +44,7 @@ static float FingerGrabHandleSize = 20.0f;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -48,18 +53,13 @@ static float FingerGrabHandleSize = 20.0f;
 }
 
 - (IBAction)hideKeyboard:(id)sender {
-    [self hideKeyboard];
+    [self.textView resignFirstResponder];
 }
 
 
 
 #pragma mark -
 #pragma mark Handle Keyboard
-
-- (void)hideKeyboard {
-    [self.textView resignFirstResponder];
-}
-
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     
@@ -72,15 +72,14 @@ static float FingerGrabHandleSize = 20.0f;
      */
     
     NSDictionary *userInfo = [notification userInfo];
-    
     // Get the origin of the keyboard when it's displayed.
     NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     
     // Get the top of the keyboard as the y coordinate of its origin in self's view's coordinate system. The bottom of the text view's frame should align with the top of the keyboard's final position.
     CGRect keyboardRect = [aValue CGRectValue];
     keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
-    
     CGFloat keyboardTop = keyboardRect.origin.y;
+    
     CGRect newTextViewFrame = self.view.bounds;
     newTextViewFrame.size.height = keyboardTop - self.view.bounds.origin.y;
     
@@ -96,6 +95,13 @@ static float FingerGrabHandleSize = 20.0f;
     self.textView.frame = newTextViewFrame;
     
     [UIView commitAnimations];
+    
+    return;
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification {
+    keyboardView  = self.textView.inputAccessoryView.superview;
+    keyboardFrame = self.textView.inputAccessoryView.superview.frame;
     return;
 }
 
@@ -120,18 +126,23 @@ static float FingerGrabHandleSize = 20.0f;
     [UIView commitAnimations];
 }
 
-- (void)keyboardDidShow:(NSNotification *)notification {
-    keyboardView  = self.textView.inputAccessoryView.superview;
-    keyboardFrame = self.textView.inputAccessoryView.superview.frame;
-    return;
-}
 
 #pragma mark -
 #pragma mark Handle Pan Gesture
-- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+- (void)handleGesture:(UIPanGestureRecognizer *)recognizer {
+    
+    // If keyboard is hidden then we don't want to change frame of keyboard and textView
+    if (keyboardView.hidden) {
+        return;
+    }
 
     if(recognizer.state == UIGestureRecognizerStateBegan){
-        originalKeyboardY = keyboardView.frame.origin.y;
+        originalKeyboardOriginY = keyboardView.frame.origin.y;
     }
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -139,7 +150,7 @@ static float FingerGrabHandleSize = 20.0f;
         CGPoint velocity = [recognizer velocityInView:self.view];
         if (velocity.y > 0) {
             [self animateKeyboardOffscreen];
-        } else {
+        } else if (!keyboardView.hidden) {
             [self animateKeyboardReturnToOriginalPosition];
         }
         return;
@@ -151,10 +162,16 @@ static float FingerGrabHandleSize = 20.0f;
     if (location.y < (keyboardFrame.origin.y - FingerGrabHandleSize)) {
         return;
     }
-        
+    
+    // update frame of keyboard
     CGRect newFrame = keyboardFrame;
     newFrame.origin.y = location.y + FingerGrabHandleSize;
     keyboardView.frame = newFrame;
+    
+    // update frame of UITextView
+    CGRect newTextViewFrame = self.view.bounds;
+    newTextViewFrame.size.height = location.y - self.view.bounds.origin.y;
+    self.textView.frame = newTextViewFrame;
     
     return;
 }
@@ -166,19 +183,26 @@ static float FingerGrabHandleSize = 20.0f;
                          CGRect newFrame = keyboardView.frame;
                          newFrame.origin.y = keyboardView.window.frame.size.height;
                          keyboardView.frame = newFrame;
+                         self.textView.frame = self.view.bounds;
                      }
      
                      completion:^(BOOL finished){
                          keyboardView.hidden = YES;
-                         [self hideKeyboard];
+                         [self.textView resignFirstResponder];
                      }];
 }
 
 - (void)animateKeyboardReturnToOriginalPosition {
     [UIView beginAnimations:nil context:NULL];
+    
     CGRect newFrame = keyboardView.frame;
-    newFrame.origin.y = originalKeyboardY;
+    newFrame.origin.y = originalKeyboardOriginY;
     keyboardView.frame = newFrame;
+    
+    CGRect newTextViewFrame = self.view.bounds;
+    newTextViewFrame.size.height = self.view.bounds.size.height - keyboardFrame.size.height;
+    self.textView.frame = newTextViewFrame;
+    
     [UIView commitAnimations];
 }
 

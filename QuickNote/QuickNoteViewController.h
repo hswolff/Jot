@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuickNoteViewController : UIViewController <UIGestureRecognizerDelegate> {
+@interface QuickNoteViewController : UIViewController <UIGestureRecognizerDelegate, UIScrollViewDelegate> {
     CGRect keyboardFrame; // frame of keyboard when initially displayed
     UIView *keyboardView;  // reference to keyboard view
-    int originalKeyboardY;
+    int originalKeyboardOriginY;
 }
 
 - (IBAction)hideKeyboard:(id)sender;

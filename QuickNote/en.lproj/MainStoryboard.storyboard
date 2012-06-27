@@ -23,7 +23,6 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="2" id="6he-Da-ONO"/>
-                                    <outletCollection property="gestureRecognizers" destination="cSp-Kd-IVr" appends="YES" id="HXn-1m-uax"/>
                                 </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wDe-lQ-Fla">
@@ -48,13 +47,8 @@
                         <outlet property="textView" destination="58S-Qa-CVa" id="P9i-vn-8AI"/>
                     </connections>
                 </viewController>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="cSp-Kd-IVr">
-                    <connections>
-                        <action selector="handlePan:" destination="2" id="C4g-ph-Xtr"/>
-                        <outlet property="delegate" destination="2" id="DQj-Tv-kLE"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="-89" y="-22"/>
         </scene>
     </scenes>
     <classes>
