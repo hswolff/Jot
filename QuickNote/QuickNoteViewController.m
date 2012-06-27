@@ -14,13 +14,20 @@ static float FingerGrabHandleSize = 0.0f;
 
 @synthesize textView = _textView;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
     // Create inputAccessoryView for reference to keyboard
     self.textView.inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    
+    // Get the stored data before the view loads
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *text = [defaults objectForKey:@"text"];
+    if (text) {
+        self.textView.text = text;
+        text = nil;
+    }
     
     // Immediately show keyboard
     [self.textView becomeFirstResponder];
@@ -34,10 +41,14 @@ static float FingerGrabHandleSize = 0.0f;
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     panRecognizer.delegate = self;
     [self.view addGestureRecognizer:panRecognizer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(handleEnteredBackground:) 
+                                                 name: UIApplicationDidEnterBackgroundNotification
+                                               object: nil];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [self setTextView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -47,9 +58,16 @@ static float FingerGrabHandleSize = 0.0f;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (void)handleEnteredBackground:(NSNotification *)notification {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:self.textView.text forKey:@"text"];
+    
+    [defaults synchronize];
 }
 
 
