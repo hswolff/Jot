@@ -52,11 +52,6 @@ static float FingerGrabHandleSize = 0.0f;
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (IBAction)hideKeyboard:(id)sender {
-    [self.textView resignFirstResponder];
-}
-
-
 
 #pragma mark -
 #pragma mark Handle Keyboard

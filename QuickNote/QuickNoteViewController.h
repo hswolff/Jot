@@ -14,7 +14,6 @@
     int originalKeyboardOriginY;
 }
 
-- (IBAction)hideKeyboard:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 
 @end
