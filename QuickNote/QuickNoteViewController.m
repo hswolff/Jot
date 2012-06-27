@@ -54,7 +54,7 @@ static float FingerGrabHandleSize = 0.0f;
 
 
 #pragma mark -
-#pragma mark Handle Keyboard
+#pragma mark Keyboard Notifications
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     
@@ -123,7 +123,7 @@ static float FingerGrabHandleSize = 0.0f;
 
 
 #pragma mark -
-#pragma mark Handle Pan Gesture
+#pragma mark Gesture Recognizer
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
