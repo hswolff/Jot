@@ -169,11 +169,12 @@ static float FingerGrabHandleSize = 0.0f;
     if(recognizer.state == UIGestureRecognizerStateBegan){
         originalKeyboardOriginY = keyboardView.frame.origin.y;
     }
+    CGPoint location = [recognizer locationInView:self.view];
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
 
         CGPoint velocity = [recognizer velocityInView:self.view];
-        if (velocity.y > 0) {
+        if (velocity.y > 0 && location.y > originalKeyboardOriginY ) {
             [self animateKeyboardOffscreen];
         } else if (!keyboardView.hidden) {
             [self animateKeyboardReturnToOriginalPosition];
@@ -182,7 +183,6 @@ static float FingerGrabHandleSize = 0.0f;
         
     }
     
-    CGPoint location = [recognizer locationInView:self.view];  
 
     if (location.y < (keyboardFrame.origin.y - FingerGrabHandleSize)) {
         return;
