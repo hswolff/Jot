@@ -13,7 +13,6 @@
 		E13DDBD2155C7F87001C95C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E13DDBD0155C7F87001C95C9 /* InfoPlist.strings */; };
 		E13DDBD4155C7F87001C95C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E13DDBD3155C7F87001C95C9 /* main.m */; };
 		E13DDBD8155C7F87001C95C9 /* QuickNoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E13DDBD7155C7F87001C95C9 /* QuickNoteAppDelegate.m */; };
-		E13DDBDB155C7F87001C95C9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13DDBD9155C7F87001C95C9 /* MainStoryboard.storyboard */; };
 		E13DDBDE155C7F87001C95C9 /* QuickNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E13DDBDD155C7F87001C95C9 /* QuickNoteViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +27,6 @@
 		E13DDBD5155C7F87001C95C9 /* QuickNote-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickNote-Prefix.pch"; sourceTree = "<group>"; };
 		E13DDBD6155C7F87001C95C9 /* QuickNoteAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickNoteAppDelegate.h; sourceTree = "<group>"; };
 		E13DDBD7155C7F87001C95C9 /* QuickNoteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickNoteAppDelegate.m; sourceTree = "<group>"; };
-		E13DDBDA155C7F87001C95C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		E13DDBDC155C7F87001C95C9 /* QuickNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickNoteViewController.h; sourceTree = "<group>"; };
 		E13DDBDD155C7F87001C95C9 /* QuickNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickNoteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,7 +77,6 @@
 			children = (
 				E13DDBD6155C7F87001C95C9 /* QuickNoteAppDelegate.h */,
 				E13DDBD7155C7F87001C95C9 /* QuickNoteAppDelegate.m */,
-				E13DDBD9155C7F87001C95C9 /* MainStoryboard.storyboard */,
 				E13DDBDC155C7F87001C95C9 /* QuickNoteViewController.h */,
 				E13DDBDD155C7F87001C95C9 /* QuickNoteViewController.m */,
 				E13DDBCE155C7F87001C95C9 /* Supporting Files */,
@@ -150,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13DDBD2155C7F87001C95C9 /* InfoPlist.strings in Resources */,
-				E13DDBDB155C7F87001C95C9 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,14 +172,6 @@
 				E13DDBD1155C7F87001C95C9 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		E13DDBD9155C7F87001C95C9 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E13DDBDA155C7F87001C95C9 /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

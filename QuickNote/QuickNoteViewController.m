@@ -14,13 +14,25 @@ static float FingerGrabHandleSize = 0.0f;
 
 @synthesize textView = _textView;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+- (void)loadView {
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    self.view = [[UIView alloc] initWithFrame:frame];
     
+    self.textView = [[UITextView alloc] initWithFrame:frame];
+    self.textView.delegate = self;
+    self.textView.font = [UIFont systemFontOfSize:18.0];
     // Create inputAccessoryView for reference to keyboard
     self.textView.inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     
+    
+
+    [self.view addSubview:self.textView];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+
     // Get the stored data before the view loads
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *text = [defaults objectForKey:@"text"];
