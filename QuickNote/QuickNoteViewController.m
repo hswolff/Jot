@@ -21,10 +21,9 @@ static float FingerGrabHandleSize = 0.0f;
     self.textView = [[UITextView alloc] initWithFrame:frame];
     self.textView.delegate = self;
     self.textView.font = [UIFont systemFontOfSize:18.0];
+    self.textView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
     // Create inputAccessoryView for reference to keyboard
     self.textView.inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    
-    
 
     [self.view addSubview:self.textView];
 }
@@ -41,8 +40,6 @@ static float FingerGrabHandleSize = 0.0f;
         text = nil;
     }
     
-    // Immediately show keyboard
-    [self.textView becomeFirstResponder];
     
     // Copied from 'KeyboardAccessory'
     // Observe keyboard hide and show notifications to resize the text view appropriately.
@@ -58,6 +55,9 @@ static float FingerGrabHandleSize = 0.0f;
                                              selector: @selector(handleEnteredBackground:) 
                                                  name: UIApplicationDidEnterBackgroundNotification
                                                object: nil];
+    
+    // Immediately show keyboard
+    [self.textView becomeFirstResponder];
 }
 
 - (void)viewDidUnload {
@@ -133,12 +133,11 @@ static float FingerGrabHandleSize = 0.0f;
 // Copied from 'KeyboardAccessory'
 - (void)keyboardWillHide:(NSNotification *)notification {
     
-    NSDictionary* userInfo = [notification userInfo];
-    
     /*
      Restore the size of the text view (fill self's view).
      Animate the resize so that it's in sync with the disappearance of the keyboard.
      */
+    NSDictionary* userInfo = [notification userInfo];
     NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSTimeInterval animationDuration;
     [animationDurationValue getValue:&animationDuration];
@@ -149,6 +148,8 @@ static float FingerGrabHandleSize = 0.0f;
     self.textView.frame = self.view.bounds;
     
     [UIView commitAnimations];
+    
+    return;
 }
 
 
@@ -215,6 +216,7 @@ static float FingerGrabHandleSize = 0.0f;
                          keyboardView.hidden = YES;
                          [self.textView resignFirstResponder];
                      }];
+    return;
 }
 
 - (void)animateKeyboardReturnToOriginalPosition {
@@ -229,6 +231,7 @@ static float FingerGrabHandleSize = 0.0f;
     self.textView.frame = newTextViewFrame;
     
     [UIView commitAnimations];
+    return;
 }
 
 @end
