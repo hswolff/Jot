@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E1362B6215AA3B2B0034A2EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1362B6115AA3B2B0034A2EC /* UIKit.framework */; };
+		E1362B6415AA3B2B0034A2EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1362B6315AA3B2B0034A2EC /* Foundation.framework */; };
+		E1362B6615AA3B2B0034A2EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1362B6515AA3B2B0034A2EC /* CoreGraphics.framework */; };
+		E1362B6C15AA3B2B0034A2EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1362B6A15AA3B2B0034A2EC /* InfoPlist.strings */; };
+		E1362B6E15AA3B2B0034A2EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B6D15AA3B2B0034A2EC /* main.m */; };
+		E1362B7215AA3B2B0034A2EC /* JotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */; };
+		E1362B7515AA3B2B0034A2EC /* JotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7415AA3B2B0034A2EC /* JotViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E1362B5D15AA3B2B0034A2EC /* Jot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1362B6115AA3B2B0034A2EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E1362B6315AA3B2B0034A2EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E1362B6515AA3B2B0034A2EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E1362B6915AA3B2B0034A2EC /* Jot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Jot-Info.plist"; sourceTree = "<group>"; };
+		E1362B6B15AA3B2B0034A2EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E1362B6D15AA3B2B0034A2EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E1362B6F15AA3B2B0034A2EC /* Jot-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jot-Prefix.pch"; sourceTree = "<group>"; };
+		E1362B7015AA3B2B0034A2EC /* JotAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotAppDelegate.h; sourceTree = "<group>"; };
+		E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotAppDelegate.m; sourceTree = "<group>"; };
+		E1362B7315AA3B2B0034A2EC /* JotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotViewController.h; sourceTree = "<group>"; };
+		E1362B7415AA3B2B0034A2EC /* JotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1362B5A15AA3B2B0034A2EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1362B6215AA3B2B0034A2EC /* UIKit.framework in Frameworks */,
+				E1362B6415AA3B2B0034A2EC /* Foundation.framework in Frameworks */,
+				E1362B6615AA3B2B0034A2EC /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E1362B5215AA3B2B0034A2EC = {
+			isa = PBXGroup;
+			children = (
+				E1362B6715AA3B2B0034A2EC /* Jot */,
+				E1362B6015AA3B2B0034A2EC /* Frameworks */,
+				E1362B5E15AA3B2B0034A2EC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1362B5E15AA3B2B0034A2EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1362B5D15AA3B2B0034A2EC /* Jot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1362B6015AA3B2B0034A2EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1362B6115AA3B2B0034A2EC /* UIKit.framework */,
+				E1362B6315AA3B2B0034A2EC /* Foundation.framework */,
+				E1362B6515AA3B2B0034A2EC /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1362B6715AA3B2B0034A2EC /* Jot */ = {
+			isa = PBXGroup;
+			children = (
+				E1362B7015AA3B2B0034A2EC /* JotAppDelegate.h */,
+				E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */,
+				E1362B7315AA3B2B0034A2EC /* JotViewController.h */,
+				E1362B7415AA3B2B0034A2EC /* JotViewController.m */,
+				E1362B6815AA3B2B0034A2EC /* Supporting Files */,
+			);
+			path = Jot;
+			sourceTree = "<group>";
+		};
+		E1362B6815AA3B2B0034A2EC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1362B6915AA3B2B0034A2EC /* Jot-Info.plist */,
+				E1362B6A15AA3B2B0034A2EC /* InfoPlist.strings */,
+				E1362B6D15AA3B2B0034A2EC /* main.m */,
+				E1362B6F15AA3B2B0034A2EC /* Jot-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1362B5C15AA3B2B0034A2EC /* Jot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1362B7B15AA3B2C0034A2EC /* Build configuration list for PBXNativeTarget "Jot" */;
+			buildPhases = (
+				E1362B5915AA3B2B0034A2EC /* Sources */,
+				E1362B5A15AA3B2B0034A2EC /* Frameworks */,
+				E1362B5B15AA3B2B0034A2EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Jot;
+			productName = Jot;
+			productReference = E1362B5D15AA3B2B0034A2EC /* Jot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1362B5415AA3B2B0034A2EC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Jot;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = E1362B5715AA3B2B0034A2EC /* Build configuration list for PBXProject "Jot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E1362B5215AA3B2B0034A2EC;
+			productRefGroup = E1362B5E15AA3B2B0034A2EC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1362B5C15AA3B2B0034A2EC /* Jot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1362B5B15AA3B2B0034A2EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1362B6C15AA3B2B0034A2EC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1362B5915AA3B2B0034A2EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1362B6E15AA3B2B0034A2EC /* main.m in Sources */,
+				E1362B7215AA3B2B0034A2EC /* JotAppDelegate.m in Sources */,
+				E1362B7515AA3B2B0034A2EC /* JotViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E1362B6A15AA3B2B0034A2EC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1362B6B15AA3B2B0034A2EC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E1362B7915AA3B2C0034A2EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E1362B7A15AA3B2C0034A2EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1362B7C15AA3B2C0034A2EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Jot/Jot-Prefix.pch";
+				INFOPLIST_FILE = "Jot/Jot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E1362B7D15AA3B2C0034A2EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Jot/Jot-Prefix.pch";
+				INFOPLIST_FILE = "Jot/Jot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1362B5715AA3B2B0034A2EC /* Build configuration list for PBXProject "Jot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1362B7915AA3B2C0034A2EC /* Debug */,
+				E1362B7A15AA3B2C0034A2EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1362B7B15AA3B2C0034A2EC /* Build configuration list for PBXNativeTarget "Jot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1362B7C15AA3B2C0034A2EC /* Debug */,
+				E1362B7D15AA3B2C0034A2EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1362B5415AA3B2B0034A2EC /* Project object */;
+}

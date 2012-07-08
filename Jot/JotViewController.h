@@ -1,19 +1,20 @@
 //
-//  QuickNoteViewController.h
-//  QuickNote
+//  JotViewController.h
+//  Jot
 //
-//  Created by Harry Wolff on 5/10/12.
+//  Created by Harry Wolff on 7/8/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface QuickNoteViewController : UIViewController <UIGestureRecognizerDelegate, UITextViewDelegate> {
+@interface JotViewController : UIViewController <UIGestureRecognizerDelegate, UITextViewDelegate> {
     CGRect keyboardFrame; // frame of keyboard when initially displayed
     UIView *keyboardView;  // reference to keyboard view
     int originalKeyboardOriginY;
 }
 
-@property (strong, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) UITextView *textView;
+
 
 @end

@@ -1,31 +1,30 @@
 //
-//  QuickNoteAppDelegate.m
-//  QuickNote
+//  JotAppDelegate.m
+//  Jot
 //
-//  Created by Harry Wolff on 5/10/12.
+//  Created by Harry Wolff on 7/8/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "QuickNoteAppDelegate.h"
-#import "QuickNoteViewController.h"
+#import "JotAppDelegate.h"
 
-@implementation QuickNoteAppDelegate
+#import "JotViewController.h"
+
+@implementation JotAppDelegate
 
 @synthesize window = _window;
+@synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    QuickNoteViewController *vc = [[QuickNoteViewController alloc] init];
-    self.window.rootViewController = vc;
-    
-    [self.window makeKeyAndVisible];
-    
     // Override point for customization after application launch.
+    self.viewController = [[JotViewController alloc] init];
+    self.window.rootViewController = self.viewController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

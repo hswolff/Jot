@@ -1,20 +1,23 @@
 //
-//  QuickNoteViewController.m
-//  QuickNote
+//  JotViewController.m
+//  Jot
 //
-//  Created by Harry Wolff on 5/10/12.
+//  Created by Harry Wolff on 7/8/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "QuickNoteViewController.h"
+#import "JotViewController.h"
 
-static float FingerGrabHandleSize = 0.0f;
+@interface JotViewController ()
 
-@implementation QuickNoteViewController
+@end
+
+@implementation JotViewController
 
 @synthesize textView = _textView;
 
-- (void)loadView {
+- (void)loadView
+{
     CGRect frame = [[UIScreen mainScreen] bounds];
     self.view = [[UIView alloc] initWithFrame:frame];
     
@@ -24,14 +27,15 @@ static float FingerGrabHandleSize = 0.0f;
     self.textView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
     // Create inputAccessoryView for reference to keyboard
     self.textView.inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-
+    
     [self.view addSubview:self.textView];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-
+    
     // Get the stored data before the view loads
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *text = [defaults objectForKey:@"text"];
@@ -39,7 +43,6 @@ static float FingerGrabHandleSize = 0.0f;
         self.textView.text = text;
         text = nil;
     }
-    
     
     // Copied from 'KeyboardAccessory'
     // Observe keyboard hide and show notifications to resize the text view appropriately.
@@ -60,19 +63,22 @@ static float FingerGrabHandleSize = 0.0f;
     [self.textView becomeFirstResponder];
 }
 
-- (void)viewDidUnload {
-    [self setTextView:nil];
+- (void)viewDidUnload
+{
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    [self setTextView:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
+
 
 - (void)handleEnteredBackground:(NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -166,15 +172,19 @@ static float FingerGrabHandleSize = 0.0f;
     if (keyboardView.hidden) {
         return;
     }
-
+    
     if(recognizer.state == UIGestureRecognizerStateBegan){
         originalKeyboardOriginY = keyboardView.frame.origin.y;
     }
     CGPoint location = [recognizer locationInView:self.view];
+    CGPoint velocity = [recognizer velocityInView:self.view];
+    NSLog(@"\n");
+    NSLog(@"location (x, y): (%f, %f)", location.x, location.y);
+    NSLog(@"velocity (x, y): (%f, %f)", velocity.x, velocity.y);
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-
-        CGPoint velocity = [recognizer velocityInView:self.view];
+        
+        
         if (velocity.y > 0 && location.y > originalKeyboardOriginY ) {
             [self animateKeyboardOffscreen];
         } else if (!keyboardView.hidden) {
@@ -184,14 +194,14 @@ static float FingerGrabHandleSize = 0.0f;
         
     }
     
-
-    if (location.y < (keyboardFrame.origin.y - FingerGrabHandleSize)) {
+    
+    if (location.y < keyboardFrame.origin.y) {
         return;
     }
     
     // update frame of keyboard
     CGRect newFrame = keyboardFrame;
-    newFrame.origin.y = location.y + FingerGrabHandleSize;
+    newFrame.origin.y = location.y;
     keyboardView.frame = newFrame;
     
     // update frame of UITextView
