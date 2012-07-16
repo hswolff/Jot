@@ -18,9 +18,18 @@
         UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
         inputAccessoryView.backgroundColor = [UIColor clearColor];
         self.inputAccessoryView = inputAccessoryView;
-//        activeInput = self;
     }
     return self;
+}
+
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    activeKeyboard  = activeInput.inputAccessoryView.superview;
+    originalKeyboardFrame = activeKeyboard.frame;
+    activeKeyboard.hidden = NO;
+    
+    [self scrollRangeToVisible:self.selectedRange];
 }
 
 @end
