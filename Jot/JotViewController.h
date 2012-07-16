@@ -7,14 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JotTextView.h"
 
-@interface JotViewController : UIViewController <UIGestureRecognizerDelegate, UITextViewDelegate> {
-    CGRect keyboardFrame; // frame of keyboard when initially displayed
-    UIView *keyboardView;  // reference to keyboard view
-    int originalKeyboardOriginY;
-}
+@interface JotViewController : UIViewController <DAKeyboardControlDelegate, UITextViewDelegate>
 
-@property (strong, nonatomic) UITextView *textView;
-
+@property (strong, nonatomic) JotTextView *jotTextView;
 
 @end
