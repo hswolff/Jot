@@ -23,6 +23,7 @@
     
     self.jotTextView = [[JotTextView alloc] initWithFrame:frame];
     self.jotTextView.delegate = self;
+    self.jotTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.jotTextView.font = [UIFont systemFontOfSize:18.0];
     self.jotTextView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
     
@@ -131,12 +132,12 @@
 
 - (void)keyboardFrameWillChange:(CGRect)newFrame from:(CGRect)oldFrame over:(CGFloat)seconds;
 {
-    CGRect viewFrame = self.jotTextView.frame;
+    CGRect viewFrame = self.view.bounds;
     
     CGPoint keyboardPoint = [self.view convertPoint:newFrame.origin fromView:nil];
     
-    CGFloat newHeight = keyboardPoint.y - viewFrame.origin.y + 0.5f;
-    CGFloat maxHeight = self.view.superview.frame.size.height;
+    CGFloat newHeight = keyboardPoint.y - viewFrame.origin.y;
+    CGFloat maxHeight = self.view.frame.size.height;
     
     viewFrame.size.height = MIN(maxHeight, newHeight);
     
