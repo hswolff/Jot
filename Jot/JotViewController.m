@@ -7,6 +7,7 @@
 //
 
 #import "JotViewController.h"
+#import "DAKeyboardControl.h"
 
 @interface JotViewController ()
 
@@ -21,7 +22,7 @@
     CGRect frame = [[UIScreen mainScreen] bounds];
     self.view = [[UIView alloc] initWithFrame:frame];
     
-    self.jotTextView = [[JotTextView alloc] initWithFrame:frame];
+    self.jotTextView = [[UITextView alloc] initWithFrame:frame];
     self.jotTextView.delegate = self;
     self.jotTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.jotTextView.font = [UIFont systemFontOfSize:18.0];
@@ -100,6 +101,12 @@
     "So call me, maybe?";
     self.jotTextView.text = lyrics;
     
+    [self.jotTextView addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+        CGRect newFrame = self.jotTextView.frame;
+        newFrame.size.height = keyboardFrameInView.origin.y - self.jotTextView.contentOffset.y;
+        self.jotTextView.frame = newFrame;
+    }];
+    
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(handleEnteredBackground:) 
                                                  name: UIApplicationDidEnterBackgroundNotification
@@ -109,15 +116,13 @@
     [self.jotTextView becomeFirstResponder];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     self.jotTextView = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
@@ -128,29 +133,6 @@
     [defaults setObject:self.jotTextView.text forKey:@"text"];
     
     [defaults synchronize];
-}
-
-- (void)keyboardFrameWillChange:(CGRect)newFrame from:(CGRect)oldFrame over:(CGFloat)seconds;
-{
-    CGRect viewFrame = self.view.bounds;
-    
-    CGPoint keyboardPoint = [self.view convertPoint:newFrame.origin fromView:nil];
-    
-    CGFloat newHeight = keyboardPoint.y - viewFrame.origin.y;
-    CGFloat maxHeight = self.view.frame.size.height;
-    
-    viewFrame.size.height = MIN(maxHeight, newHeight);
-    
-    BOOL up = (oldFrame.origin.y > newFrame.origin.y);
-    
-    [UIView animateWithDuration:seconds
-                          delay:0
-                        options:(up ? 0 : UIViewAnimationOptionCurveEaseOut)
-                     animations:^{
-                         self.jotTextView.frame = viewFrame;
-                     }
-                     completion:^(BOOL finished){
-                     }];
 }
 
 

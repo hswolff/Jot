@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JotTextView.h"
+//#import "JotTextView.h"
 
-@interface JotViewController : UIViewController <DAKeyboardControlDelegate, UITextViewDelegate>
+@interface JotViewController : UIViewController <UITextViewDelegate>
 
-@property (strong, nonatomic) JotTextView *jotTextView;
+@property (strong, nonatomic) UITextView *jotTextView;
 
 @end

@@ -14,8 +14,7 @@
 		E1362B6E15AA3B2B0034A2EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B6D15AA3B2B0034A2EC /* main.m */; };
 		E1362B7215AA3B2B0034A2EC /* JotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */; };
 		E1362B7515AA3B2B0034A2EC /* JotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7415AA3B2B0034A2EC /* JotViewController.m */; };
-		E1A933DB15B10DEA00F1F22F /* JotTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A933DA15B10DEA00F1F22F /* JotTextView.m */; };
-		E1A933EC15B3987700F1F22F /* DAKeyboardControlScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A933EB15B3987700F1F22F /* DAKeyboardControlScrollView.m */; };
+		E1A933EC15B3987700F1F22F /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A933EB15B3987700F1F22F /* DAKeyboardControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,10 +30,8 @@
 		E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotAppDelegate.m; sourceTree = "<group>"; };
 		E1362B7315AA3B2B0034A2EC /* JotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotViewController.h; sourceTree = "<group>"; };
 		E1362B7415AA3B2B0034A2EC /* JotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotViewController.m; sourceTree = "<group>"; };
-		E1A933D915B10DEA00F1F22F /* JotTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JotTextView.h; sourceTree = "<group>"; };
-		E1A933DA15B10DEA00F1F22F /* JotTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JotTextView.m; sourceTree = "<group>"; };
-		E1A933EA15B3987700F1F22F /* DAKeyboardControlScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControlScrollView.h; sourceTree = "<group>"; };
-		E1A933EB15B3987700F1F22F /* DAKeyboardControlScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControlScrollView.m; sourceTree = "<group>"; };
+		E1A933EA15B3987700F1F22F /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
+		E1A933EB15B3987700F1F22F /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +82,8 @@
 				E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */,
 				E1362B7315AA3B2B0034A2EC /* JotViewController.h */,
 				E1362B7415AA3B2B0034A2EC /* JotViewController.m */,
-				E1A933D915B10DEA00F1F22F /* JotTextView.h */,
-				E1A933DA15B10DEA00F1F22F /* JotTextView.m */,
-				E1A933EA15B3987700F1F22F /* DAKeyboardControlScrollView.h */,
-				E1A933EB15B3987700F1F22F /* DAKeyboardControlScrollView.m */,
+				E1A933EA15B3987700F1F22F /* DAKeyboardControl.h */,
+				E1A933EB15B3987700F1F22F /* DAKeyboardControl.m */,
 				E1362B6815AA3B2B0034A2EC /* Supporting Files */,
 			);
 			path = Jot;
@@ -170,8 +165,7 @@
 				E1362B6E15AA3B2B0034A2EC /* main.m in Sources */,
 				E1362B7215AA3B2B0034A2EC /* JotAppDelegate.m in Sources */,
 				E1362B7515AA3B2B0034A2EC /* JotViewController.m in Sources */,
-				E1A933DB15B10DEA00F1F22F /* JotTextView.m in Sources */,
-				E1A933EC15B3987700F1F22F /* DAKeyboardControlScrollView.m in Sources */,
+				E1A933EC15B3987700F1F22F /* DAKeyboardControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
