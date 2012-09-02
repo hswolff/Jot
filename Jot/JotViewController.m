@@ -17,8 +17,7 @@
 
 @synthesize jotTextView = _jotTextView;
 
-- (void)loadView
-{
+- (void)loadView {
     CGRect frame = [[UIScreen mainScreen] bounds];
     self.view = [[UIView alloc] initWithFrame:frame];
     
@@ -31,8 +30,7 @@
     [self.view addSubview:self.jotTextView];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
