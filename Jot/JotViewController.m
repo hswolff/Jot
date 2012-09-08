@@ -8,10 +8,7 @@
 
 #import "JotViewController.h"
 #import "DAKeyboardControl.h"
-
-@interface JotViewController ()
-
-@end
+#import "ViewDeck/IIViewDeckController.h"
 
 @implementation JotViewController
 
@@ -41,7 +38,6 @@
         self.jotTextView.text = text;
         text = nil;
     }
-    
     NSString *lyrics = @""
     "I threw a wish in the well,\n"
     "Don't ask me, I'll never tell\n"
@@ -104,14 +100,41 @@
         newFrame.size.height = keyboardFrameInView.origin.y - self.jotTextView.contentOffset.y;
         self.jotTextView.frame = newFrame;
     }];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(handleEnteredBackground:) 
                                                  name: UIApplicationDidEnterBackgroundNotification
                                                object: nil];
     
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changeGesture:)];
+    [self.jotTextView addGestureRecognizer:panGesture];
+
     // Immediately show keyboard
     [self.jotTextView becomeFirstResponder];
+}
+
+
+- (void)changeGesture:(UIPanGestureRecognizer *)gesture {
+    CGPoint point = [gesture translationInView:self.view];
+
+    if (!self.centered) {
+        [self.viewDeckController performSelector:@selector(panned:) withObject:gesture];
+        return;
+    }
+    switch (gesture.state) {
+        case UIGestureRecognizerStateBegan:
+            initialPoint = point;
+            break;
+        default: {
+            if (point.y > initialPoint.y || point.y < initialPoint.y) {
+            }
+            else if (point.x >= initialPoint.x || point.x <= initialPoint.x) {
+                [self.viewDeckController performSelector:@selector(panned:) withObject:gesture];
+            }
+        }
+            break;
+
+    }
 }
 
 - (void)viewDidUnload {
@@ -132,6 +155,5 @@
     
     [defaults synchronize];
 }
-
 
 @end

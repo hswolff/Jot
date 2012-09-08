@@ -8,10 +8,6 @@
 
 #import "JotAppDelegate.h"
 
-#import "ViewDeck/IIViewDeckController.h"
-#import "JotViewController.h"
-#import "JotFileViewController.h"
-#import "JotListViewController.h"
 
 @implementation JotAppDelegate
 
@@ -28,12 +24,20 @@
     self.rightController = [[JotFileViewController alloc] init];
     
     IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:self.centerController leftViewController:self.leftController rightViewController:self.rightController];
-    
+    deckController.delegate = self;
     
     self.window.rootViewController = deckController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)viewDeckController:(IIViewDeckController *)viewDeckController didPanToOffset:(CGFloat)offset {
+    if (offset) {
+        [self.centerController setCentered:NO];
+    } else {
+        [self.centerController setCentered:YES];
+    }
 }
 
 @end

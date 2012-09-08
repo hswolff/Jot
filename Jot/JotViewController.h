@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JotViewController : UIViewController <UITextViewDelegate>
+@interface JotViewController : UIViewController <UITextViewDelegate, UIGestureRecognizerDelegate> {
+    CGPoint initialPoint;
+}
 
 @property (strong, nonatomic) UITextView *jotTextView;
+@property (nonatomic, assign) BOOL centered;
 
 @end

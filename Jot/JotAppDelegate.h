@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewDeck/IIViewDeckController.h"
+
+#import "JotViewController.h"
+#import "JotFileViewController.h"
+#import "JotListViewController.h"
+
 
 @class JotViewController;
 
-@interface JotAppDelegate : UIResponder <UIApplicationDelegate>
+@interface JotAppDelegate : UIResponder <UIApplicationDelegate, IIViewDeckControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (retain, nonatomic) UIViewController *centerController;
-@property (retain, nonatomic) UIViewController *leftController;
-@property (retain, nonatomic) UIViewController *rightController;
+@property (retain, nonatomic) JotViewController *centerController;
+@property (retain, nonatomic) JotListViewController *leftController;
+@property (retain, nonatomic) JotFileViewController *rightController;
 
 
 @end
