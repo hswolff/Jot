@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JotListViewController : UIViewController
+@interface JotFileListController : UIViewController
 
 @end

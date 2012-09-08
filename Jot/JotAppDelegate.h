@@ -11,7 +11,7 @@
 
 #import "JotViewController.h"
 #import "JotFileViewController.h"
-#import "JotListViewController.h"
+#import "JotFileListController.h"
 
 
 @class JotViewController;
@@ -21,7 +21,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (retain, nonatomic) JotViewController *centerController;
-@property (retain, nonatomic) JotListViewController *leftController;
+@property (retain, nonatomic) JotFileListController *leftController;
 @property (retain, nonatomic) JotFileViewController *rightController;
 
 

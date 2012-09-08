@@ -19,7 +19,7 @@
 		E1BE1D7D15F2652B00271A2D /* WrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1D7B15F2652B00271A2D /* WrapController.m */; };
 		E1BE1D8015F2654500271A2D /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BE1D7F15F2654500271A2D /* icon@2x.png */; };
 		E1BE1DA115F2F56500271A2D /* JotFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA015F2F56500271A2D /* JotFileViewController.m */; };
-		E1BE1DA415F2F6E400271A2D /* JotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA315F2F6E400271A2D /* JotListViewController.m */; };
+		E1BE1DA415F2F6E400271A2D /* JotFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA315F2F6E400271A2D /* JotFileListController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +44,8 @@
 		E1BE1D7F15F2654500271A2D /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Resources/icon@2x.png"; sourceTree = "<group>"; };
 		E1BE1D9F15F2F56500271A2D /* JotFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JotFileViewController.h; path = Jot/JotFileViewController.h; sourceTree = SOURCE_ROOT; };
 		E1BE1DA015F2F56500271A2D /* JotFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JotFileViewController.m; path = Jot/JotFileViewController.m; sourceTree = SOURCE_ROOT; };
-		E1BE1DA215F2F6E400271A2D /* JotListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JotListViewController.h; sourceTree = "<group>"; };
-		E1BE1DA315F2F6E400271A2D /* JotListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JotListViewController.m; sourceTree = "<group>"; };
+		E1BE1DA215F2F6E400271A2D /* JotFileListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JotFileListController.h; sourceTree = "<group>"; };
+		E1BE1DA315F2F6E400271A2D /* JotFileListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JotFileListController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +96,8 @@
 				E165FA9D15F1BE3200080DAA /* Resources */,
 				E1362B7015AA3B2B0034A2EC /* JotAppDelegate.h */,
 				E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */,
-				E1BE1DA215F2F6E400271A2D /* JotListViewController.h */,
-				E1BE1DA315F2F6E400271A2D /* JotListViewController.m */,
+				E1BE1DA215F2F6E400271A2D /* JotFileListController.h */,
+				E1BE1DA315F2F6E400271A2D /* JotFileListController.m */,
 				E1362B7315AA3B2B0034A2EC /* JotViewController.h */,
 				E1362B7415AA3B2B0034A2EC /* JotViewController.m */,
 				E1BE1D9F15F2F56500271A2D /* JotFileViewController.h */,
@@ -217,7 +217,7 @@
 				E1BE1D7C15F2652B00271A2D /* IIViewDeckController.m in Sources */,
 				E1BE1D7D15F2652B00271A2D /* WrapController.m in Sources */,
 				E1BE1DA115F2F56500271A2D /* JotFileViewController.m in Sources */,
-				E1BE1DA415F2F6E400271A2D /* JotListViewController.m in Sources */,
+				E1BE1DA415F2F6E400271A2D /* JotFileListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

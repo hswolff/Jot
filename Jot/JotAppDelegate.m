@@ -20,7 +20,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     self.centerController = [[JotViewController alloc] init];
-    self.leftController = [[JotListViewController alloc] init];
+    self.leftController = [[JotFileListController alloc] init];
     self.rightController = [[JotFileViewController alloc] init];
     
     IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:self.centerController leftViewController:self.leftController rightViewController:self.rightController];

@@ -6,13 +6,13 @@
 //
 //
 
-#import "JotListViewController.h"
+#import "JotFileListController.h"
 
-@interface JotListViewController ()
+@interface JotFileListController ()
 
 @end
 
-@implementation JotListViewController
+@implementation JotFileListController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
