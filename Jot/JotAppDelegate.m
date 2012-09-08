@@ -23,7 +23,10 @@
     self.leftController = [[JotFileListController alloc] init];
     self.rightController = [[JotFileViewController alloc] init];
     
-    IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:self.centerController leftViewController:self.leftController rightViewController:self.rightController];
+    IIViewDeckController *deckController = [[IIViewDeckController alloc]
+                                                  initWithCenterViewController:self.centerController
+                                                            leftViewController:self.leftController
+                                                           rightViewController:self.rightController];
     deckController.delegate = self;
     
     self.window.rootViewController = deckController;
