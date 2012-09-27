@@ -15,4 +15,6 @@
 @property (strong, nonatomic) UITextView *jotTextView;
 @property (nonatomic, assign) BOOL centered;
 
+- (void) setText:(NSString *)text;
+
 @end

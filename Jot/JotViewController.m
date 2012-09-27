@@ -102,6 +102,10 @@
     [defaults synchronize];
 }
 
+- (void) setText:(NSString *)text {
+    self.jotTextView.text = text;
+}
+
 - (void) setDefaultText {
     NSString *lyrics = @""
     "I threw a wish in the well,\n"

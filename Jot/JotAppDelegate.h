@@ -9,20 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "ViewDeck/IIViewDeckController.h"
 
-#import "JotViewController.h"
-#import "JotFileViewController.h"
-#import "JotItemListController.h"
-
-
 @class JotViewController;
+@class JotFileViewController;
+@class JotViewController;
+@class IIViewDeckController;
+
 
 @interface JotAppDelegate : UIResponder <UIApplicationDelegate, IIViewDeckControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (retain, nonatomic) JotViewController *centerController;
-@property (retain, nonatomic) JotItemListController *leftController;
+@property (retain, nonatomic) UINavigationController *leftController;
 @property (retain, nonatomic) JotFileViewController *rightController;
 
+@property (retain, nonatomic) IIViewDeckController *deckController;
+
+- (void) openCenterViewControllerWithText:(NSString *)text;
 
 @end
