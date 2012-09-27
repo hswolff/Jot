@@ -17,6 +17,7 @@
 - (void)loadView {
     CGRect frame = [[UIScreen mainScreen] bounds];
     self.view = [[UIView alloc] initWithFrame:frame];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.jotTextView = [[UITextView alloc] initWithFrame:frame];
     self.jotTextView.delegate = self;
