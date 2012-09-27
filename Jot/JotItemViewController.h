@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JotViewController : UIViewController <UITextViewDelegate, UIGestureRecognizerDelegate> {
+@interface JotItemViewController : UIViewController <UITextViewDelegate, UIGestureRecognizerDelegate> {
     CGPoint initialPoint;
 }
 

@@ -10,7 +10,7 @@
 #import "JotItem.h"
 #import "Models/JotItemStore.h"
 #import "ViewDeck/IIViewDeckController.h"
-#import "JotViewController.h"
+#import "JotItemViewController.h"
 
 @interface FileList : UITableView <UIGestureRecognizerDelegate>
 @end
@@ -88,7 +88,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {  
     NSArray *items = [[JotItemStore sharedStore] allItems];
     JotItem *selectedItem = [items objectAtIndex:[indexPath row]];
-    [(JotViewController *)self.viewDeckController.centerController setText:selectedItem.text];
+    [(JotItemViewController *)self.viewDeckController.centerController setText:selectedItem.text];
     [self.viewDeckController closeLeftViewBouncing:nil];
 }
 

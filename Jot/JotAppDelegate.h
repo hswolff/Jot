@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ViewDeck/IIViewDeckController.h"
 
-@class JotViewController;
+@class JotItemViewController;
 @class JotFileViewController;
-@class JotViewController;
+@class JotItemViewController;
 @class IIViewDeckController;
 
 
@@ -19,7 +19,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (retain, nonatomic) JotViewController *centerController;
+@property (retain, nonatomic) JotItemViewController *centerController;
 @property (retain, nonatomic) UINavigationController *leftController;
 @property (retain, nonatomic) JotFileViewController *rightController;
 

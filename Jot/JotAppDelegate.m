@@ -8,7 +8,7 @@
 
 #import "JotAppDelegate.h"
 
-#import "JotViewController.h"
+#import "JotItemViewController.h"
 #import "JotFileViewController.h"
 #import "JotItemListController.h"
 
@@ -24,7 +24,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    self.centerController = [[JotViewController alloc] init];
+    self.centerController = [[JotItemViewController alloc] init];
     JotItemListController *itemListController = [[JotItemListController alloc] init];
     self.leftController = [[UINavigationController alloc] initWithRootViewController:itemListController];
     self.rightController = [[JotFileViewController alloc] init];

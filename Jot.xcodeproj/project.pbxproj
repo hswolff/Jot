@@ -13,7 +13,7 @@
 		E1362B6C15AA3B2B0034A2EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1362B6A15AA3B2B0034A2EC /* InfoPlist.strings */; };
 		E1362B6E15AA3B2B0034A2EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B6D15AA3B2B0034A2EC /* main.m */; };
 		E1362B7215AA3B2B0034A2EC /* JotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */; };
-		E1362B7515AA3B2B0034A2EC /* JotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7415AA3B2B0034A2EC /* JotViewController.m */; };
+		E1362B7515AA3B2B0034A2EC /* JotItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7415AA3B2B0034A2EC /* JotItemViewController.m */; };
 		E168A38316112B8800A6AEB8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E168A38216112B8800A6AEB8 /* CoreData.framework */; };
 		E168A38616112C1100A6AEB8 /* JotItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E168A38416112C1100A6AEB8 /* JotItem.xcdatamodeld */; };
 		E168A38916112D8300A6AEB8 /* JotItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E168A38816112D8300A6AEB8 /* JotItem.m */; };
@@ -38,8 +38,8 @@
 		E1362B6F15AA3B2B0034A2EC /* Jot-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jot-Prefix.pch"; sourceTree = "<group>"; };
 		E1362B7015AA3B2B0034A2EC /* JotAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotAppDelegate.h; sourceTree = "<group>"; };
 		E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotAppDelegate.m; sourceTree = "<group>"; };
-		E1362B7315AA3B2B0034A2EC /* JotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotViewController.h; sourceTree = "<group>"; };
-		E1362B7415AA3B2B0034A2EC /* JotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotViewController.m; sourceTree = "<group>"; };
+		E1362B7315AA3B2B0034A2EC /* JotItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotItemViewController.h; sourceTree = "<group>"; };
+		E1362B7415AA3B2B0034A2EC /* JotItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotItemViewController.m; sourceTree = "<group>"; };
 		E168A38216112B8800A6AEB8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E168A38516112C1100A6AEB8 /* JotItem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JotItem.xcdatamodel; sourceTree = "<group>"; };
 		E168A38716112D8300A6AEB8 /* JotItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JotItem.h; path = Models/JotItem.h; sourceTree = "<group>"; };
@@ -113,8 +113,8 @@
 				E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */,
 				E1BE1DA215F2F6E400271A2D /* JotItemListController.h */,
 				E1BE1DA315F2F6E400271A2D /* JotItemListController.m */,
-				E1362B7315AA3B2B0034A2EC /* JotViewController.h */,
-				E1362B7415AA3B2B0034A2EC /* JotViewController.m */,
+				E1362B7315AA3B2B0034A2EC /* JotItemViewController.h */,
+				E1362B7415AA3B2B0034A2EC /* JotItemViewController.m */,
 				E1BE1D9F15F2F56500271A2D /* JotFileViewController.h */,
 				E1BE1DA015F2F56500271A2D /* JotFileViewController.m */,
 				E1362B6815AA3B2B0034A2EC /* Supporting Files */,
@@ -241,7 +241,7 @@
 			files = (
 				E1362B6E15AA3B2B0034A2EC /* main.m in Sources */,
 				E1362B7215AA3B2B0034A2EC /* JotAppDelegate.m in Sources */,
-				E1362B7515AA3B2B0034A2EC /* JotViewController.m in Sources */,
+				E1362B7515AA3B2B0034A2EC /* JotItemViewController.m in Sources */,
 				E1A933EC15B3987700F1F22F /* DAKeyboardControl.m in Sources */,
 				E1BE1D7C15F2652B00271A2D /* IIViewDeckController.m in Sources */,
 				E1BE1D7D15F2652B00271A2D /* WrapController.m in Sources */,
