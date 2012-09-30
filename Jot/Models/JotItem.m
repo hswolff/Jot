@@ -11,13 +11,34 @@
 
 @implementation JotItem
 
-//@dynamic text;
-//@dynamic dateCreated;
-//@dynamic orderingValue;
-@synthesize text = _text;
-@synthesize dateCreated = _dateCreated;
-@synthesize orderingValue = _orderingValue;
+@dynamic text;
+@dynamic dateCreated;
+@dynamic orderingValue;
+//@synthesize text = _text;
+//@synthesize dateCreated = _dateCreated;
+//@synthesize orderingValue = _orderingValue;
 
+- (void) awakeFromFetch {
+    [super awakeFromFetch];
+}
+
+- (void) awakeFromInsert {
+    [super awakeFromInsert];
+    NSTimeInterval t = [[NSDate date] timeIntervalSinceReferenceDate];
+    [self setDateCreated:t];
+}
+
+- (NSString *) description {
+    if (self.text && [self.text length] >= 10) {
+        return [self.text substringToIndex:10];
+    } else {
+        return [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:self.dateCreated] dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+    }
+    
+}
+
+
+/*
 + (id)randomItem {
     NSString *randomName = [self genRandStringLength: 200];
     
@@ -48,10 +69,7 @@
     
     return randomString;
 }
-
-- (NSString *) description {
-    return [self.text substringToIndex:10];
-}
-
+ 
+*/
 
 @end

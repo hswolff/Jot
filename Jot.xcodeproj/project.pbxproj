@@ -14,8 +14,8 @@
 		E1362B6E15AA3B2B0034A2EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B6D15AA3B2B0034A2EC /* main.m */; };
 		E1362B7215AA3B2B0034A2EC /* JotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */; };
 		E1362B7515AA3B2B0034A2EC /* JotItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7415AA3B2B0034A2EC /* JotItemViewController.m */; };
+		E144EDFC1618C46F00A64615 /* Jot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E144EDFA1618C46F00A64615 /* Jot.xcdatamodeld */; };
 		E168A38316112B8800A6AEB8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E168A38216112B8800A6AEB8 /* CoreData.framework */; };
-		E168A38616112C1100A6AEB8 /* Jot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E168A38416112C1100A6AEB8 /* Jot.xcdatamodeld */; };
 		E168A38916112D8300A6AEB8 /* JotItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E168A38816112D8300A6AEB8 /* JotItem.m */; };
 		E1A933EC15B3987700F1F22F /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A933EB15B3987700F1F22F /* DAKeyboardControl.m */; };
 		E1B2E4A9161359DA0073C3CE /* JotItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B2E4A8161359DA0073C3CE /* JotItemStore.m */; };
@@ -40,8 +40,8 @@
 		E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotAppDelegate.m; sourceTree = "<group>"; };
 		E1362B7315AA3B2B0034A2EC /* JotItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotItemViewController.h; sourceTree = "<group>"; };
 		E1362B7415AA3B2B0034A2EC /* JotItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotItemViewController.m; sourceTree = "<group>"; };
+		E144EDFB1618C46F00A64615 /* Jot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jot.xcdatamodel; sourceTree = "<group>"; };
 		E168A38216112B8800A6AEB8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		E168A38516112C1100A6AEB8 /* Jot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jot.xcdatamodel; sourceTree = "<group>"; };
 		E168A38716112D8300A6AEB8 /* JotItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JotItem.h; path = Models/JotItem.h; sourceTree = "<group>"; };
 		E168A38816112D8300A6AEB8 /* JotItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JotItem.m; path = Models/JotItem.m; sourceTree = "<group>"; };
 		E1A933EA15B3987700F1F22F /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
@@ -78,7 +78,6 @@
 		E1362B5215AA3B2B0034A2EC = {
 			isa = PBXGroup;
 			children = (
-				E168A38216112B8800A6AEB8 /* CoreData.framework */,
 				E1362B6715AA3B2B0034A2EC /* Jot */,
 				E1362B6015AA3B2B0034A2EC /* Frameworks */,
 				E1362B5E15AA3B2B0034A2EC /* Products */,
@@ -96,6 +95,7 @@
 		E1362B6015AA3B2B0034A2EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E168A38216112B8800A6AEB8 /* CoreData.framework */,
 				E1362B6115AA3B2B0034A2EC /* UIKit.framework */,
 				E1362B6315AA3B2B0034A2EC /* Foundation.framework */,
 				E1362B6515AA3B2B0034A2EC /* CoreGraphics.framework */,
@@ -147,9 +147,9 @@
 			children = (
 				E1B2E4A7161359DA0073C3CE /* JotItemStore.h */,
 				E1B2E4A8161359DA0073C3CE /* JotItemStore.m */,
-				E168A38416112C1100A6AEB8 /* Jot.xcdatamodeld */,
 				E168A38716112D8300A6AEB8 /* JotItem.h */,
 				E168A38816112D8300A6AEB8 /* JotItem.m */,
+				E144EDFA1618C46F00A64615 /* Jot.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -247,9 +247,9 @@
 				E1BE1D7D15F2652B00271A2D /* WrapController.m in Sources */,
 				E1BE1DA115F2F56500271A2D /* JotFileViewController.m in Sources */,
 				E1BE1DA415F2F6E400271A2D /* JotItemListController.m in Sources */,
-				E168A38616112C1100A6AEB8 /* Jot.xcdatamodeld in Sources */,
 				E168A38916112D8300A6AEB8 /* JotItem.m in Sources */,
 				E1B2E4A9161359DA0073C3CE /* JotItemStore.m in Sources */,
+				E144EDFC1618C46F00A64615 /* Jot.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,12 +358,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E168A38416112C1100A6AEB8 /* Jot.xcdatamodeld */ = {
+		E144EDFA1618C46F00A64615 /* Jot.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E168A38516112C1100A6AEB8 /* Jot.xcdatamodel */,
+				E144EDFB1618C46F00A64615 /* Jot.xcdatamodel */,
 			);
-			currentVersion = E168A38516112C1100A6AEB8 /* Jot.xcdatamodel */;
+			currentVersion = E144EDFB1618C46F00A64615 /* Jot.xcdatamodel */;
 			name = Jot.xcdatamodeld;
 			path = Models/Jot.xcdatamodeld;
 			sourceTree = "<group>";

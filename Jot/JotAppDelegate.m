@@ -12,6 +12,7 @@
 #import "JotFileViewController.h"
 #import "JotItemListController.h"
 
+#import "JotItemStore.h"
 
 @implementation JotAppDelegate
 
@@ -50,9 +51,13 @@
     }
 }
 
-- (void)openCenterViewControllerWithText:(NSString *)text {
-    [self.centerController setText:text];
-    [self.deckController closeLeftViewBouncing:nil];
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    BOOL success = [[JotItemStore sharedStore] saveChanges];
+    if (success) {
+        NSLog(@"Saved all the JotItems");
+    } else {
+        NSLog(@"Could not save any of the JotItems");
+    }
 }
 
 @end

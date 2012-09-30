@@ -25,6 +25,4 @@
 
 @property (retain, nonatomic) IIViewDeckController *deckController;
 
-- (void) openCenterViewControllerWithText:(NSString *)text;
-
 @end

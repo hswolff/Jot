@@ -9,10 +9,12 @@
 #import "JotItemViewController.h"
 #import "DAKeyboardControl.h"
 #import "ViewDeck/IIViewDeckController.h"
+#import "JotItem.h"
 
 @implementation JotItemViewController
 
 @synthesize jotTextView = _jotTextView;
+@synthesize item = _item;
 
 - (void)loadView {
     CGRect frame = [[UIScreen mainScreen] bounds];
@@ -32,31 +34,24 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    // Get the stored data before the view loads
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *text = [defaults objectForKey:@"text"];
-    if (text) {
-        self.jotTextView.text = text;
-        text = nil;
-    }
-    [self setDefaultText];
+//    [self setDefaultText];
     
     [self.jotTextView addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
         CGRect newFrame = self.jotTextView.frame;
         newFrame.size.height = keyboardFrameInView.origin.y - self.jotTextView.contentOffset.y;
         self.jotTextView.frame = newFrame;
     }];
-
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(handleEnteredBackground:) 
-                                                 name: UIApplicationDidEnterBackgroundNotification
-                                               object: nil];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changeGesture:)];
     [self.jotTextView addGestureRecognizer:panGesture];
 
     // Immediately show keyboard
     [self.jotTextView becomeFirstResponder];
+}
+
+- (void)setItem:(JotItem *)item {
+    _item = item;
+    self.jotTextView.text = self.item.text;
 }
 
 
@@ -83,6 +78,10 @@
     }
 }
 
+- (void)textViewDidChange:(UITextView *)textView {
+    self.item.text = textView.text;
+}
+
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -91,19 +90,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-
-- (void)handleEnteredBackground:(NSNotification *)notification {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults setObject:self.jotTextView.text forKey:@"text"];
-    
-    [defaults synchronize];
-}
-
-- (void) setText:(NSString *)text {
-    self.jotTextView.text = text;
 }
 
 - (void) setDefaultText {

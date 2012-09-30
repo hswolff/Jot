@@ -32,21 +32,12 @@
         
         self.navigationItem.title = @"Jot Files";
         
-//        UIBarButtonItem *bbiLeft = [[UIBarButtonItem alloc]
-//                                initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-//                                target:self
-//                                action:@selector(editItems)];
-//        self.navigationItem.leftBarButtonItem = bbiLeft;
-        
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                 target:self
                                 action:@selector(addNewItem:)];
-        self.navigationItem.leftBarButtonItem = bbi;
         
-        for (int i = 0; i < 5; i++) {
-            [[JotItemStore sharedStore] createItem];
-        }
+        self.navigationItem.leftBarButtonItems = [[NSArray alloc] initWithObjects:[self editButtonItem], addButton, nil];
     }
     return self;
 }
@@ -81,15 +72,42 @@
                             withRowAnimation:UITableViewRowAnimationTop];
 }
 
-- (void) editItems {
-    NSLog(@"Hwaaaa");
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        [self.viewDeckController setLeftLedge:0];
+    } else {
+        [self.viewDeckController setLeftLedge:92.0];
+    }
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {  
     NSArray *items = [[JotItemStore sharedStore] allItems];
     JotItem *selectedItem = [items objectAtIndex:[indexPath row]];
-    [(JotItemViewController *)self.viewDeckController.centerController setText:selectedItem.text];
+    [(JotItemViewController *)self.viewDeckController.centerController setItem:selectedItem];
     [self.viewDeckController closeLeftViewBouncing:nil];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // If the table view is asking to commit a delete command...
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        JotItemStore *ps = [JotItemStore sharedStore];
+        NSArray *items = [ps allItems];
+        JotItem *p = [items objectAtIndex:[indexPath row]];
+        [ps removeItem:p];
+        
+        // We also remove that row from the table view with an animation
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView
+moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
+      toIndexPath:(NSIndexPath *)toIndexPath {
+    [[JotItemStore sharedStore] moveItemAtIndex:[fromIndexPath row]
+                                         toIndex:[toIndexPath row]];
 }
 
 @end

@@ -10,16 +10,15 @@
 #import <CoreData/CoreData.h>
 
 
-//@interface JotItem : NSManagedObject
-@interface JotItem : NSObject
+@interface JotItem : NSManagedObject
+//@interface JotItem : NSObject
 
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic) NSTimeInterval dateCreated;
 @property (nonatomic) double orderingValue;
 
-+ (id)randomItem;
-
-- (id)initWithText:(NSString *)text;
+//+ (id)randomItem;
+//- (id)initWithText:(NSString *)text;
 - (NSString *)description;
 
 @end
