@@ -46,11 +46,24 @@
     [self.jotTextView becomeFirstResponder];
 }
 
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    self.jotTextView = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+
 - (void)setItem:(JotItem *)item {
     _item = item;
     self.jotTextView.text = self.item.text;
 }
 
+- (void)textViewDidChange:(UITextView *)textView {
+    self.item.text = textView.text;
+}
 
 - (void)changeGesture:(UIPanGestureRecognizer *)gesture {
     CGPoint point = [gesture translationInView:self.view];
@@ -73,20 +86,6 @@
             break;
 
     }
-}
-
-- (void)textViewDidChange:(UITextView *)textView {
-    self.item.text = textView.text;
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    self.jotTextView = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 @end
