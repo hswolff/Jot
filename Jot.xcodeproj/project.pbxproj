@@ -40,6 +40,7 @@
 		E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotAppDelegate.m; sourceTree = "<group>"; };
 		E1362B7315AA3B2B0034A2EC /* JotItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotItemViewController.h; sourceTree = "<group>"; };
 		E1362B7415AA3B2B0034A2EC /* JotItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotItemViewController.m; sourceTree = "<group>"; };
+		E1423600161A6DD7008B3891 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E144EDFB1618C46F00A64615 /* Jot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jot.xcdatamodel; sourceTree = "<group>"; };
 		E168A38216112B8800A6AEB8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E168A38716112D8300A6AEB8 /* JotItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JotItem.h; path = Models/JotItem.h; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 				E1362B6A15AA3B2B0034A2EC /* InfoPlist.strings */,
 				E1362B6D15AA3B2B0034A2EC /* main.m */,
 				E1362B6F15AA3B2B0034A2EC /* Jot-Prefix.pch */,
+				E1423600161A6DD7008B3891 /* Constants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

@@ -6,6 +6,7 @@
 //
 //
 
+#import "Constants.h"
 #import "JotItemListController.h"
 #import "JotItem.h"
 #import "Models/JotItemStore.h"
@@ -77,7 +78,7 @@
     if (editing) {
         [self.viewDeckController setLeftLedge:0];
     } else {
-        [self.viewDeckController setLeftLedge:92.0];
+        [self.viewDeckController setLeftLedge:LEFT_LEDGE_SIZE];
     }
 
 }

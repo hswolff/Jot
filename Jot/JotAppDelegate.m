@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "Constants.h"
 #import "JotAppDelegate.h"
 
 #import "JotItemViewController.h"
@@ -35,7 +36,7 @@
                                                             leftViewController:self.leftController
                                                            rightViewController:self.rightController];
     self.deckController.delegate = self;
-    self.deckController.leftLedge = 92.0;
+    self.deckController.leftLedge = LEFT_LEDGE_SIZE;
     
     self.window.rootViewController = self.deckController;
     self.window.backgroundColor = [UIColor whiteColor];
