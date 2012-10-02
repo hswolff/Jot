@@ -16,6 +16,9 @@
 @synthesize jotTextView = _jotTextView;
 @synthesize item = _item;
 
+#pragma mark -
+#pragma mark View Lifecycle Management
+
 - (void)loadView {
     CGRect frame = [[UIScreen mainScreen] bounds];
     self.view = [[UIView alloc] initWithFrame:frame];
@@ -55,6 +58,8 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+#pragma mark -
+#pragma mark Modify Item
 
 - (void)setItem:(JotItem *)item {
     _item = item;
@@ -64,6 +69,9 @@
 - (void)textViewDidChange:(UITextView *)textView {
     self.item.text = textView.text;
 }
+
+#pragma mark -
+#pragma mark GestureRecognizer
 
 - (void)changeGesture:(UIPanGestureRecognizer *)gesture {
     CGPoint point = [gesture translationInView:self.view];
