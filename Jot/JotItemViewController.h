@@ -11,7 +11,6 @@
 @class JotItem;
 
 @interface JotItemViewController : UIViewController <UITextViewDelegate, UIGestureRecognizerDelegate> {
-    CGPoint initialPoint;
 }
 
 @property (strong, nonatomic) UITextView *jotTextView;

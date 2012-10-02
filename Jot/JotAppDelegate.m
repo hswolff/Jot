@@ -45,11 +45,18 @@
 }
 
 - (void)viewDeckController:(IIViewDeckController *)viewDeckController didPanToOffset:(CGFloat)offset {
+//    NSLog(@"viewDeckController Offset: %f", offset);
     if (offset) {
         [self.centerController setCentered:NO];
     } else {
         [self.centerController setCentered:YES];
     }
+}
+
+- (void)viewDeckControllerDidShowCenterView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated {
+//    NSLog(@"viewDeckControllerDidShowCenterView");
+    [self.centerController setCentered:YES];
+    [self.centerController.jotTextView becomeFirstResponder];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

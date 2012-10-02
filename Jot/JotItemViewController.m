@@ -36,10 +36,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.centered = YES;
     [self.jotTextView addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
-        CGRect newFrame = self.jotTextView.frame;
-        newFrame.size.height = keyboardFrameInView.origin.y - self.jotTextView.contentOffset.y;
-        self.jotTextView.frame = newFrame;
+        CGRect newFrame = _jotTextView.frame;
+        newFrame.size.height = keyboardFrameInView.origin.y - _jotTextView.contentOffset.y;
+        _jotTextView.frame = newFrame;
     }];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changeGesture:)];
@@ -70,30 +71,41 @@
     self.item.text = textView.text;
 }
 
+- (void)setCentered:(BOOL)centered {
+//    NSLog(@"setCentered: %i", centered);
+    _jotTextView.scrollEnabled = centered;
+    _jotTextView.editable = centered;
+    _centered = centered;
+}
+
 #pragma mark -
 #pragma mark GestureRecognizer
 
 - (void)changeGesture:(UIPanGestureRecognizer *)gesture {
     CGPoint point = [gesture translationInView:self.view];
-
+//    CGPoint velocity = [gesture velocityInView:self.view];
+//    if (self.centered) {
+//        NSLog(@"Centered: true");
+//    } else {
+//        NSLog(@"Centered: false");
+//    }
+//    NSLog(@"point: %@", NSStringFromCGPoint(point));
+//    NSLog(@"velocity: %@", NSStringFromCGPoint(velocity));
+    
     if (!self.centered) {
+//        NSLog(@"AAA");
         [self.viewDeckController performSelector:@selector(panned:) withObject:gesture];
-        return;
+        [self.jotTextView hideKeyboard];
     }
-    switch (gesture.state) {
-        case UIGestureRecognizerStateBegan:
-            initialPoint = point;
-            break;
-        default: {
-            if (point.y > initialPoint.y || point.y < initialPoint.y) {
-            }
-            else if (point.x >= initialPoint.x || point.x <= initialPoint.x) {
-                [self.viewDeckController performSelector:@selector(panned:) withObject:gesture];
-            }
-        }
-            break;
+    else if (point.y != 0) {
+//        NSLog(@"BBB");
+    }
+    else if (point.x >= 0 || point.x <= 0) {
+//        NSLog(@"CCC");
+        [self.viewDeckController performSelector:@selector(panned:) withObject:gesture];
+        [self.jotTextView hideKeyboard];
+    }
 
-    }
 }
 
 @end
