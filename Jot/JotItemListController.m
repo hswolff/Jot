@@ -43,7 +43,7 @@
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[JotItemStore sharedStore] allItems] count];
+    return [[[JotItemStore defaultStore] allItems] count];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -55,16 +55,16 @@
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:@"UITableViewCell"];
     }
-    JotItem *p = [[[JotItemStore sharedStore] allItems] objectAtIndex:[indexPath row]];
+    JotItem *p = [[[JotItemStore defaultStore] allItems] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[p description]];
     return cell;
 }
 
 
 - (void) addNewItem:(id)sender {
-    JotItem *newItem = [[JotItemStore sharedStore] createItem];
+    JotItem *newItem = [[JotItemStore defaultStore] createItem];
     
-    int lastRow = [[[JotItemStore sharedStore] allItems] indexOfObject:newItem];
+    int lastRow = [[[JotItemStore defaultStore] allItems] indexOfObject:newItem];
     
     NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
     
@@ -83,7 +83,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {  
-    NSArray *items = [[JotItemStore sharedStore] allItems];
+    NSArray *items = [[JotItemStore defaultStore] allItems];
     JotItem *selectedItem = [items objectAtIndex:[indexPath row]];
     [(JotItemViewController *)self.viewDeckController.centerController setItem:selectedItem];
     [self.viewDeckController closeLeftViewBouncing:nil];
@@ -92,7 +92,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     // If the table view is asking to commit a delete command...
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        JotItemStore *ps = [JotItemStore sharedStore];
+        JotItemStore *ps = [JotItemStore defaultStore];
         NSArray *items = [ps allItems];
         JotItem *p = [items objectAtIndex:[indexPath row]];
         [ps removeItem:p];
@@ -106,7 +106,7 @@
 - (void)tableView:(UITableView *)tableView
 moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
       toIndexPath:(NSIndexPath *)toIndexPath {
-    [[JotItemStore sharedStore] moveItemAtIndex:[fromIndexPath row]
+    [[JotItemStore defaultStore] moveItemAtIndex:[fromIndexPath row]
                                          toIndex:[toIndexPath row]];
 }
 

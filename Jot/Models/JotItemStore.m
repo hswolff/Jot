@@ -11,7 +11,7 @@
 
 @implementation JotItemStore
 
-+ (JotItemStore *) sharedStore {
++ (JotItemStore *) defaultStore {
     static JotItemStore *sharedStore = nil;
     if (!sharedStore) {
         sharedStore = [[super allocWithZone:nil] init];
@@ -20,7 +20,7 @@
 }
 
 + (id)allocWithZone:(NSZone *)zone {
-    return [self sharedStore];
+    return [self defaultStore];
 }
 
 - (id)init {

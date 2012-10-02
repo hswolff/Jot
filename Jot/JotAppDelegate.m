@@ -52,7 +52,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    BOOL success = [[JotItemStore sharedStore] saveChanges];
+    BOOL success = [[JotItemStore defaultStore] saveChanges];
     if (success) {
         NSLog(@"Saved all the JotItems");
     } else {

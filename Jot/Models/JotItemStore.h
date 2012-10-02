@@ -18,7 +18,7 @@
     NSManagedObjectModel *model;
 }
 
-+ (JotItemStore *) sharedStore;
++ (JotItemStore *) defaultStore;
 
 - (NSArray *)allItems;
 - (JotItem *)createItem;
