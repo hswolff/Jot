@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ViewDeck/IIViewDeckController.h"
+#import "Libs/ViewDeck/IIViewDeckController.h"
 
 @class JotItemViewController;
 @class JotFileViewController;
