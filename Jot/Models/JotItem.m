@@ -29,8 +29,8 @@
 }
 
 - (NSString *) description {
-    if (self.text && [self.text length] >= 10) {
-        return [self.text substringToIndex:10];
+    if (self.text && [self.text length] >= 1) {
+        return self.text;
     } else {
         return [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:self.dateCreated] dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
     }

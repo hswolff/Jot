@@ -43,11 +43,11 @@
     return self;
 }
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[[JotItemStore defaultStore] allItems] count];
 }
 
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell =
     [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     
@@ -62,7 +62,7 @@
 }
 
 
-- (void) addNewItem:(id)sender {
+- (void)addNewItem:(id)sender {
     JotItem *newItem = [[JotItemStore defaultStore] createItem];
     
     int lastRow = [[[JotItemStore defaultStore] allItems] indexOfObject:newItem];

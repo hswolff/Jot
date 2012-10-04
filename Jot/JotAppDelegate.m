@@ -59,12 +59,22 @@
     [self.centerController.jotTextView becomeFirstResponder];
 }
 
+- (void)viewDeckControllerDidOpenLeftView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated {
+    BOOL success = [[JotItemStore defaultStore] saveChanges];
+    [[[self.leftController.viewControllers objectAtIndex:0] tableView] reloadData];
+    if (success) {
+//        NSLog(@"Saved all the JotItems");
+    } else {
+//        NSLog(@"Could not save any of the JotItems");
+    }
+}
+
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     BOOL success = [[JotItemStore defaultStore] saveChanges];
     if (success) {
-        NSLog(@"Saved all the JotItems");
+//        NSLog(@"Saved all the JotItems");
     } else {
-        NSLog(@"Could not save any of the JotItems");
+//        NSLog(@"Could not save any of the JotItems");
     }
 }
 
