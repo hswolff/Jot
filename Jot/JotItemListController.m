@@ -31,7 +31,7 @@
         self.tableView = [FileList new];
         self.tableView.backgroundColor = [UIColor whiteColor];
         
-        self.navigationItem.title = @"Jot Files";
+        self.navigationItem.title = @"Jots";
         
         UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
