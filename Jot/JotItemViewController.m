@@ -8,7 +8,7 @@
 
 #import "JotItemViewController.h"
 #import "DAKeyboardControl.h"
-#import "Libs/ViewDeck/IIViewDeckController.h"
+#import "IIViewDeckController.h"
 #import "JotItem.h"
 
 @implementation JotItemViewController

@@ -10,7 +10,7 @@
 #import "JotItemListController.h"
 #import "JotItem.h"
 #import "Models/JotItemStore.h"
-#import "Libs/ViewDeck/IIViewDeckController.h"
+#import "IIViewDeckController.h"
 #import "JotItemViewController.h"
 
 @interface FileList : UITableView <UIGestureRecognizerDelegate>
