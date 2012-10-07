@@ -21,7 +21,7 @@
 		E1B2E4A9161359DA0073C3CE /* JotItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B2E4A8161359DA0073C3CE /* JotItemStore.m */; };
 		E1B2E4AF16135E5C0073C3CE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1B2E4AE16135E5C0073C3CE /* Default-568h@2x.png */; };
 		E1BE1D7C15F2652B00271A2D /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1D7915F2652B00271A2D /* IIViewDeckController.m */; };
-		E1BE1D7D15F2652B00271A2D /* WrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1D7B15F2652B00271A2D /* WrapController.m */; };
+		E1BE1D7D15F2652B00271A2D /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1D7B15F2652B00271A2D /* IIWrapController.m */; };
 		E1BE1D8015F2654500271A2D /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BE1D7F15F2654500271A2D /* icon@2x.png */; };
 		E1BE1DA115F2F56500271A2D /* JotFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA015F2F56500271A2D /* JotFileViewController.m */; };
 		E1BE1DA415F2F6E400271A2D /* JotItemListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA315F2F6E400271A2D /* JotItemListController.m */; };
@@ -52,8 +52,8 @@
 		E1B2E4AE16135E5C0073C3CE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		E1BE1D7815F2652B00271A2D /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IIViewDeckController.h; path = ViewDeck/IIViewDeckController.h; sourceTree = "<group>"; };
 		E1BE1D7915F2652B00271A2D /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IIViewDeckController.m; path = ViewDeck/IIViewDeckController.m; sourceTree = "<group>"; };
-		E1BE1D7A15F2652B00271A2D /* WrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WrapController.h; path = ViewDeck/WrapController.h; sourceTree = "<group>"; };
-		E1BE1D7B15F2652B00271A2D /* WrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WrapController.m; path = ViewDeck/WrapController.m; sourceTree = "<group>"; };
+		E1BE1D7A15F2652B00271A2D /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IIWrapController.h; path = ViewDeck/IIWrapController.h; sourceTree = "<group>"; };
+		E1BE1D7B15F2652B00271A2D /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IIWrapController.m; path = ViewDeck/IIWrapController.m; sourceTree = "<group>"; };
 		E1BE1D7F15F2654500271A2D /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Resources/icon@2x.png"; sourceTree = "<group>"; };
 		E1BE1D9F15F2F56500271A2D /* JotFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JotFileViewController.h; path = Jot/JotFileViewController.h; sourceTree = SOURCE_ROOT; };
 		E1BE1DA015F2F56500271A2D /* JotFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JotFileViewController.m; path = Jot/JotFileViewController.m; sourceTree = SOURCE_ROOT; };
@@ -161,8 +161,8 @@
 			children = (
 				E1BE1D7815F2652B00271A2D /* IIViewDeckController.h */,
 				E1BE1D7915F2652B00271A2D /* IIViewDeckController.m */,
-				E1BE1D7A15F2652B00271A2D /* WrapController.h */,
-				E1BE1D7B15F2652B00271A2D /* WrapController.m */,
+				E1BE1D7A15F2652B00271A2D /* IIWrapController.h */,
+				E1BE1D7B15F2652B00271A2D /* IIWrapController.m */,
 			);
 			name = ViewDeck;
 			path = Libs;
@@ -247,7 +247,7 @@
 				E1362B7515AA3B2B0034A2EC /* JotItemViewController.m in Sources */,
 				E1A933EC15B3987700F1F22F /* DAKeyboardControl.m in Sources */,
 				E1BE1D7C15F2652B00271A2D /* IIViewDeckController.m in Sources */,
-				E1BE1D7D15F2652B00271A2D /* WrapController.m in Sources */,
+				E1BE1D7D15F2652B00271A2D /* IIWrapController.m in Sources */,
 				E1BE1DA115F2F56500271A2D /* JotFileViewController.m in Sources */,
 				E1BE1DA415F2F6E400271A2D /* JotItemListController.m in Sources */,
 				E168A38916112D8300A6AEB8 /* JotItem.m in Sources */,

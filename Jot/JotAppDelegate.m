@@ -36,7 +36,7 @@
                                                             leftViewController:self.leftController
                                                            rightViewController:self.rightController];
     self.deckController.delegate = self;
-    self.deckController.leftLedge = LEFT_LEDGE_SIZE;
+    self.deckController.leftSize = LEFT_LEDGE_SIZE;
     
     self.window.rootViewController = self.deckController;
     self.window.backgroundColor = [UIColor whiteColor];
@@ -44,7 +44,11 @@
     return YES;
 }
 
-- (void)viewDeckController:(IIViewDeckController *)viewDeckController didPanToOffset:(CGFloat)offset {
+-(void)viewDeckController:(IIViewDeckController *)viewDeckController
+          didChangeOffset:(CGFloat)offset
+              orientation:(IIViewDeckOffsetOrientation)orientation
+                  panning:(BOOL)panning
+{
 //    NSLog(@"viewDeckController Offset: %f", offset);
     if (offset) {
         [self.centerController setCentered:NO];
@@ -53,19 +57,36 @@
     }
 }
 
-- (void)viewDeckControllerDidShowCenterView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated {
-//    NSLog(@"viewDeckControllerDidShowCenterView");
+- (void)viewDeckController:(IIViewDeckController *)viewDeckController
+ didShowCenterViewFromSide:(IIViewDeckSide)viewDeckSide
+                  animated:(BOOL)animated
+{
+//    NSLog(@"didShowCenterViewFromSide");
     [self.centerController setCentered:YES];
     [self.centerController.jotTextView becomeFirstResponder];
 }
 
-- (void)viewDeckControllerDidOpenLeftView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated {
-    BOOL success = [[JotItemStore defaultStore] saveChanges];
-    [[[self.leftController.viewControllers objectAtIndex:0] tableView] reloadData];
-    if (success) {
-//        NSLog(@"Saved all the JotItems");
-    } else {
-//        NSLog(@"Could not save any of the JotItems");
+-(void)viewDeckController:(IIViewDeckController *)viewDeckController
+          didOpenViewSide:(IIViewDeckSide)viewDeckSide
+                 animated:(BOOL)animated
+{
+//    NSLog(@"viewDeckSide: %@", NSStringFromIIViewDeckSide(viewDeckSide));
+    switch (viewDeckSide) {
+        case IIViewDeckLeftSide: {
+//            NSLog(@"LEFT LEFT");
+            BOOL success = [[JotItemStore defaultStore] saveChanges];
+            [[[self.leftController.viewControllers objectAtIndex:0] tableView] reloadData];
+            if (success) {
+//                NSLog(@"Saved all the JotItems");
+            } else {
+//                NSLog(@"Could not save any of the JotItems");
+            }
+        }
+            break;
+        case IIViewDeckRightSide:
+//            NSLog(@"RIGHT RIGHT");
+        default:
+            break;
     }
 }
 

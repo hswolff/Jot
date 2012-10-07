@@ -10,7 +10,7 @@
 //  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
 //  of the Software, and to permit persons to whom the Software is furnished to do
 //  so, subject to the following conditions:
-// 
+//
 //  The above copyright notice and this permission notice shall be included in all
 //  copies or substantial portions of the Software.
 //
@@ -25,23 +25,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WrapController : UIViewController
+@interface IIWrapController : UIViewController
 
 @property (nonatomic, readonly, retain) UIViewController* wrappedController;
-@property (nonatomic, copy) void(^onViewDidLoad)(WrapController* controller);
-@property (nonatomic, copy) void(^onViewWillAppear)(WrapController* controller, BOOL animated);
-@property (nonatomic, copy) void(^onViewDidAppear)(WrapController* controller, BOOL animated);
-@property (nonatomic, copy) void(^onViewWillDisappear)(WrapController* controller, BOOL animated);
-@property (nonatomic, copy) void(^onViewDidDisappear)(WrapController* controller, BOOL animated);
+@property (nonatomic, copy) void(^onViewDidLoad)(IIWrapController* controller);
+@property (nonatomic, copy) void(^onViewWillAppear)(IIWrapController* controller, BOOL animated);
+@property (nonatomic, copy) void(^onViewDidAppear)(IIWrapController* controller, BOOL animated);
+@property (nonatomic, copy) void(^onViewWillDisappear)(IIWrapController* controller, BOOL animated);
+@property (nonatomic, copy) void(^onViewDidDisappear)(IIWrapController* controller, BOOL animated);
 
 - (id)initWithViewController:(UIViewController*)controller;
 
 @end
 
-// category on WrappedController to provide access to the viewDeckController in the 
+// category on WrappedController to provide access to the viewDeckController in the
 // contained viewcontrollers, a la UINavigationController.
-@interface UIViewController (WrapControllerItem) 
+@interface UIViewController (WrapControllerItem)
 
-@property(nonatomic,readonly,assign) WrapController *wrapController; 
+@property(nonatomic,readonly,assign) IIWrapController *wrapController;
 
 @end

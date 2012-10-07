@@ -76,9 +76,9 @@
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     if (editing) {
-        [self.viewDeckController setLeftLedge:0];
+        [self.viewDeckController setLeftSize:0];
     } else {
-        [self.viewDeckController setLeftLedge:LEFT_LEDGE_SIZE];
+        [self.viewDeckController setLeftSize:LEFT_LEDGE_SIZE];
     }
 
 }
