@@ -50,9 +50,11 @@
                   panning:(BOOL)panning
 {
 //    NSLog(@"viewDeckController Offset: %f", offset);
-    if (offset) {
+    if (offset && self.centerController.centered == YES) {
+//        NSLog(@"Set centered:  NO");
         [self.centerController setCentered:NO];
-    } else {
+    } else if (!offset && self.centerController.centered == NO) {
+//        NSLog(@"Set centered:  YES");
         [self.centerController setCentered:YES];
     }
 }
