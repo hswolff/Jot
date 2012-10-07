@@ -69,15 +69,32 @@
 }
 
 -(void)viewDeckController:(IIViewDeckController *)viewDeckController
+          willOpenViewSide:(IIViewDeckSide)viewDeckSide 
+                 animated:(BOOL)animated
+{
+    //    NSLog(@"viewDeckSide: %@", NSStringFromIIViewDeckSide(viewDeckSide));
+    switch (viewDeckSide) {
+        case IIViewDeckLeftSide: {
+//            NSLog(@"willOpenViewSide:  LEFT");
+            [[[self.leftController.viewControllers objectAtIndex:0] tableView] reloadData];
+        }
+            break;
+        case IIViewDeckRightSide:
+            //            NSLog(@"RIGHT RIGHT");
+        default:
+            break;
+    }
+}
+
+-(void)viewDeckController:(IIViewDeckController *)viewDeckController
           didOpenViewSide:(IIViewDeckSide)viewDeckSide
                  animated:(BOOL)animated
 {
 //    NSLog(@"viewDeckSide: %@", NSStringFromIIViewDeckSide(viewDeckSide));
     switch (viewDeckSide) {
         case IIViewDeckLeftSide: {
-//            NSLog(@"LEFT LEFT");
+//            NSLog(@"didOpenViewSide:  LEFT");
             BOOL success = [[JotItemStore defaultStore] saveChanges];
-            [[[self.leftController.viewControllers objectAtIndex:0] tableView] reloadData];
             if (success) {
 //                NSLog(@"Saved all the JotItems");
             } else {
