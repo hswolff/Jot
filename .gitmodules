@@ -1,0 +1,6 @@
+[submodule "Jot/Vendor/DAKeyboardControl"]
+	path = Jot/Vendor/DAKeyboardControl
+	url = https://github.com/danielamitay/DAKeyboardControl.git
+[submodule "Jot/Vendor/ViewDeck"]
+	path = Jot/Vendor/ViewDeck
+	url = https://github.com/Inferis/ViewDeck.git
