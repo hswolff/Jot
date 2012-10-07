@@ -87,7 +87,7 @@
     NSArray *items = [[JotItemStore defaultStore] allItems];
     JotItem *selectedItem = [items objectAtIndex:[indexPath row]];
     [(JotItemViewController *)self.viewDeckController.centerController setItem:selectedItem];
-    [self.viewDeckController closeLeftViewBouncing:nil];
+    [self.viewDeckController closeLeftViewAnimated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
