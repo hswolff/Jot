@@ -101,6 +101,7 @@
         // We also remove that row from the table view with an animation
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];
+        [(JotItemViewController *)self.viewDeckController.centerController setItem:nil];
     }
 }
 

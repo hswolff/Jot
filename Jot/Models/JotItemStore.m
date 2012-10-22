@@ -88,6 +88,12 @@
     return p;
 }
 
+- (JotItem *)createItemWithText:(NSString *)text {
+    JotItem *item = [self createItem];
+    item.text = text;
+    return item;
+}
+
 - (void)removeItem:(JotItem *)item {
     [context deleteObject:item];
     [allItems removeObjectIdenticalTo:item];

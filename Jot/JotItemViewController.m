@@ -9,6 +9,7 @@
 #import "JotItemViewController.h"
 #import "DAKeyboardControl.h"
 #import "IIViewDeckController.h"
+#import "Models/JotItemStore.h"
 #import "JotItem.h"
 
 @implementation JotItemViewController
@@ -68,6 +69,10 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
+    if (!self.item) {
+        JotItem *newItem = [[JotItemStore defaultStore] createItemWithText:textView.text];
+        self.item = newItem;
+    }
     self.item.text = textView.text;
 }
 

@@ -22,6 +22,7 @@
 
 - (NSArray *)allItems;
 - (JotItem *)createItem;
+- (JotItem *)createItemWithText:(NSString *)text;
 - (void)removeItem:(JotItem *)item;
 
 - (BOOL)saveChanges;
