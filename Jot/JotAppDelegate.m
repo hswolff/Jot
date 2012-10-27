@@ -37,6 +37,7 @@
                                                            rightViewController:self.rightController];
     self.deckController.delegate = self;
     self.deckController.leftSize = LEFT_LEDGE_SIZE;
+    self.deckController.rightSize = RIGHT_LEDGE_SIZE;
     
     self.window.rootViewController = self.deckController;
     self.window.backgroundColor = [UIColor whiteColor];

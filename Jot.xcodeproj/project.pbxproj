@@ -110,6 +110,7 @@
 				E1BE1D8E15F265EE00271A2D /* Vendor */,
 				E165FA9D15F1BE3200080DAA /* Resources */,
 				E168A38016112B2300A6AEB8 /* Models */,
+				E1362B6815AA3B2B0034A2EC /* Supporting Files */,
 				E1362B7015AA3B2B0034A2EC /* JotAppDelegate.h */,
 				E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */,
 				E1BE1DA215F2F6E400271A2D /* JotItemListController.h */,
@@ -118,7 +119,6 @@
 				E1362B7415AA3B2B0034A2EC /* JotItemViewController.m */,
 				E1BE1D9F15F2F56500271A2D /* JotFileViewController.h */,
 				E1BE1DA015F2F56500271A2D /* JotFileViewController.m */,
-				E1362B6815AA3B2B0034A2EC /* Supporting Files */,
 			);
 			path = Jot;
 			sourceTree = "<group>";

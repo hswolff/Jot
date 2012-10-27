@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JotFileViewController : UIViewController
+@interface JotFileViewController : UITableViewController {
+    NSArray *menuItems;
+}
 
 @end
