@@ -13,22 +13,11 @@
 #import "IIViewDeckController.h"
 #import "JotItemViewController.h"
 
-@interface FileList : UITableView <UIGestureRecognizerDelegate>
-@end
-
-@implementation FileList
-- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return NO;
-}
-@end
-
-
 @implementation JotItemListController
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
-        self.tableView = [FileList new];
         self.tableView.backgroundColor = [UIColor whiteColor];
         
         self.navigationItem.title = @"Jots";
