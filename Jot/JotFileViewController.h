@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MessageUI/MessageUI.h>
 
-@interface JotFileViewController : UITableViewController {
+@interface JotFileViewController : UITableViewController <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
     NSArray *menuItems;
 }
 
