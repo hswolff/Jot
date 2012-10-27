@@ -167,5 +167,16 @@
     [p setOrderingValue:newOrderValue];
 }
 
+- (void)setCurrentItem:(NSInteger)i {
+    currentIndex = i;
+}
+
+- (JotItem *)getCurrentItem {
+    if ([allItems count] > 0) {
+        return [allItems objectAtIndex:currentIndex];
+    } else {
+        return nil;
+    }
+}
 
 @end

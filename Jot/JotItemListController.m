@@ -75,6 +75,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {  
     NSArray *items = [[JotItemStore defaultStore] allItems];
     JotItem *selectedItem = [items objectAtIndex:[indexPath row]];
+    [[JotItemStore defaultStore] setCurrentItem:indexPath.row];
     [(JotItemViewController *)self.viewDeckController.centerController setItem:selectedItem];
     [self.viewDeckController closeLeftViewAnimated:YES];
 }
@@ -90,6 +91,7 @@
         // We also remove that row from the table view with an animation
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];
+//        [[JotItemStore defaultStore] setCurrentItem:nil];
         [(JotItemViewController *)self.viewDeckController.centerController setItem:nil];
     }
 }
