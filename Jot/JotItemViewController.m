@@ -46,6 +46,8 @@
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changeGesture:)];
     [self.jotTextView addGestureRecognizer:panGesture];
+    
+    [self setItem:[[JotItemStore defaultStore] getCurrentItem]];
 
     // Immediately show keyboard
     [self.jotTextView becomeFirstResponder];
