@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MessageUI/MessageUI.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface JotFileViewController : UITableViewController <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
     NSArray *menuItems;

@@ -123,4 +123,20 @@
     }
 }
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    // attempt to extract a token from the url
+    return [FBSession.activeSession handleOpenURL:url];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [FBSession.activeSession close];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBSession.activeSession handleDidBecomeActive];
+}
+
 @end

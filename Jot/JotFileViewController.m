@@ -23,14 +23,19 @@
 
 @end
 
-@implementation JotFileViewController
+@interface JotFileViewController () <FBLoginViewDelegate>
 
+@property (strong, nonatomic) id<FBGraphUser> loggedInUser;
+
+@end
+
+@implementation JotFileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 //    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    menuItems = [[NSArray alloc] initWithObjects:@"Word Count", @"E-mail", @"SMS", @"Copy to Clipboard", nil];
+    menuItems = [[NSArray alloc] initWithObjects:@"Word Count", @"E-mail", @"SMS", @"Copy to Clipboard", @"Facebook", @"Facebook Logout", nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -71,6 +76,13 @@
                                                   otherButtonTitles:nil];
             [alert show];
         }
+            break;
+        case 4: {
+            [self postToFacebook];
+        }
+            break;
+        case 5:
+            [self facebookLogout];
             break;
         default:
             break;
@@ -175,6 +187,96 @@ int word_count(NSString* s) {
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark Facebook Methods
+
+- (void)postToFacebook {
+    
+    if (FBSession.activeSession.isOpen) {
+        
+        // Post a status update to the user's feed via the Graph API, and display an alert view
+        // with the results or an error.
+        NSString *message = [[[JotItemStore defaultStore] getCurrentItem] text];
+        // if it is available to us, we will post using the native dialog
+        //    BOOL displayedNativeDialog = [FBNativeDialogs presentShareDialogModallyFrom:self
+        //                                                                    initialText:message
+        //                                                                          image:nil
+        //                                                                            url:nil
+        //                                                                        handler:nil];
+        BOOL displayedNativeDialog = NO;
+        if (!displayedNativeDialog) {
+            
+            [self performPublishAction:^{
+                // otherwise fall back on a request for permissions and a direct post
+                [FBRequestConnection startForPostStatusUpdate:message
+                                            completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                                [self showAlert:message result:result error:error];
+                                            }];
+            }];
+        }
+        
+    } else {
+        
+        [FBSession openActiveSessionWithReadPermissions:nil
+                                           allowLoginUI:YES
+                                      completionHandler:^(FBSession *session,
+                                                          FBSessionState state,
+                                                          NSError *error) {
+                                          //                                             [self sessionStateChanged:session
+                                          //                                                                 state:state
+                                          //                                                                 error:error];
+                                      }];
+        
+    }
+    
+}
+
+// Convenience method to perform some action that requires the "publish_actions" permissions.
+- (void) performPublishAction:(void (^)(void)) action {
+    // we defer request for permission to post to the moment of post, then we check for the permission
+    if ([FBSession.activeSession.permissions indexOfObject:@"publish_actions"] == NSNotFound) {
+        // if we don't already have the permission, then we request it now
+        [FBSession.activeSession reauthorizeWithPublishPermissions:[NSArray arrayWithObject:@"publish_actions"]
+                                                   defaultAudience:FBSessionDefaultAudienceFriends
+                                                 completionHandler:^(FBSession *session, NSError *error) {
+                                                     if (!error) {
+                                                         action();
+                                                     }
+                                                 }];
+    } else {
+        action();
+    }
+    
+}
+
+- (void)showAlert:(NSString *)message
+           result:(id)result
+            error:(NSError *)error {
+    
+    NSString *alertMsg;
+    NSString *alertTitle;
+    if (error) {
+        alertMsg = error.localizedDescription;
+        alertTitle = @"Error";
+    } else {
+//        NSDictionary *resultDict = (NSDictionary *)result;
+//        alertMsg = [NSString stringWithFormat:@"Successfully posted '%@'.\nPost ID: %@",
+//                    message, [resultDict valueForKey:@"id"]];
+        alertTitle = @"Success!";
+    }
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                        message:alertMsg
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertView show];
+}
+
+- (void) facebookLogout {
+    [FBSession.activeSession closeAndClearTokenInformation];
 }
 
 @end
