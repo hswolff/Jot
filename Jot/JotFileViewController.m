@@ -277,6 +277,12 @@ int word_count(NSString* s) {
 
 - (void) facebookLogout {
     [FBSession.activeSession closeAndClearTokenInformation];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logged Out"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertView show];
 }
 
 @end
