@@ -50,11 +50,12 @@
               orientation:(IIViewDeckOffsetOrientation)orientation
                   panning:(BOOL)panning
 {
+//    NSLog(@"panning: %@", panning? @"YES":@"NO");
 //    NSLog(@"viewDeckController Offset: %f", offset);
     if (offset && self.centerController.centered == YES) {
 //        NSLog(@"Set centered:  NO");
         [self.centerController setCentered:NO];
-    } else if (!offset && self.centerController.centered == NO) {
+    } else if (!panning && !offset && self.centerController.centered == NO) {
 //        NSLog(@"Set centered:  YES");
         [self.centerController setCentered:YES];
     }
@@ -65,8 +66,11 @@
                   animated:(BOOL)animated
 {
 //    NSLog(@"didShowCenterViewFromSide");
-    [self.centerController setCentered:YES];
-    [self.centerController.jotTextView becomeFirstResponder];
+//    NSLog(@"animated: %@", animated? @"YES":@"NO");
+    if (animated) {
+        [self.centerController setCentered:YES];
+        [self.centerController.jotTextView becomeFirstResponder];
+    }
 }
 
 -(void)viewDeckController:(IIViewDeckController *)viewDeckController
