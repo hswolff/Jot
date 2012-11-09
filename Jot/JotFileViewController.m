@@ -23,7 +23,9 @@
 
 @end
 
-@interface JotFileViewController () <FBLoginViewDelegate>
+@interface JotFileViewController () <FBLoginViewDelegate, UIAlertViewDelegate> {
+    NSIndexPath *currentPath;
+}
 
 @property (strong, nonatomic) id<FBGraphUser> loggedInUser;
 
@@ -61,6 +63,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
+        case 0:
+            [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+            break;
         case 1:
             NSLog(@"email");
             [self sendEmail];
@@ -73,9 +78,10 @@
             [pb setString:[[[JotItemStore defaultStore] getCurrentItem] text]];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Copied!"
                                                             message:nil
-                                                           delegate:nil
+                                                           delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
+            currentPath = indexPath;
             [alert show];
         }
             break;
@@ -113,6 +119,13 @@ int word_count(NSString* s) {
     if (is_alpha)
         ++ word_count;
     return word_count;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (currentPath) {
+        [self.tableView deselectRowAtIndexPath:currentPath animated:YES];
+        currentPath = nil;
+    }
 }
 
 - (void)sendEmail {
