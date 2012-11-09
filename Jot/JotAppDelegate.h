@@ -12,7 +12,6 @@
 
 @class JotItemViewController;
 @class JotFileViewController;
-@class JotItemViewController;
 @class IIViewDeckController;
 
 

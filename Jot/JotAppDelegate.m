@@ -85,6 +85,7 @@
         }
             break;
         case IIViewDeckRightSide:
+            [[self.rightController tableView] reloadData];
             //            NSLog(@"RIGHT RIGHT");
         default:
             break;

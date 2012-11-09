@@ -50,17 +50,17 @@
         cell = [[TestCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"UITableViewCell"];
     }
-    cell.textLabel.text = (NSString *)[menuItems objectAtIndex:indexPath.row];
+    NSString *text = [menuItems objectAtIndex:indexPath.row];
+    if (indexPath.row == 0) {
+        int count = word_count([[[JotItemStore defaultStore] getCurrentItem] text]);
+        text = [text stringByAppendingFormat:@":  %i", count];
+    }
+    cell.textLabel.text = text;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
-        case 0: {
-            NSLog(@"word count");
-            [self showCount];
-        }
-            break;
         case 1:
             NSLog(@"email");
             [self sendEmail];
@@ -92,17 +92,6 @@
             break;
     }
     NSLog(@"Current Item: %@", [[[JotItemStore defaultStore] getCurrentItem] text]);
-}
-
-- (void)showCount {
-    int count = word_count([[[JotItemStore defaultStore] getCurrentItem] text]);
-    NSString *message = [NSString stringWithFormat:@"%i", count];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Count"
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
 }
 
 int word_count(NSString* s) {
