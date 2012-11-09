@@ -31,6 +31,7 @@
 		E1BE1D8015F2654500271A2D /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BE1D7F15F2654500271A2D /* icon@2x.png */; };
 		E1BE1DA115F2F56500271A2D /* JotFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA015F2F56500271A2D /* JotFileViewController.m */; };
 		E1BE1DA415F2F6E400271A2D /* JotItemListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA315F2F6E400271A2D /* JotItemListController.m */; };
+		E1E6A1B1164C987500839427 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E6A1B0164C987400839427 /* Twitter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		E1BE1DA015F2F56500271A2D /* JotFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JotFileViewController.m; path = Jot/JotFileViewController.m; sourceTree = SOURCE_ROOT; };
 		E1BE1DA215F2F6E400271A2D /* JotItemListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JotItemListController.h; sourceTree = "<group>"; };
 		E1BE1DA315F2F6E400271A2D /* JotItemListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JotItemListController.m; sourceTree = "<group>"; };
+		E1E6A1B0164C987400839427 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E6A1B1164C987500839427 /* Twitter.framework in Frameworks */,
 				E13901AE1644CF9600D8BE3E /* Social.framework in Frameworks */,
 				E13901AC1644CF7D00D8BE3E /* AdSupport.framework in Frameworks */,
 				E13901AA1644CF6800D8BE3E /* Accounts.framework in Frameworks */,
@@ -96,6 +99,7 @@
 		E1362B5215AA3B2B0034A2EC = {
 			isa = PBXGroup;
 			children = (
+				E1E6A1B0164C987400839427 /* Twitter.framework */,
 				E1362B6715AA3B2B0034A2EC /* Jot */,
 				E1362B6015AA3B2B0034A2EC /* Frameworks */,
 				E1362B5E15AA3B2B0034A2EC /* Products */,
@@ -357,8 +361,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jot/Jot-Prefix.pch";
 				INFOPLIST_FILE = "Jot/Jot-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -373,8 +379,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jot/Jot-Prefix.pch";
 				INFOPLIST_FILE = "Jot/Jot-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
