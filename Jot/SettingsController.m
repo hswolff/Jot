@@ -14,12 +14,23 @@
 
 @implementation SettingsController
 
+- (id)init {
+    self = [self initWithStyle:UITableViewStyleGrouped];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
-        settingItems = [[NSArray alloc] initWithObjects:@"Full Screen", nil];
+        NSArray *generalOptions = [[NSArray alloc] initWithObjects:@"Full Screen", @"Logout of Facebook", nil];
+        
+//        NSArray *styleOptions = [[NSArray alloc] initWithObjects:@"Font Size", @"Font Color", nil];
+        
+        settingItems = [[NSArray alloc] initWithObjects:generalOptions, nil];
 
     }
     return self;
@@ -49,13 +60,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return [settingItems count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [settingItems count];
+    return [[settingItems objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,49 +76,34 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    NSString *text = [settingItems objectAtIndex:indexPath.row];
+    NSString *text = [[settingItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = text;
+    
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        UISwitch *fullScreenSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+        [fullScreenSwitch addTarget:self action:@selector(setFullScreen:) forControlEvents:UIControlEventValueChanged];
+        [fullScreenSwitch setOn:[UIApplication sharedApplication].statusBarHidden];
+        cell.accessoryView = fullScreenSwitch;
+    }
+    
+    
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *title = [[NSString alloc] init];
+    switch (section) {
+        case 0:
+            title = @"General";
+            break;
+            
+        default:
+            title = @"Default";
+            break;
+    }
+    return title;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -120,6 +116,35 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (void)setFullScreen:(UISwitch *)uiswitch {
+//    NSLog(@"bounds: %@", NSStringFromCGRect([[[[UIApplication sharedApplication] windows] objectAtIndex:0] frame]));
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:uiswitch.on withAnimation:UIStatusBarAnimationSlide];
+    
+    
+//    UIViewController *vc = [[[UIApplication sharedApplication] keyWindow] rootViewController] ;
+//    [vc updateViewConstraints];
+//    [UIViewController attemptRotationToDeviceOrientation];
+
+
+//    UIWindow *win = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
+//    CGRect frame = win.frame;
+//    if (uiswitch.on) {
+//        win.frame = CGRectMake(frame.origin.x, frame.origin.y-20, frame.size.width, frame.size.height+20);
+//    } else {
+//        win.frame = CGRectMake(frame.origin.x, frame.origin.y+20, frame.size.width, frame.size.height-20);
+//    }
 }
 
 @end
