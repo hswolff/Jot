@@ -10,8 +10,8 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "IIViewDeckController.h"
 
-@class JotItemViewController;
-@class JotFileViewController;
+@class ItemViewController;
+@class ItemActionsController;
 @class IIViewDeckController;
 
 
@@ -19,9 +19,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (retain, nonatomic) JotItemViewController *centerController;
+@property (retain, nonatomic) ItemViewController *centerController;
 @property (retain, nonatomic) UINavigationController *leftController;
-@property (retain, nonatomic) JotFileViewController *rightController;
+@property (retain, nonatomic) ItemActionsController *rightController;
 
 @property (retain, nonatomic) IIViewDeckController *deckController;
 

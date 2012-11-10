@@ -14,7 +14,7 @@
 		E1362B6C15AA3B2B0034A2EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1362B6A15AA3B2B0034A2EC /* InfoPlist.strings */; };
 		E1362B6E15AA3B2B0034A2EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B6D15AA3B2B0034A2EC /* main.m */; };
 		E1362B7215AA3B2B0034A2EC /* JotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */; };
-		E1362B7515AA3B2B0034A2EC /* JotItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7415AA3B2B0034A2EC /* JotItemViewController.m */; };
+		E1362B7515AA3B2B0034A2EC /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7415AA3B2B0034A2EC /* ItemViewController.m */; };
 		E13901A11644CEAF00D8BE3E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13901A01644CEAF00D8BE3E /* FacebookSDK.framework */; };
 		E13901A41644CF1500D8BE3E /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E13901A31644CF1500D8BE3E /* FacebookSDKResources.bundle */; };
 		E13901AA1644CF6800D8BE3E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13901A91644CF6800D8BE3E /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -29,8 +29,8 @@
 		E1BA5977162137EF00653159 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA5974162137EF00653159 /* IIViewDeckController.m */; };
 		E1BA5978162137EF00653159 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA5976162137EF00653159 /* IIWrapController.m */; };
 		E1BE1D8015F2654500271A2D /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BE1D7F15F2654500271A2D /* icon@2x.png */; };
-		E1BE1DA115F2F56500271A2D /* JotFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA015F2F56500271A2D /* JotFileViewController.m */; };
-		E1BE1DA415F2F6E400271A2D /* JotItemListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA315F2F6E400271A2D /* JotItemListController.m */; };
+		E1BE1DA115F2F56500271A2D /* ItemActionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA015F2F56500271A2D /* ItemActionsController.m */; };
+		E1BE1DA415F2F6E400271A2D /* ItemListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA315F2F6E400271A2D /* ItemListController.m */; };
 		E1E6A1B1164C987500839427 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E6A1B0164C987400839427 /* Twitter.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,8 +46,8 @@
 		E1362B6F15AA3B2B0034A2EC /* Jot-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jot-Prefix.pch"; sourceTree = "<group>"; };
 		E1362B7015AA3B2B0034A2EC /* JotAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotAppDelegate.h; sourceTree = "<group>"; };
 		E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotAppDelegate.m; sourceTree = "<group>"; };
-		E1362B7315AA3B2B0034A2EC /* JotItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotItemViewController.h; sourceTree = "<group>"; };
-		E1362B7415AA3B2B0034A2EC /* JotItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotItemViewController.m; sourceTree = "<group>"; };
+		E1362B7315AA3B2B0034A2EC /* ItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
+		E1362B7415AA3B2B0034A2EC /* ItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
 		E13901A01644CEAF00D8BE3E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../github/FacebookSDK/build/FacebookSDK.framework; sourceTree = "<group>"; };
 		E13901A31644CF1500D8BE3E /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../github/FacebookSDK/build/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		E13901A91644CF6800D8BE3E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -68,10 +68,10 @@
 		E1BA5975162137EF00653159 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IIWrapController.h; path = Jot/Vendor/ViewDeck/ViewDeck/IIWrapController.h; sourceTree = SOURCE_ROOT; };
 		E1BA5976162137EF00653159 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IIWrapController.m; path = Jot/Vendor/ViewDeck/ViewDeck/IIWrapController.m; sourceTree = SOURCE_ROOT; };
 		E1BE1D7F15F2654500271A2D /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Resources/icon@2x.png"; sourceTree = "<group>"; };
-		E1BE1D9F15F2F56500271A2D /* JotFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JotFileViewController.h; path = Jot/JotFileViewController.h; sourceTree = SOURCE_ROOT; };
-		E1BE1DA015F2F56500271A2D /* JotFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JotFileViewController.m; path = Jot/JotFileViewController.m; sourceTree = SOURCE_ROOT; };
-		E1BE1DA215F2F6E400271A2D /* JotItemListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JotItemListController.h; sourceTree = "<group>"; };
-		E1BE1DA315F2F6E400271A2D /* JotItemListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JotItemListController.m; sourceTree = "<group>"; };
+		E1BE1D9F15F2F56500271A2D /* ItemActionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemActionsController.h; path = Jot/ItemActionsController.h; sourceTree = SOURCE_ROOT; };
+		E1BE1DA015F2F56500271A2D /* ItemActionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemActionsController.m; path = Jot/ItemActionsController.m; sourceTree = SOURCE_ROOT; };
+		E1BE1DA215F2F6E400271A2D /* ItemListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemListController.h; sourceTree = "<group>"; };
+		E1BE1DA315F2F6E400271A2D /* ItemListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemListController.m; sourceTree = "<group>"; };
 		E1E6A1B0164C987400839427 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -140,12 +140,12 @@
 				E1362B6815AA3B2B0034A2EC /* Supporting Files */,
 				E1362B7015AA3B2B0034A2EC /* JotAppDelegate.h */,
 				E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */,
-				E1BE1DA215F2F6E400271A2D /* JotItemListController.h */,
-				E1BE1DA315F2F6E400271A2D /* JotItemListController.m */,
-				E1362B7315AA3B2B0034A2EC /* JotItemViewController.h */,
-				E1362B7415AA3B2B0034A2EC /* JotItemViewController.m */,
-				E1BE1D9F15F2F56500271A2D /* JotFileViewController.h */,
-				E1BE1DA015F2F56500271A2D /* JotFileViewController.m */,
+				E1BE1DA215F2F6E400271A2D /* ItemListController.h */,
+				E1BE1DA315F2F6E400271A2D /* ItemListController.m */,
+				E1362B7315AA3B2B0034A2EC /* ItemViewController.h */,
+				E1362B7415AA3B2B0034A2EC /* ItemViewController.m */,
+				E1BE1D9F15F2F56500271A2D /* ItemActionsController.h */,
+				E1BE1DA015F2F56500271A2D /* ItemActionsController.m */,
 			);
 			path = Jot;
 			sourceTree = "<group>";
@@ -280,10 +280,10 @@
 			files = (
 				E1362B6E15AA3B2B0034A2EC /* main.m in Sources */,
 				E1362B7215AA3B2B0034A2EC /* JotAppDelegate.m in Sources */,
-				E1362B7515AA3B2B0034A2EC /* JotItemViewController.m in Sources */,
+				E1362B7515AA3B2B0034A2EC /* ItemViewController.m in Sources */,
 				E1A933EC15B3987700F1F22F /* DAKeyboardControl.m in Sources */,
-				E1BE1DA115F2F56500271A2D /* JotFileViewController.m in Sources */,
-				E1BE1DA415F2F6E400271A2D /* JotItemListController.m in Sources */,
+				E1BE1DA115F2F56500271A2D /* ItemActionsController.m in Sources */,
+				E1BE1DA415F2F6E400271A2D /* ItemListController.m in Sources */,
 				E168A38916112D8300A6AEB8 /* JotItem.m in Sources */,
 				E1B2E4A9161359DA0073C3CE /* JotItemStore.m in Sources */,
 				E144EDFC1618C46F00A64615 /* Jot.xcdatamodeld in Sources */,

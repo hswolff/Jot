@@ -7,7 +7,7 @@
 //
 
 #import "Constants.h"
-#import "JotFileViewController.h"
+#import "ItemActionsController.h"
 #import "JotItemStore.h"
 #import "JotItem.h"
 
@@ -23,7 +23,7 @@
 
 @end
 
-@interface JotFileViewController () <FBLoginViewDelegate, UIAlertViewDelegate> {
+@interface ItemActionsController () <FBLoginViewDelegate, UIAlertViewDelegate> {
     NSIndexPath *currentPath;
 }
 
@@ -33,7 +33,7 @@
 
 @end
 
-@implementation JotFileViewController
+@implementation ItemActionsController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

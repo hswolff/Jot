@@ -9,9 +9,9 @@
 #import "Constants.h"
 #import "JotAppDelegate.h"
 
-#import "JotItemViewController.h"
-#import "JotFileViewController.h"
-#import "JotItemListController.h"
+#import "ItemViewController.h"
+#import "ItemActionsController.h"
+#import "ItemListController.h"
 
 #import "JotItemStore.h"
 
@@ -26,10 +26,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    self.centerController = [[JotItemViewController alloc] init];
-    JotItemListController *itemListController = [[JotItemListController alloc] init];
+    self.centerController = [[ItemViewController alloc] init];
+    ItemListController *itemListController = [[ItemListController alloc] init];
     self.leftController = [[UINavigationController alloc] initWithRootViewController:itemListController];
-    self.rightController = [[JotFileViewController alloc] init];
+    self.rightController = [[ItemActionsController alloc] init];
     
     self.deckController = [[IIViewDeckController alloc]
                                                   initWithCenterViewController:self.centerController

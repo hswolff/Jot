@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "JotItemViewController.h"
+#import "ItemViewController.h"
 #import "DAKeyboardControl.h"
 #import "IIViewDeckController.h"
 #import "Models/JotItemStore.h"
 #import "JotItem.h"
 
-@implementation JotItemViewController
+@implementation ItemViewController
 
 @synthesize jotTextView = _jotTextView;
 @synthesize item = _item;

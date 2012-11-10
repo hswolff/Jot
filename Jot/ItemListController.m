@@ -7,13 +7,13 @@
 //
 
 #import "Constants.h"
-#import "JotItemListController.h"
+#import "ItemListController.h"
 #import "JotItem.h"
 #import "Models/JotItemStore.h"
 #import "IIViewDeckController.h"
-#import "JotItemViewController.h"
+#import "ItemViewController.h"
 
-@implementation JotItemListController
+@implementation ItemListController
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
@@ -76,7 +76,7 @@
     NSArray *items = [[JotItemStore defaultStore] allItems];
     JotItem *selectedItem = [items objectAtIndex:[indexPath row]];
     [[JotItemStore defaultStore] setCurrentItem:indexPath.row];
-    [(JotItemViewController *)self.viewDeckController.centerController setItem:selectedItem];
+    [(ItemViewController *)self.viewDeckController.centerController setItem:selectedItem];
     [self.viewDeckController closeLeftViewAnimated:YES];
 }
 
@@ -92,7 +92,7 @@
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];
 //        [[JotItemStore defaultStore] setCurrentItem:nil];
-        [(JotItemViewController *)self.viewDeckController.centerController setItem:nil];
+        [(ItemViewController *)self.viewDeckController.centerController setItem:nil];
     }
 }
 

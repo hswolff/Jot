@@ -10,7 +10,7 @@
 
 @class JotItem;
 
-@interface JotItemViewController : UIViewController <UITextViewDelegate, UIGestureRecognizerDelegate> {
+@interface ItemViewController : UIViewController <UITextViewDelegate, UIGestureRecognizerDelegate> {
 }
 
 @property (strong, nonatomic) UITextView *jotTextView;

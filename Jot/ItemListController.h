@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JotItemListController : UITableViewController
+@interface ItemListController : UITableViewController
 
 @end
