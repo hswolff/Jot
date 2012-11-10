@@ -70,7 +70,6 @@
     } else {
         [self.viewDeckController setLeftSize:LEFT_LEDGE_SIZE];
     }
-
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {  

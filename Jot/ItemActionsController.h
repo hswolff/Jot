@@ -12,7 +12,7 @@
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
 
-@interface ItemActionsController : UITableViewController <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
+@interface ItemActionsController : UITableViewController <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, UINavigationControllerDelegate> {
     NSArray *menuItems;
 }
 

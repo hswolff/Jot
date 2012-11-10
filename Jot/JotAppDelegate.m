@@ -31,6 +31,7 @@
     self.leftController = [[UINavigationController alloc] initWithRootViewController:itemListController];
     ItemActionsController *actionsController = [[ItemActionsController alloc] init];
     self.rightController = [[UINavigationController alloc] initWithRootViewController:actionsController];
+    self.rightController.delegate = actionsController;
     
     self.deckController = [[IIViewDeckController alloc]
                                                   initWithCenterViewController:self.centerController

@@ -10,8 +10,22 @@
 #import "ItemActionsController.h"
 #import "JotItemStore.h"
 #import "JotItem.h"
+#import "IIViewDeckController.h"
 
 #import "SettingsController.h"
+
+
+@interface TestCell : UITableViewCell
+@end
+@implementation TestCell
+
+-(void)setFrame:(CGRect)frame {
+    frame.origin.x += RIGHT_LEDGE_SIZE;
+    frame.size.width -= RIGHT_LEDGE_SIZE;
+    return [super setFrame:frame];
+}
+@end
+
 
 
 @interface ItemActionsController () <FBLoginViewDelegate, UIAlertViewDelegate> {
@@ -28,15 +42,6 @@
 
 @implementation ItemActionsController
 
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    CGRect rect = self.tableView.frame;
-    NSLog(@"view: %@", NSStringFromCGRect(rect));
-    rect = CGRectMake(rect.origin.x + RIGHT_LEDGE_SIZE, rect.origin.y, rect.size.width - RIGHT_LEDGE_SIZE, rect.size.height);
-    self.tableView.frame = rect;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,9 +63,16 @@
 }
 
 - (void)showSettings {
-    NSLog(@"Show settings!");
     SettingsController *settingsController = [[SettingsController alloc] init];
     [self.navigationController pushViewController:settingsController animated:YES];
+    
+    [self.viewDeckController setRightSize:0];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if ([viewController isKindOfClass:[self class]] && self.viewDeckController.rightSize != RIGHT_LEDGE_SIZE) {
+        [self.viewDeckController setRightSize:RIGHT_LEDGE_SIZE];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -69,9 +81,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"UITableViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TestCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[TestCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
     }
     NSString *text = [menuItems objectAtIndex:indexPath.row];

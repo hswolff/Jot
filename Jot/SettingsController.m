@@ -20,6 +20,7 @@
     if (self) {
         // Custom initialization
         settingItems = [[NSArray alloc] initWithObjects:@"Full Screen", nil];
+
     }
     return self;
 }
@@ -27,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.navigationItem.title = @"Settings";
 
     // Uncomment the following line to preserve selection between presentations.
