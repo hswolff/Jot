@@ -15,6 +15,28 @@
 #import "SettingsController.h"
 
 
+int word_count(NSString* s) {
+    CFCharacterSetRef alpha = CFCharacterSetGetPredefined(kCFCharacterSetAlphaNumeric);
+    CFStringInlineBuffer buf;
+    CFIndex len = CFStringGetLength((CFStringRef)s);
+    CFStringInitInlineBuffer((CFStringRef)s, &buf, CFRangeMake(0, len));
+    UniChar c;
+    CFIndex i = 0;
+    int word_count = 0;
+    Boolean was_alpha = false, is_alpha;
+    while (c) {
+        c = CFStringGetCharacterFromInlineBuffer(&buf, i++);;
+        is_alpha = CFCharacterSetIsCharacterMember(alpha, c);
+        if (!is_alpha && was_alpha)
+            ++ word_count;
+        was_alpha = is_alpha;
+    }
+    if (is_alpha)
+        ++ word_count;
+    return word_count;
+}
+
+
 @interface TestCell : UITableViewCell
 @end
 @implementation TestCell
@@ -62,18 +84,28 @@
     menuItems = [[NSArray alloc] initWithObjects:@"Word Count", @"E-mail", @"SMS", @"Copy to Clipboard", @"Facebook", @"Facebook Logout", @"Twitter", nil];
 }
 
-- (void)showSettings {
-    SettingsController *settingsController = [[SettingsController alloc] init];
-    [self.navigationController pushViewController:settingsController animated:YES];
-    
-    [self.viewDeckController setRightSize:0];
-}
+#pragma mark -
+#pragma mark Delegate Methods
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if ([viewController isKindOfClass:[self class]] && self.viewDeckController.rightSize != RIGHT_LEDGE_SIZE) {
         [self.viewDeckController setRightSize:RIGHT_LEDGE_SIZE];
     }
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (currentPath) {
+        [self.tableView deselectRowAtIndexPath:currentPath animated:YES];
+        currentPath = nil;
+    }
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark TableView Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [menuItems count];
@@ -134,32 +166,14 @@
     NSLog(@"Current Item: %@", [[[JotItemStore defaultStore] getCurrentItem] text]);
 }
 
-int word_count(NSString* s) {
-    CFCharacterSetRef alpha = CFCharacterSetGetPredefined(kCFCharacterSetAlphaNumeric);
-    CFStringInlineBuffer buf;
-    CFIndex len = CFStringGetLength((CFStringRef)s);
-    CFStringInitInlineBuffer((CFStringRef)s, &buf, CFRangeMake(0, len));
-    UniChar c;
-    CFIndex i = 0;
-    int word_count = 0;
-    Boolean was_alpha = false, is_alpha;
-    while (c) {
-        c = CFStringGetCharacterFromInlineBuffer(&buf, i++);;
-        is_alpha = CFCharacterSetIsCharacterMember(alpha, c);
-        if (!is_alpha && was_alpha)
-            ++ word_count;
-        was_alpha = is_alpha;
-    }
-    if (is_alpha)
-        ++ word_count;
-    return word_count;
-}
+#pragma mark -
+#pragma mark Action Methods
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (currentPath) {
-        [self.tableView deselectRowAtIndexPath:currentPath animated:YES];
-        currentPath = nil;
-    }
+- (void)showSettings {
+    SettingsController *settingsController = [[SettingsController alloc] init];
+    [self.navigationController pushViewController:settingsController animated:YES];
+    
+    [self.viewDeckController setRightSize:0];
 }
 
 - (void)sendEmail {
@@ -226,8 +240,48 @@ int word_count(NSString* s) {
     }
 }
 
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
-    [self dismissModalViewControllerAnimated:YES];
+- (void) tweet {
+    // Create an account store object.
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    
+    // Create an account type that ensures Twitter accounts are retrieved.
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    // Request access from the user to use their Twitter accounts.
+    [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error) {
+        if(granted) {
+            // Get the list of Twitter accounts.
+            NSArray *accountsArray = [accountStore accountsWithAccountType:accountType];
+            
+            // For the sake of brevity, we'll assume there is only one Twitter account present.
+            // You would ideally ask the user which account they want to tweet from, if there is more than one Twitter account present.
+            if ([accountsArray count] > 0) {
+                // Grab the initial Twitter account to tweet from.
+                ACAccount *twitterAccount = [accountsArray objectAtIndex:0];
+                
+                // Create a request, which in this example, posts a tweet to the user's timeline.
+                // This example uses version 1 of the Twitter API.
+                // This may need to be changed to whichever version is currently appropriate.
+                JotItem *item = [[JotItemStore defaultStore] getCurrentItem];
+                TWRequest *postRequest = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update.json"] parameters:[NSDictionary dictionaryWithObject:item.text forKey:@"status"] requestMethod:TWRequestMethodPOST];
+                
+                // Set the account used to post the tweet.
+                [postRequest setAccount:twitterAccount];
+                
+                // Perform the request created above and create a handler block to handle the response.
+                [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                    NSString *output = [NSString stringWithFormat:@"HTTP response status: %i", [urlResponse statusCode]];
+                    //                    [self performSelectorOnMainThread:@selector(displayText:) withObject:output waitUntilDone:NO];
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Tweet complete"
+                                                                        message:output
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"OK"
+                                                              otherButtonTitles:nil];
+                    [alertView show];
+                }];
+            }
+        }
+    }];
 }
 
 #pragma mark -
@@ -324,50 +378,6 @@ int word_count(NSString* s) {
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertView show];
-}
-
-- (void) tweet {
-    // Create an account store object.
-    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    
-    // Create an account type that ensures Twitter accounts are retrieved.
-    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    // Request access from the user to use their Twitter accounts.
-    [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error) {
-        if(granted) {
-            // Get the list of Twitter accounts.
-            NSArray *accountsArray = [accountStore accountsWithAccountType:accountType];
-            
-            // For the sake of brevity, we'll assume there is only one Twitter account present.
-            // You would ideally ask the user which account they want to tweet from, if there is more than one Twitter account present.
-            if ([accountsArray count] > 0) {
-                // Grab the initial Twitter account to tweet from.
-                ACAccount *twitterAccount = [accountsArray objectAtIndex:0];
-                
-                // Create a request, which in this example, posts a tweet to the user's timeline.
-                // This example uses version 1 of the Twitter API.
-                // This may need to be changed to whichever version is currently appropriate.
-                JotItem *item = [[JotItemStore defaultStore] getCurrentItem];
-                TWRequest *postRequest = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update.json"] parameters:[NSDictionary dictionaryWithObject:item.text forKey:@"status"] requestMethod:TWRequestMethodPOST];
-                
-                // Set the account used to post the tweet.
-                [postRequest setAccount:twitterAccount];
-                
-                // Perform the request created above and create a handler block to handle the response.
-                [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                    NSString *output = [NSString stringWithFormat:@"HTTP response status: %i", [urlResponse statusCode]];
-//                    [self performSelectorOnMainThread:@selector(displayText:) withObject:output waitUntilDone:NO];
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Tweet complete"
-                                                                        message:output
-                                                                       delegate:nil
-                                                              cancelButtonTitle:@"OK"
-                                                              otherButtonTitles:nil];
-                    [alertView show];
-                }];
-            }
-        }
-    }];
 }
 
 @end
