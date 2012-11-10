@@ -24,6 +24,8 @@
 @synthesize deckController = _deckController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[UIApplication sharedApplication] setStatusBarHidden:[[NSUserDefaults standardUserDefaults] boolForKey:@"fullScreen"] withAnimation:UIStatusBarAnimationSlide];    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     self.centerController = [[ItemViewController alloc] init];

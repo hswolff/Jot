@@ -131,6 +131,8 @@
 //    NSLog(@"bounds: %@", NSStringFromCGRect([[[[UIApplication sharedApplication] windows] objectAtIndex:0] frame]));
     
     [[UIApplication sharedApplication] setStatusBarHidden:uiswitch.on withAnimation:UIStatusBarAnimationSlide];
+
+    [[NSUserDefaults standardUserDefaults] setBool:uiswitch.on forKey:@"fullScreen"];
     
     
 //    UIViewController *vc = [[[UIApplication sharedApplication] keyWindow] rootViewController] ;
