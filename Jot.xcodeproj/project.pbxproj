@@ -32,6 +32,7 @@
 		E1BE1DA115F2F56500271A2D /* ItemActionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA015F2F56500271A2D /* ItemActionsController.m */; };
 		E1BE1DA415F2F6E400271A2D /* ItemListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE1DA315F2F6E400271A2D /* ItemListController.m */; };
 		E1E6A1B1164C987500839427 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E6A1B0164C987400839427 /* Twitter.framework */; };
+		E1F65B04164EC8A100983129 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F65B03164EC8A100983129 /* SettingsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,8 @@
 		E1BE1DA215F2F6E400271A2D /* ItemListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemListController.h; sourceTree = "<group>"; };
 		E1BE1DA315F2F6E400271A2D /* ItemListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemListController.m; sourceTree = "<group>"; };
 		E1E6A1B0164C987400839427 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		E1F65B02164EC8A100983129 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		E1F65B03164EC8A100983129 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,8 @@
 				E1362B7415AA3B2B0034A2EC /* ItemViewController.m */,
 				E1BE1D9F15F2F56500271A2D /* ItemActionsController.h */,
 				E1BE1DA015F2F56500271A2D /* ItemActionsController.m */,
+				E1F65B02164EC8A100983129 /* SettingsController.h */,
+				E1F65B03164EC8A100983129 /* SettingsController.m */,
 			);
 			path = Jot;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				E144EDFC1618C46F00A64615 /* Jot.xcdatamodeld in Sources */,
 				E1BA5977162137EF00653159 /* IIViewDeckController.m in Sources */,
 				E1BA5978162137EF00653159 /* IIWrapController.m in Sources */,
+				E1F65B04164EC8A100983129 /* SettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

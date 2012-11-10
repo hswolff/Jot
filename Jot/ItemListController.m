@@ -37,13 +37,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"ItemListCell";
     UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:@"UITableViewCell"];
+                reuseIdentifier:CellIdentifier];
     }
     JotItem *p = [[[JotItemStore defaultStore] allItems] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[p description]];

@@ -11,7 +11,6 @@
 #import "IIViewDeckController.h"
 
 @class ItemViewController;
-@class ItemActionsController;
 @class IIViewDeckController;
 
 
@@ -21,7 +20,7 @@
 
 @property (retain, nonatomic) ItemViewController *centerController;
 @property (retain, nonatomic) UINavigationController *leftController;
-@property (retain, nonatomic) ItemActionsController *rightController;
+@property (retain, nonatomic) UINavigationController *rightController;
 
 @property (retain, nonatomic) IIViewDeckController *deckController;
 

@@ -11,6 +11,8 @@
 #import "JotItemStore.h"
 #import "JotItem.h"
 
+#import "SettingsController.h"
+
 @interface TestCell : UITableViewCell
 @end
 @implementation TestCell
@@ -20,8 +22,10 @@
     frame.size.width -= RIGHT_LEDGE_SIZE;
     return [super setFrame:frame];
 }
-
 @end
+
+
+
 
 @interface ItemActionsController () <FBLoginViewDelegate, UIAlertViewDelegate> {
     NSIndexPath *currentPath;
@@ -33,13 +37,51 @@
 
 @end
 
+
+
+
 @implementation ItemActionsController
+
+//- (id)initWithStyle:(UITableViewStyle)style {
+//    self = [super initWithStyle:style];
+//    if (self) {
+//        self.tableView.backgroundColor = [UIColor whiteColor];
+//        
+//        self.navigationItem.title = @"Jots";
+//        
+//        UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
+//                                      initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+//                                      target:self
+//                                      action:@selector(addNewItem:)];
+//        
+//        self.navigationItem.leftBarButtonItems = [[NSArray alloc] initWithObjects:[self editButtonItem], addButton, nil];
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"Actions";
+    // settings icon from:
+    // stackoverflow.com/questions/9755154/ios-uibarbuttonitem-identifier-option-to-create-settings-cogwheel-button
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"\u2699"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:self
+                                                                      action:@selector(showSettings)];
+    UIFont *f1 = [UIFont fontWithName:@"Helvetica" size:24.0];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:f1, UITextAttributeFont, nil];
+    [settingsButton setTitleTextAttributes:dict forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = settingsButton;
+    
     self.view.backgroundColor = [UIColor whiteColor];
-//    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     menuItems = [[NSArray alloc] initWithObjects:@"Word Count", @"E-mail", @"SMS", @"Copy to Clipboard", @"Facebook", @"Facebook Logout", @"Twitter", nil];
+}
+
+- (void)showSettings {
+    NSLog(@"Show settings!");
+    SettingsController *settingsController = [[SettingsController alloc] init];
+    [self.navigationController pushViewController:settingsController animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -47,10 +89,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    static NSString *CellIdentifier = @"UITableViewCell";
+    TestCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[TestCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:@"UITableViewCell"];
+                                      reuseIdentifier:CellIdentifier];
     }
     NSString *text = [menuItems objectAtIndex:indexPath.row];
     if (indexPath.row == 0) {

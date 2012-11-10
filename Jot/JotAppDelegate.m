@@ -29,7 +29,8 @@
     self.centerController = [[ItemViewController alloc] init];
     ItemListController *itemListController = [[ItemListController alloc] init];
     self.leftController = [[UINavigationController alloc] initWithRootViewController:itemListController];
-    self.rightController = [[ItemActionsController alloc] init];
+    ItemActionsController *actionsController = [[ItemActionsController alloc] init];
+    self.rightController = [[UINavigationController alloc] initWithRootViewController:actionsController];
     
     self.deckController = [[IIViewDeckController alloc]
                                                   initWithCenterViewController:self.centerController
@@ -85,7 +86,7 @@
         }
             break;
         case IIViewDeckRightSide:
-            [[self.rightController tableView] reloadData];
+            [[[self.rightController.viewControllers objectAtIndex:0] tableView] reloadData];
             //            NSLog(@"RIGHT RIGHT");
         default:
             break;
