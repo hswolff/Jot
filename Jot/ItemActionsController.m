@@ -13,19 +13,6 @@
 
 #import "SettingsController.h"
 
-@interface TestCell : UITableViewCell
-@end
-@implementation TestCell
-
--(void)setFrame:(CGRect)frame {
-    frame.origin.x += RIGHT_LEDGE_SIZE;
-    frame.size.width -= RIGHT_LEDGE_SIZE;
-    return [super setFrame:frame];
-}
-@end
-
-
-
 
 @interface ItemActionsController () <FBLoginViewDelegate, UIAlertViewDelegate> {
     NSIndexPath *currentPath;
@@ -39,25 +26,17 @@
 
 
 
-
 @implementation ItemActionsController
 
-//- (id)initWithStyle:(UITableViewStyle)style {
-//    self = [super initWithStyle:style];
-//    if (self) {
-//        self.tableView.backgroundColor = [UIColor whiteColor];
-//        
-//        self.navigationItem.title = @"Jots";
-//        
-//        UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
-//                                      initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-//                                      target:self
-//                                      action:@selector(addNewItem:)];
-//        
-//        self.navigationItem.leftBarButtonItems = [[NSArray alloc] initWithObjects:[self editButtonItem], addButton, nil];
-//    }
-//    return self;
-//}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    CGRect rect = self.tableView.frame;
+    NSLog(@"view: %@", NSStringFromCGRect(rect));
+    rect = CGRectMake(rect.origin.x + RIGHT_LEDGE_SIZE, rect.origin.y, rect.size.width - RIGHT_LEDGE_SIZE, rect.size.height);
+    self.tableView.frame = rect;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -90,9 +69,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"UITableViewCell";
-    TestCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[TestCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
     }
     NSString *text = [menuItems objectAtIndex:indexPath.row];
