@@ -56,6 +56,7 @@ int word_count(NSString* s) {
 
 @property (strong, nonatomic) id<FBGraphUser> loggedInUser;
 
+- (void)completePost:(NSString *)name;
 - (void)tweet;
 
 @end
@@ -152,7 +153,7 @@ int word_count(NSString* s) {
         }
             break;
         case 4: {
-            [self postToFacebook];
+            [self postToFacebook:indexPath];
         }
             break;
         case 5:
@@ -163,7 +164,7 @@ int word_count(NSString* s) {
         default:
             break;
     }
-    NSLog(@"Current Item: %@", [[[JotItemStore defaultStore] getCurrentItem] text]);
+//    NSLog(@"Current Item: %@", [[[JotItemStore defaultStore] getCurrentItem] text]);
 }
 
 #pragma mark -
@@ -287,8 +288,36 @@ int word_count(NSString* s) {
 #pragma mark -
 #pragma mark Facebook Methods
 
-- (void)postToFacebook {
+- (void)completePost:(NSString *)name {
+//    NSLog(@"Completed Post: %@", name);
+//    NSString *fakeName = @"Facebook";
     
+    NSUInteger inte = [menuItems indexOfObjectIdenticalTo:name];
+    NSIndexPath *pp = [NSIndexPath indexPathForRow:inte inSection:0];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pp];
+    
+    [activityIndicator stopAnimating];
+    cell.accessoryView = nil;
+    cell.selected = NO;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+}
+
+- (void)postToFacebook:(NSIndexPath *)indexPath {
+    currentPath = indexPath;
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelected:NO animated:NO];
+ 
+    if ([activityIndicator isAnimating]) {
+        return;
+    }
+    
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+
+    cell.accessoryView = activityIndicator;
+    [activityIndicator startAnimating];
+
+//    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(completePost:) userInfo:nil repeats:NO];
+//    return;
     if (FBSession.activeSession.isOpen) {
         
         // Post a status update to the user's feed via the Graph API, and display an alert view
@@ -307,7 +336,8 @@ int word_count(NSString* s) {
                 // otherwise fall back on a request for permissions and a direct post
                 [FBRequestConnection startForPostStatusUpdate:message
                                             completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                                                [self showAlert:message result:result error:error];
+//                                                [self showAlert:message result:result error:error];
+                                                [self completePost:@"Facebook"];
                                             }];
             }];
         }

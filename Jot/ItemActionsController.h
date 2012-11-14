@@ -14,6 +14,7 @@
 
 @interface ItemActionsController : UITableViewController <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, UINavigationControllerDelegate> {
     NSArray *menuItems;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @end
