@@ -167,6 +167,12 @@ int word_count(NSString* s) {
 //    NSLog(@"Current Item: %@", [[[JotItemStore defaultStore] getCurrentItem] text]);
 }
 
+- (UITableViewCell *)getCellByName:(NSString *)name {
+    NSUInteger inte = [menuItems indexOfObjectIdenticalTo:name];
+    NSIndexPath *pp = [NSIndexPath indexPathForRow:inte inSection:0];
+    return [self.tableView cellForRowAtIndexPath:pp];
+}
+
 #pragma mark -
 #pragma mark Action Methods
 
@@ -242,6 +248,23 @@ int word_count(NSString* s) {
 }
 
 - (void) tweet {
+    UITableViewCell *cell = [self getCellByName:@"Twitter"];
+    [cell setSelected:NO animated:NO];
+    
+    if ([twitterActivityIndicator isAnimating]) {
+        return;
+    }
+    
+    twitterActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    cell.accessoryView = twitterActivityIndicator;
+    [twitterActivityIndicator startAnimating];
+    
+//    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(completePost:) userInfo:nil repeats:NO];
+//    return;
+    
+    
+    
     // Create an account store object.
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     
@@ -271,14 +294,15 @@ int word_count(NSString* s) {
                 
                 // Perform the request created above and create a handler block to handle the response.
                 [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                    NSString *output = [NSString stringWithFormat:@"HTTP response status: %i", [urlResponse statusCode]];
-                    //                    [self performSelectorOnMainThread:@selector(displayText:) withObject:output waitUntilDone:NO];
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Tweet complete"
-                                                                        message:output
-                                                                       delegate:nil
-                                                              cancelButtonTitle:@"OK"
-                                                              otherButtonTitles:nil];
-                    [alertView show];
+//                    NSString *output = [NSString stringWithFormat:@"HTTP response status: %i", [urlResponse statusCode]];
+//                    [self performSelectorOnMainThread:@selector(displayText:) withObject:output waitUntilDone:NO];
+//                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Tweet complete"
+//                                                                        message:output
+//                                                                       delegate:nil
+//                                                              cancelButtonTitle:@"OK"
+//                                                              otherButtonTitles:nil];
+//                    [alertView show];
+                    [self completePost:@"Twitter"];
                 }];
             }
         }
@@ -290,13 +314,16 @@ int word_count(NSString* s) {
 
 - (void)completePost:(NSString *)name {
 //    NSLog(@"Completed Post: %@", name);
-//    NSString *fakeName = @"Facebook";
+//    name = @"Facebook";
     
-    NSUInteger inte = [menuItems indexOfObjectIdenticalTo:name];
-    NSIndexPath *pp = [NSIndexPath indexPathForRow:inte inSection:0];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pp];
+    UITableViewCell *cell = [self getCellByName:name];
     
-    [activityIndicator stopAnimating];
+    if ([name isEqualToString:@"Facebook"]) {
+        [facebookActivityIndicator stopAnimating];
+    } else if ([name isEqualToString:@"Twitter"]) {
+        [twitterActivityIndicator stopAnimating];
+    }
+    
     cell.accessoryView = nil;
     cell.selected = NO;
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -307,14 +334,14 @@ int word_count(NSString* s) {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     [cell setSelected:NO animated:NO];
  
-    if ([activityIndicator isAnimating]) {
+    if ([facebookActivityIndicator isAnimating]) {
         return;
     }
     
-    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    facebookActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
-    cell.accessoryView = activityIndicator;
-    [activityIndicator startAnimating];
+    cell.accessoryView = facebookActivityIndicator;
+    [facebookActivityIndicator startAnimating];
 
 //    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(completePost:) userInfo:nil repeats:NO];
 //    return;

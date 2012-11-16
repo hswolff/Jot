@@ -14,7 +14,10 @@
 
 @interface ItemActionsController : UITableViewController <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, UINavigationControllerDelegate> {
     NSArray *menuItems;
-    UIActivityIndicatorView *activityIndicator;
+    UIActivityIndicatorView *facebookActivityIndicator;
+    UIActivityIndicatorView *twitterActivityIndicator;
 }
+
+- (UITableViewCell *)getCellByName:(NSString *)name;
 
 @end
