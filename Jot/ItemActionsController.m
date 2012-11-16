@@ -16,6 +16,9 @@
 
 
 int word_count(NSString* s) {
+    if ([s length] <= 0) {
+        return 0;
+    }
     CFCharacterSetRef alpha = CFCharacterSetGetPredefined(kCFCharacterSetAlphaNumeric);
     CFStringInlineBuffer buf;
     CFIndex len = CFStringGetLength((CFStringRef)s);
