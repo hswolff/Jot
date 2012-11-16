@@ -134,19 +134,11 @@
 
     [[NSUserDefaults standardUserDefaults] setBool:uiswitch.on forKey:@"fullScreen"];
     
-    
-//    UIViewController *vc = [[[UIApplication sharedApplication] keyWindow] rootViewController] ;
-//    [vc updateViewConstraints];
-//    [UIViewController attemptRotationToDeviceOrientation];
-
-
-//    UIWindow *win = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
-//    CGRect frame = win.frame;
-//    if (uiswitch.on) {
-//        win.frame = CGRectMake(frame.origin.x, frame.origin.y-20, frame.size.width, frame.size.height+20);
-//    } else {
-//        win.frame = CGRectMake(frame.origin.x, frame.origin.y+20, frame.size.width, frame.size.height-20);
-//    }
+    // update frame of app when removing statusBar
+    // solution found here: stackoverflow.com/a/8768610
+    //    UIViewController *vc = [[[UIApplication sharedApplication] keyWindow] rootViewController] ;
+    //    vc.view.frame = [[UIScreen mainScreen] applicationFrame];
+    self.parentViewController.parentViewController.view.frame = [[UIScreen mainScreen] applicationFrame];
 }
 
 @end
