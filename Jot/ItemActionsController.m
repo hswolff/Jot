@@ -152,7 +152,7 @@ int word_count(NSString* s) {
         }
             break;
         case 4: {
-            [self postToFacebook:indexPath];
+            [self postToFacebook];
         }
             break;
         case 5:
@@ -325,8 +325,8 @@ int word_count(NSString* s) {
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
-- (void)postToFacebook:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+- (void)postToFacebook {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.tableView.indexPathForSelectedRow];
     [cell setSelected:NO animated:NO];
  
     if ([facebookActivityIndicator isAnimating]) {
@@ -341,10 +341,10 @@ int word_count(NSString* s) {
 //    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(completePost:) userInfo:nil repeats:NO];
 //    return;
     if (FBSession.activeSession.isOpen) {
-        
+        NSLog(@"session open");
         // Post a status update to the user's feed via the Graph API, and display an alert view
         // with the results or an error.
-        NSString *message = [[[JotItemStore defaultStore] getCurrentItem] text];
+        
         // if it is available to us, we will post using the native dialog
         //    BOOL displayedNativeDialog = [FBNativeDialogs presentShareDialogModallyFrom:self
         //                                                                    initialText:message
@@ -353,24 +353,22 @@ int word_count(NSString* s) {
         //                                                                        handler:nil];
         BOOL displayedNativeDialog = NO;
         if (!displayedNativeDialog) {
-            
-            [self performPublishAction:^{
-                // otherwise fall back on a request for permissions and a direct post
-                [FBRequestConnection startForPostStatusUpdate:message
-                                            completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-//                                                [self showAlert:message result:result error:error];
-                                                [self completePost:@"Facebook"];
-                                            }];
-            }];
+            [self postFacebookStatus];
         }
         
     } else {
-        
+        NSLog(@"session closed");
         [FBSession openActiveSessionWithReadPermissions:nil
                                            allowLoginUI:YES
                                       completionHandler:^(FBSession *session,
                                                           FBSessionState state,
                                                           NSError *error) {
+                                          NSLog(@"openActiveSession session: %@", session);
+                                          NSLog(@"openActiveSession state: %i",state);
+                                          NSLog(@"openActiveSession error: %@",error);
+                                          if (!error) {
+                                              [self postFacebookStatus];
+                                          }
                                           //                                             [self sessionStateChanged:session
                                           //                                                                 state:state
                                           //                                                                 error:error];
@@ -378,6 +376,18 @@ int word_count(NSString* s) {
         
     }
     
+}
+
+- (void)postFacebookStatus {
+    NSString *message = [[[JotItemStore defaultStore] getCurrentItem] text];
+    [self performPublishAction:^{
+        // otherwise fall back on a request for permissions and a direct post
+        [FBRequestConnection startForPostStatusUpdate:message
+                                    completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                        //                                                [self showAlert:message result:result error:error];
+                                        [self completePost:@"Facebook"];
+                                    }];
+    }];
 }
 
 // Convenience method to perform some action that requires the "publish_actions" permissions.
