@@ -85,7 +85,7 @@ int word_count(NSString* s) {
     self.navigationItem.rightBarButtonItem = settingsButton;
     
     self.view.backgroundColor = [UIColor whiteColor];
-    menuItems = [[NSArray alloc] initWithObjects:@"Word Count", @"E-mail", @"SMS", @"Copy to Clipboard", @"Facebook", @"Facebook Logout", @"Twitter", nil];
+    menuItems = [[NSArray alloc] initWithObjects:@"Word Count", @"E-mail", @"SMS", @"Copy to Clipboard", @"Facebook", @"Twitter", nil];
 }
 
 #pragma mark -
@@ -160,9 +160,6 @@ int word_count(NSString* s) {
         }
             break;
         case 5:
-            [self facebookLogout];
-            break;
-        case 6:
             [self tweet];
         default:
             break;
@@ -424,16 +421,6 @@ int word_count(NSString* s) {
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
                                                         message:alertMsg
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-    [alertView show];
-}
-
-- (void) facebookLogout {
-    [FBSession.activeSession closeAndClearTokenInformation];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logged Out"
-                                                        message:nil
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];

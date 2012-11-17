@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface SettingsController : UITableViewController {
+@interface SettingsController : UITableViewController <UIAlertViewDelegate> {
     NSArray *settingItems;
 }
 

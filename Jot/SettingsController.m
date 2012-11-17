@@ -109,13 +109,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    switch (indexPath.row) {
+        case 1:
+            [self facebookLogout];
+            break;
+        default:
+            break;
+    }
 
 }
 
@@ -139,6 +139,23 @@
     //    UIViewController *vc = [[[UIApplication sharedApplication] keyWindow] rootViewController] ;
     //    vc.view.frame = [[UIScreen mainScreen] applicationFrame];
     self.parentViewController.parentViewController.view.frame = [[UIScreen mainScreen] applicationFrame];
+}
+
+- (void) facebookLogout {
+    [FBSession.activeSession closeAndClearTokenInformation];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logged Out of Facebook!"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertView show];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (self.tableView.indexPathForSelectedRow) {
+        [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+    }
 }
 
 @end
