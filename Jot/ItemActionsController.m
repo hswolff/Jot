@@ -53,9 +53,7 @@ int word_count(NSString* s) {
 
 
 
-@interface ItemActionsController () <FBLoginViewDelegate, UIAlertViewDelegate> {
-    NSIndexPath *currentPath;
-}
+@interface ItemActionsController () <FBLoginViewDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) id<FBGraphUser> loggedInUser;
 
@@ -98,9 +96,8 @@ int word_count(NSString* s) {
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (currentPath) {
-        [self.tableView deselectRowAtIndexPath:currentPath animated:YES];
-        currentPath = nil;
+    if (self.tableView.indexPathForSelectedRow) {
+        [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
     }
 }
 
@@ -151,7 +148,6 @@ int word_count(NSString* s) {
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
-            currentPath = indexPath;
             [alert show];
         }
             break;
@@ -330,7 +326,6 @@ int word_count(NSString* s) {
 }
 
 - (void)postToFacebook:(NSIndexPath *)indexPath {
-    currentPath = indexPath;
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     [cell setSelected:NO animated:NO];
  
