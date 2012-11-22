@@ -117,6 +117,7 @@ int word_count(NSString* s) {
     if (!cell) {
         cell = [[TestCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
+        cell.textLabel.font = [UIFont fontWithName:@"Palatino" size:20.0];
     }
     NSString *actionText = [menuItems objectAtIndex:indexPath.row];
     JotItem *currentItem = [[JotItemStore defaultStore] getCurrentItem];

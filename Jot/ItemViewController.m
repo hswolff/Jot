@@ -28,7 +28,7 @@
     self.jotTextView = [[UITextView alloc] initWithFrame:frame];
     self.jotTextView.delegate = self;
     self.jotTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.jotTextView.font = [UIFont systemFontOfSize:18.0];
+    self.jotTextView.font = [UIFont fontWithName:@"Palatino" size:20.0];
     self.jotTextView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
     
     [self.view addSubview:self.jotTextView];

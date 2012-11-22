@@ -45,6 +45,7 @@
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:CellIdentifier];
+//        cell.textLabel.font = [UIFont fontWithName:@"Palatino" size:20.0];
     }
     JotItem *p = [[[JotItemStore defaultStore] allItems] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[p description]];
