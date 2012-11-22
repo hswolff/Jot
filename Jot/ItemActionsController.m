@@ -27,8 +27,7 @@ int word_count(NSString* s) {
     CFIndex i = 0;
     int word_count = 0;
     Boolean was_alpha = false, is_alpha;
-    while (c) {
-        c = CFStringGetCharacterFromInlineBuffer(&buf, i++);;
+    while ((c = CFStringGetCharacterFromInlineBuffer(&buf, i++))) {
         is_alpha = CFCharacterSetIsCharacterMember(alpha, c);
         if (!is_alpha && was_alpha)
             ++ word_count;
