@@ -42,9 +42,12 @@
     if (self.text && [self.text length] >= 1) {
         return self.text;
     } else {
-        return [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:self.dateCreated] dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+        return [self formattedDateCreated];
     }
-    
+}
+
+- (NSString *)formattedDateCreated {
+    return [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:self.dateCreated] dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
 }
 
 

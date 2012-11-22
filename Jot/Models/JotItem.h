@@ -21,5 +21,6 @@
 //+ (id)randomItem;
 //- (id)initWithText:(NSString *)text;
 - (NSString *)description;
+- (NSString *)formattedDateCreated;
 
 @end
