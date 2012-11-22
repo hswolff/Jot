@@ -118,12 +118,35 @@ int word_count(NSString* s) {
         cell = [[TestCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
     }
-    NSString *text = [menuItems objectAtIndex:indexPath.row];
+    NSString *actionText = [menuItems objectAtIndex:indexPath.row];
+    JotItem *currentItem = [[JotItemStore defaultStore] getCurrentItem];
     if (indexPath.row == 0) {
-        int count = word_count([[[JotItemStore defaultStore] getCurrentItem] text]);
-        text = [text stringByAppendingFormat:@":  %i", count];
+        int count = word_count(currentItem.text);
+        actionText = [actionText stringByAppendingFormat:@":  %i", count];
     }
-    cell.textLabel.text = text;
+
+    if ([currentItem.shared count] > 0) {
+        if ([actionText isEqualToString:@"Facebook"]) {
+            NSLog(@"currentItem.shared: %@",currentItem.shared);
+            for (NSString *share in currentItem.shared) {
+                if ([share isEqualToString:@"Facebook"]) {
+                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    break;
+                }
+            }
+        } else if ([actionText isEqualToString:@"Twitter"]) {
+            for (NSString *share in currentItem.shared) {
+                if ([share isEqualToString:@"Twitter"]) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    break;
+                }
+            }
+        }
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+
+    cell.textLabel.text = actionText;
     return cell;
 }
 
@@ -315,8 +338,10 @@ int word_count(NSString* s) {
     
     if ([name isEqualToString:@"Facebook"]) {
         [facebookActivityIndicator stopAnimating];
+        [[[[JotItemStore defaultStore] getCurrentItem] shared] addObject:@"Facebook"];
     } else if ([name isEqualToString:@"Twitter"]) {
         [twitterActivityIndicator stopAnimating];
+        [[[[JotItemStore defaultStore] getCurrentItem] shared] addObject:@"Twitter"];
     }
     
     cell.accessoryView = nil;
@@ -328,7 +353,7 @@ int word_count(NSString* s) {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.tableView.indexPathForSelectedRow];
     [cell setSelected:NO animated:NO];
  
-    if ([facebookActivityIndicator isAnimating]) {
+    if ([facebookActivityIndicator isAnimating] || cell.accessoryType == UITableViewCellAccessoryCheckmark) {
         return;
     }
     

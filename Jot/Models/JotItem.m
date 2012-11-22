@@ -14,9 +14,19 @@
 @dynamic text;
 @dynamic dateCreated;
 @dynamic orderingValue;
+
+@synthesize shared = _shared;
 //@synthesize text = _text;
 //@synthesize dateCreated = _dateCreated;
 //@synthesize orderingValue = _orderingValue;
+
+- (id) initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
+    self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
+    if (self) {
+        self.shared = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
 - (void) awakeFromFetch {
     [super awakeFromFetch];

@@ -77,6 +77,10 @@
         self.item = newItem;
     }
     self.item.text = textView.text;
+    
+    if (self.item.shared.count > 0) {
+        [self.item.shared removeAllObjects];
+    }
 }
 
 - (void)setCentered:(BOOL)centered {

@@ -17,6 +17,7 @@
 @property (nonatomic) NSTimeInterval dateCreated;
 @property (nonatomic) double orderingValue;
 
+@property (nonatomic, retain) NSMutableArray *shared;
 //+ (id)randomItem;
 //- (id)initWithText:(NSString *)text;
 - (NSString *)description;
