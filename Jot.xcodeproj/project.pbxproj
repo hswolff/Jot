@@ -21,6 +21,9 @@
 		E13901AC1644CF7D00D8BE3E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13901AB1644CF7D00D8BE3E /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E13901AE1644CF9600D8BE3E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13901AD1644CF9600D8BE3E /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E144EDFC1618C46F00A64615 /* Jot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E144EDFA1618C46F00A64615 /* Jot.xcdatamodeld */; };
+		E15633FE166121BF00B227EA /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E15633FD166121BF00B227EA /* icon.png */; };
+		E1563400166121C700B227EA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E15633FF166121C700B227EA /* Default.png */; };
+		E1563402166121CA00B227EA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1563401166121CA00B227EA /* Default@2x.png */; };
 		E168A38316112B8800A6AEB8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E168A38216112B8800A6AEB8 /* CoreData.framework */; };
 		E168A38916112D8300A6AEB8 /* JotItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E168A38816112D8300A6AEB8 /* JotItem.m */; };
 		E1A933EC15B3987700F1F22F /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A933EB15B3987700F1F22F /* DAKeyboardControl.m */; };
@@ -56,6 +59,9 @@
 		E13901AD1644CF9600D8BE3E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		E1423600161A6DD7008B3891 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E144EDFB1618C46F00A64615 /* Jot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jot.xcdatamodel; sourceTree = "<group>"; };
+		E15633FD166121BF00B227EA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Resources/icon.png; sourceTree = "<group>"; };
+		E15633FF166121C700B227EA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
+		E1563401166121CA00B227EA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		E168A38216112B8800A6AEB8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E168A38716112D8300A6AEB8 /* JotItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JotItem.h; path = Models/JotItem.h; sourceTree = "<group>"; };
 		E168A38816112D8300A6AEB8 /* JotItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JotItem.m; path = Models/JotItem.m; sourceTree = "<group>"; };
@@ -170,7 +176,10 @@
 		E165FA9D15F1BE3200080DAA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E15633FF166121C700B227EA /* Default.png */,
+				E1563401166121CA00B227EA /* Default@2x.png */,
 				E1B2E4AE16135E5C0073C3CE /* Default-568h@2x.png */,
+				E15633FD166121BF00B227EA /* icon.png */,
 				E1BE1D7F15F2654500271A2D /* icon@2x.png */,
 			);
 			name = Resources;
@@ -273,6 +282,9 @@
 				E1BE1D8015F2654500271A2D /* icon@2x.png in Resources */,
 				E1B2E4AF16135E5C0073C3CE /* Default-568h@2x.png in Resources */,
 				E13901A41644CF1500D8BE3E /* FacebookSDKResources.bundle in Resources */,
+				E15633FE166121BF00B227EA /* icon.png in Resources */,
+				E1563400166121C700B227EA /* Default.png in Resources */,
+				E1563402166121CA00B227EA /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
