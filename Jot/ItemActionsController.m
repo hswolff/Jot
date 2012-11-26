@@ -105,6 +105,11 @@ int word_count(NSString* s) {
     if ([alertView.message rangeOfString:@"Facebook"].location != NSNotFound) {
         [facebookActivityIndicator stopAnimating];
     }
+    
+    if ([alertView.message rangeOfString:@"create a Jot"].location != NSNotFound) {
+        [twitterActivityIndicator stopAnimating];
+        [facebookActivityIndicator stopAnimating];
+    }
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
@@ -204,6 +209,15 @@ int word_count(NSString* s) {
 
 #pragma mark -
 #pragma mark Action Methods
+
+- (void)handleEmptyJotState {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Uh oh!"
+                                                    message:@"You need to create a Jot first!"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 
 - (void)showSettings {
     SettingsController *settingsController = [[SettingsController alloc] init];
@@ -316,23 +330,29 @@ int word_count(NSString* s) {
                 // This example uses version 1 of the Twitter API.
                 // This may need to be changed to whichever version is currently appropriate.
                 JotItem *item = [[JotItemStore defaultStore] getCurrentItem];
-                TWRequest *postRequest = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update.json"] parameters:[NSDictionary dictionaryWithObject:item.text forKey:@"status"] requestMethod:TWRequestMethodPOST];
-                
-                // Set the account used to post the tweet.
-                [postRequest setAccount:twitterAccount];
-                
-                // Perform the request created above and create a handler block to handle the response.
-                [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-//                    NSString *output = [NSString stringWithFormat:@"HTTP response status: %i", [urlResponse statusCode]];
-//                    [self performSelectorOnMainThread:@selector(displayText:) withObject:output waitUntilDone:NO];
-//                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Tweet complete"
-//                                                                        message:output
-//                                                                       delegate:nil
-//                                                              cancelButtonTitle:@"OK"
-//                                                              otherButtonTitles:nil];
-//                    [alertView show];
-                    [self completePost:@"Twitter"];
-                }];
+                if (item) {
+                    TWRequest *postRequest = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update.json"] parameters:[NSDictionary dictionaryWithObject:item.text forKey:@"status"] requestMethod:TWRequestMethodPOST];
+                    
+                    // Set the account used to post the tweet.
+                    [postRequest setAccount:twitterAccount];
+                    
+                    // Perform the request created above and create a handler block to handle the response.
+                    [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                        //                    NSString *output = [NSString stringWithFormat:@"HTTP response status: %i", [urlResponse statusCode]];
+                        //                    [self performSelectorOnMainThread:@selector(displayText:) withObject:output waitUntilDone:NO];
+                        //                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Tweet complete"
+                        //                                                                        message:output
+                        //                                                                       delegate:nil
+                        //                                                              cancelButtonTitle:@"OK"
+                        //                                                              otherButtonTitles:nil];
+                        //                    [alertView show];
+                        [self completePost:@"Twitter"];
+                    }];
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self handleEmptyJotState];
+                    });
+                }
             }
         } else {
 //            NSLog(@"no success: %@", error);
