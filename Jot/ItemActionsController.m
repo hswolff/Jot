@@ -172,12 +172,15 @@ int word_count(NSString* s) {
             break;
         case 3: {
             UIPasteboard *pb = [UIPasteboard generalPasteboard];
-            [pb setString:[[[JotItemStore defaultStore] getCurrentItem] text]];
+            JotItem *item = [[JotItemStore defaultStore] getCurrentItem];
+            if (item) {
+                [pb setString:[item text]];
+            }
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Copied!"
                                                             message:nil
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+                                                            delegate:self
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
             [alert show];
         }
             break;

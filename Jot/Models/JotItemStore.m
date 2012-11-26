@@ -83,7 +83,8 @@
 
 
     JotItem *p = [NSEntityDescription insertNewObjectForEntityForName:@"JotItem" inManagedObjectContext:context];
-    [p setOrderingValue:order];
+    p.orderingValue = order;
+    p.text = @"";
     [allItems addObject:p];
     return p;
 }
