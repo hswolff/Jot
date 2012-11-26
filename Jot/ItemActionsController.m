@@ -270,7 +270,7 @@ int word_count(NSString* s) {
     UITableViewCell *cell = [self getCellByName:@"Twitter"];
     [cell setSelected:NO animated:NO];
     
-    if ([twitterActivityIndicator isAnimating]) {
+    if ([twitterActivityIndicator isAnimating] || cell.accessoryType == UITableViewCellAccessoryCheckmark) {
         return;
     }
     
