@@ -98,6 +98,13 @@ int word_count(NSString* s) {
     if (self.tableView.indexPathForSelectedRow) {
         [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
     }
+
+    if ([alertView.message rangeOfString:@"Twitter"].location != NSNotFound) {
+        [twitterActivityIndicator stopAnimating];
+    }
+    if ([alertView.message rangeOfString:@"Facebook"].location != NSNotFound) {
+        [facebookActivityIndicator stopAnimating];
+    }
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
@@ -324,6 +331,16 @@ int word_count(NSString* s) {
                     [self completePost:@"Twitter"];
                 }];
             }
+        } else {
+//            NSLog(@"no success: %@", error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Something went wrong!"
+                                                                message:@"Could not connect to Twitter."
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alertView show];
+            });
         }
     }];
 }
