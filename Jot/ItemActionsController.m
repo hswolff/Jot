@@ -405,38 +405,18 @@ int word_count(NSString* s) {
 
 //    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(completePost:) userInfo:nil repeats:NO];
 //    return;
+    
+    NSLog(@"FBSession isOpen? %@", FBSession.activeSession.isOpen?@"YES":@"NO");
+    
     if (FBSession.activeSession.isOpen) {
-        NSLog(@"session open");
-        // Post a status update to the user's feed via the Graph API, and display an alert view
-        // with the results or an error.
-        
-        // if it is available to us, we will post using the native dialog
-        //    BOOL displayedNativeDialog = [FBNativeDialogs presentShareDialogModallyFrom:self
-        //                                                                    initialText:message
-        //                                                                          image:nil
-        //                                                                            url:nil
-        //                                                                        handler:nil];
-        BOOL displayedNativeDialog = NO;
-        if (!displayedNativeDialog) {
-            [self postFacebookStatus];
-        }
-        
+        [self postFacebookStatus];
     } else {
-        NSLog(@"session closed");
         [FBSession openActiveSessionWithReadPermissions:nil
                                            allowLoginUI:YES
                                       completionHandler:^(FBSession *session,
                                                           FBSessionState state,
                                                           NSError *error) {
-                                          NSLog(@"openActiveSession session: %@", session);
-                                          NSLog(@"openActiveSession state: %i",state);
-                                          NSLog(@"openActiveSession error: %@",error);
-                                          if (!error) {
-                                              [self postFacebookStatus];
-                                          }
-                                          //                                             [self sessionStateChanged:session
-                                          //                                                                 state:state
-                                          //                                                                 error:error];
+                                          [self sessionStateChanged:session state:state error:error];
                                       }];
         
     }
@@ -495,6 +475,72 @@ int word_count(NSString* s) {
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertView show];
+}
+
+- (void)sessionStateChanged:(FBSession *)session
+                      state:(FBSessionState)state
+                      error:(NSError *)error
+{
+    NSString *errorMessage = nil;
+    switch (state) {
+        case FBSessionStateOpen: {
+            NSLog(@"FBSessionStateOpen");
+            [self postFacebookStatus];
+        }
+            break;
+        case FBSessionStateClosed: {
+            NSLog(@"FBSessionStateClosed");
+        }
+            break;
+        case FBSessionStateClosedLoginFailed: {
+            NSLog(@"FBSessionStateClosedLoginFailed");
+            [facebookActivityIndicator stopAnimating];
+            errorMessage = @"Failed to login to Facebook";
+        }
+            break;
+        default:
+            NSLog(@"Default");
+            break;
+    }
+    
+    if (errorMessage) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Something went wrong!"
+                                                            message:errorMessage
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
++ (NSString *)FBErrorCodeDescription:(FBErrorCode) code {
+    switch(code){
+        case FBErrorInvalid :{
+            return @"FBErrorInvalid";
+        }
+        case FBErrorOperationCancelled:{
+            return @"FBErrorOperationCancelled";
+        }
+        case FBErrorLoginFailedOrCancelled:{
+            return @"FBErrorLoginFailedOrCancelled";
+        }
+        case FBErrorRequestConnectionApi:{
+            return @"FBErrorRequestConnectionApi";
+        }case FBErrorProtocolMismatch:{
+            return @"FBErrorProtocolMismatch";
+        }
+        case FBErrorHTTPError:{
+            return @"FBErrorHTTPError";
+        }
+        case FBErrorNonTextMimeTypeReturned:{
+            return @"FBErrorNonTextMimeTypeReturned";
+        }
+        case FBErrorNativeDialog:{
+            return @"FBErrorNativeDialog";
+        }
+        default:
+            return @"[Unknown]";
+    }
 }
 
 @end
