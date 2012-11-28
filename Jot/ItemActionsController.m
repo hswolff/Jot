@@ -483,15 +483,13 @@ int word_count(NSString* s) {
 {
     NSString *errorMessage = nil;
     switch (state) {
-        case FBSessionStateOpen: {
+        case FBSessionStateOpen:
+        case FBSessionStateOpenTokenExtended: {
             NSLog(@"FBSessionStateOpen");
             [self postFacebookStatus];
         }
             break;
-        case FBSessionStateClosed: {
-            NSLog(@"FBSessionStateClosed");
-        }
-            break;
+        case FBSessionStateClosed:
         case FBSessionStateClosedLoginFailed: {
             NSLog(@"FBSessionStateClosedLoginFailed");
             [facebookActivityIndicator stopAnimating];
