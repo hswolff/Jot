@@ -12,6 +12,12 @@
 #import "Models/JotItemStore.h"
 #import "JotItem.h"
 
+@implementation UITextView (AllowMultiTouches)
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+@end
+
 @implementation ItemViewController
 
 @synthesize jotTextView = _jotTextView;
