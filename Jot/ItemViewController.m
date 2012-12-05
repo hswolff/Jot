@@ -13,10 +13,23 @@
 #import "JotItem.h"
 
 @implementation UITextView (AllowMultiTouches)
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
+
+- (BOOL)canBecomeFirstResponder {
+    if (self.editable) {
+        return self.editable;
+    } else {
+        return YES;
+    }
+}
+
 @end
+
+
+
 
 @implementation ItemViewController
 
@@ -45,9 +58,11 @@
     
     self.centered = YES;
     [self.jotTextView addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
-        CGRect newFrame = _jotTextView.frame;
-        newFrame.size.height = keyboardFrameInView.origin.y - _jotTextView.contentOffset.y;
-        _jotTextView.frame = newFrame;
+        if (_jotTextView.editable) {
+            CGRect newFrame = _jotTextView.frame;
+            newFrame.size.height = keyboardFrameInView.origin.y - _jotTextView.contentOffset.y;
+            _jotTextView.frame = newFrame;
+        }
     }];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changeGesture:)];
