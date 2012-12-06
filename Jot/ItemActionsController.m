@@ -113,7 +113,22 @@ int word_count(NSString* s) {
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSString *message;
+        if (result == MessageComposeResultSent) {
+            message = @"SMS Sent!";
+        } else if (result == MessageComposeResultFailed) {
+            message = @"Error sending SMS";
+        }
+        if (message) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:message
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
 }
 
 #pragma mark -
@@ -169,7 +184,6 @@ int word_count(NSString* s) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
             break;
         case 1:
-            NSLog(@"email");
             [self sendEmail];
             break;
         case 2:
@@ -239,8 +253,8 @@ int word_count(NSString* s) {
         mailer.modalPresentationStyle = UIModalPresentationPageSheet;
         [self presentModalViewController:mailer animated:YES];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
-                                                        message:@"Your device doesn't support the composer sheet"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                        message:@"You need to set up an e-mail account first!"
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -250,6 +264,7 @@ int word_count(NSString* s) {
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
+    NSString *message;
     switch (result)
     {
         case MFMailComposeResultCancelled:
@@ -260,6 +275,7 @@ int word_count(NSString* s) {
             break;
         case MFMailComposeResultSent:
             NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            message = @"E-mail Sent!";
             break;
         case MFMailComposeResultFailed:
             NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
@@ -269,7 +285,16 @@ int word_count(NSString* s) {
             break;
     }
     // Remove the mail view
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (message) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:message
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
 }
 
 - (void)sendSMS {
@@ -281,8 +306,8 @@ int word_count(NSString* s) {
 //        sms.modalPresentationStyle = UIModalPresentationPageSheet;
         [self presentModalViewController:sms animated:YES];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
-                                                        message:@"Your device doesn't support text messages"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                        message:@"Something went wrong :("
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
