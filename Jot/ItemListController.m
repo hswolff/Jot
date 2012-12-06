@@ -49,6 +49,9 @@
     }
     JotItem *p = [[[JotItemStore defaultStore] allItems] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[p description]];
+    if (indexPath.row == [[JotItemStore defaultStore] currentIndex]) {
+        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }
     return cell;
 }
 
@@ -62,7 +65,7 @@
     
     [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
                             withRowAnimation:UITableViewRowAnimationTop];
-    [self selectRowAtIndexPath:ip];
+    [self selectRowAtIndexPath:ip andAnimateTableViewScrollPosition:YES];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -75,15 +78,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {  
-    [self selectRowAtIndexPath:indexPath];
+    [self selectRowAtIndexPath:indexPath andAnimateTableViewScrollPosition:NO];
 }
 
-- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath andAnimateTableViewScrollPosition:(BOOL)animateTableViewScrollPosition {
     NSArray *items = [[JotItemStore defaultStore] allItems];
     JotItem *selectedItem = [items objectAtIndex:[indexPath row]];
     [[JotItemStore defaultStore] setCurrentItem:indexPath.row];
     [(ItemViewController *)self.viewDeckController.centerController setItem:selectedItem];
     [self.viewDeckController closeLeftViewAnimated:YES];
+    
+    [self.tableView selectRowAtIndexPath:indexPath
+                                animated:YES
+                          scrollPosition:(animateTableViewScrollPosition? UITableViewScrollPositionTop : UITableViewScrollPositionNone)];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

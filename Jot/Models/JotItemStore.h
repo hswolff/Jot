@@ -39,4 +39,6 @@
 - (void)setCurrentItem:(NSInteger)i;
 
 - (JotItem *)getCurrentItem;
+
+- (NSInteger)currentIndex;
 @end

@@ -168,6 +168,10 @@
     [p setOrderingValue:newOrderValue];
 }
 
+- (NSInteger)currentIndex {
+    return currentIndex;
+}
+
 - (void)setCurrentItem:(NSInteger)i {
     currentIndex = i;
 }
