@@ -62,6 +62,7 @@
     
     [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
                             withRowAnimation:UITableViewRowAnimationTop];
+    [self selectRowAtIndexPath:ip];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -74,6 +75,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {  
+    [self selectRowAtIndexPath:indexPath];
+}
+
+- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *items = [[JotItemStore defaultStore] allItems];
     JotItem *selectedItem = [items objectAtIndex:[indexPath row]];
     [[JotItemStore defaultStore] setCurrentItem:indexPath.row];
