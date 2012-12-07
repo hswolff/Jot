@@ -213,7 +213,7 @@ int word_count(NSString* s) {
     }
 
     if ([currentItem.shared count] > 0) {
-        if ([actionText isEqualToString:@"Facebook"]) {
+        if ([actionText isEqualToString:@"Post to Facebook"]) {
             NSLog(@"currentItem.shared: %@",currentItem.shared);
             for (NSString *share in currentItem.shared) {
                 if ([share isEqualToString:@"Facebook"]) {
@@ -221,7 +221,7 @@ int word_count(NSString* s) {
                     break;
                 }
             }
-        } else if ([actionText isEqualToString:@"Twitter"]) {
+        } else if ([actionText isEqualToString:@"Post to Twitter"]) {
             for (NSString *share in currentItem.shared) {
                 if ([share isEqualToString:@"Twitter"]) {
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
