@@ -73,7 +73,9 @@
     if (editing) {
         [self.viewDeckController setLeftSize:0];
     } else {
-        [self.viewDeckController setLeftSize:LEFT_LEDGE_SIZE];
+        [self.viewDeckController setLeftSize:LEFT_LEDGE_SIZE completion:^(BOOL finished){
+            [self.tableView reloadData];
+        }];
     }
 }
 
