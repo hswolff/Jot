@@ -82,7 +82,14 @@ int word_count(NSString* s) {
     self.navigationItem.rightBarButtonItem = settingsButton;
     
     self.view.backgroundColor = [UIColor whiteColor];
-    menuItems = [[NSArray alloc] initWithObjects:@"Word Count", @"E-mail", @"SMS", @"Copy to Clipboard", @"Facebook", @"Twitter", nil];
+    menuItems = [[NSArray alloc] initWithObjects:
+                 @"Word Count",
+                 @"E-mail",
+                 @"SMS",
+                 @"Copy to Clipboard",
+                 @"Post to Facebook",
+                 @"Post to Twitter",
+                 nil];
 }
 
 #pragma mark -
@@ -95,14 +102,31 @@ int word_count(NSString* s) {
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
     if (self.tableView.indexPathForSelectedRow) {
+        NSIndexPath *ip = self.tableView.indexPathForSelectedRow;
+
+        // Row 4 is Facebook, do facebook action if clicked OK
+        if (ip.row == 4 && buttonIndex == 1) {
+            [self postToFacebook];
+            return;
+        }
+        
+        // Row 5 is Twitter, do Twitter action if clicked OK
+        if (ip.row == 5 && buttonIndex == 1) {
+            [self tweet];
+            return;
+        }
+
         [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
     }
-
-    if ([alertView.message rangeOfString:@"Twitter"].location != NSNotFound) {
+    
+    if (twitterActivityIndicator.isAnimating &&
+        [alertView.message rangeOfString:@"Twitter"].location != NSNotFound) {
         [twitterActivityIndicator stopAnimating];
     }
-    if ([alertView.message rangeOfString:@"Facebook"].location != NSNotFound) {
+    if (facebookActivityIndicator.isAnimating &&
+        [alertView.message rangeOfString:@"Facebook"].location != NSNotFound) {
         [facebookActivityIndicator stopAnimating];
     }
     
@@ -110,6 +134,41 @@ int word_count(NSString* s) {
         [twitterActivityIndicator stopAnimating];
         [facebookActivityIndicator stopAnimating];
     }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    NSString *message;
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            message = @"E-mail Sent!";
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    // Remove the mail view
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (message) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:message
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
@@ -179,6 +238,9 @@ int word_count(NSString* s) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIAlertView *alert = nil;
+    
     switch (indexPath.row) {
         case 0:
             [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -195,22 +257,44 @@ int word_count(NSString* s) {
             if (item) {
                 [pb setString:[item text]];
             }
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Copied!"
+            alert = [[UIAlertView alloc] initWithTitle:@"Copied!"
                                                             message:nil
                                                             delegate:self
                                                     cancelButtonTitle:@"OK"
                                                     otherButtonTitles:nil];
-            [alert show];
         }
             break;
         case 4: {
-            [self postToFacebook];
+            if ([facebookActivityIndicator isAnimating] ||
+                [self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
+                [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+                break;
+            }
+            alert = [[UIAlertView alloc] initWithTitle:@"Post to Facebook?"
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Post", nil];
         }
             break;
-        case 5:
-            [self tweet];
+        case 5: {
+            if ([twitterActivityIndicator isAnimating] ||
+                [self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
+                [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+                break;
+            }
+            alert = [[UIAlertView alloc] initWithTitle:@"Post to Twitter?"
+                                               message:nil
+                                              delegate:self
+                                     cancelButtonTitle:@"Cancel"
+                                     otherButtonTitles:@"Post", nil];
+        }
         default:
             break;
+    }
+    
+    if (alert) {
+        [alert show];
     }
 //    NSLog(@"Current Item: %@", [[[JotItemStore defaultStore] getCurrentItem] text]);
 }
@@ -262,41 +346,6 @@ int word_count(NSString* s) {
     }
 }
 
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
-{
-    NSString *message;
-    switch (result)
-    {
-        case MFMailComposeResultCancelled:
-            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
-            break;
-        case MFMailComposeResultSaved:
-            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
-            break;
-        case MFMailComposeResultSent:
-            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
-            message = @"E-mail Sent!";
-            break;
-        case MFMailComposeResultFailed:
-            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
-            break;
-        default:
-            NSLog(@"Mail not sent.");
-            break;
-    }
-    // Remove the mail view
-    [self dismissViewControllerAnimated:YES completion:^{
-        if (message) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:message
-                                                            message:nil
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        }
-    }];
-}
-
 - (void)sendSMS {
     if ([MFMessageComposeViewController canSendText]) {
         JotItem *item = [[JotItemStore defaultStore] getCurrentItem];
@@ -316,12 +365,8 @@ int word_count(NSString* s) {
 }
 
 - (void) tweet {
-    UITableViewCell *cell = [self getCellByName:@"Twitter"];
+    UITableViewCell *cell = [self getCellByName:@"Post to Twitter"];
     [cell setSelected:NO animated:NO];
-    
-    if ([twitterActivityIndicator isAnimating] || cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-        return;
-    }
     
     twitterActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
@@ -371,7 +416,7 @@ int word_count(NSString* s) {
                         //                                                              cancelButtonTitle:@"OK"
                         //                                                              otherButtonTitles:nil];
                         //                    [alertView show];
-                        [self completePost:@"Twitter"];
+                        [self completePost:@"Post to Twitter"];
                     }];
                 } else {
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -380,10 +425,18 @@ int word_count(NSString* s) {
                 }
             }
         } else {
-//            NSLog(@"no success: %@", error);
+            NSLog(@"no success: %@", error);
+            NSString *errorMessage = nil;
+            if ([error code] == 6) {
+                errorMessage = @"Account not found. Please setup your account in Settings.";
+            } else if ([error code] == 7) {
+                errorMessage = @"Account access denied.";
+            } else {
+                errorMessage = @"Something went wrong.";
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Something went wrong!"
-                                                                message:@"Could not connect to Twitter."
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Could not connect to Twitter"
+                                                                message:errorMessage
                                                                delegate:self
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
@@ -402,10 +455,10 @@ int word_count(NSString* s) {
     
     UITableViewCell *cell = [self getCellByName:name];
     
-    if ([name isEqualToString:@"Facebook"]) {
+    if ([name isEqualToString:@"Post to Facebook"]) {
         [facebookActivityIndicator stopAnimating];
         [[[[JotItemStore defaultStore] getCurrentItem] shared] addObject:@"Facebook"];
-    } else if ([name isEqualToString:@"Twitter"]) {
+    } else if ([name isEqualToString:@"Post to Twitter"]) {
         [twitterActivityIndicator stopAnimating];
         [[[[JotItemStore defaultStore] getCurrentItem] shared] addObject:@"Twitter"];
     }
@@ -418,10 +471,6 @@ int word_count(NSString* s) {
 - (void)postToFacebook {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.tableView.indexPathForSelectedRow];
     [cell setSelected:NO animated:NO];
- 
-    if ([facebookActivityIndicator isAnimating] || cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-        return;
-    }
     
     facebookActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
@@ -455,7 +504,7 @@ int word_count(NSString* s) {
         [FBRequestConnection startForPostStatusUpdate:message
                                     completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                                         //                                                [self showAlert:message result:result error:error];
-                                        [self completePost:@"Facebook"];
+                                        [self completePost:@"Post to Facebook"];
                                     }];
     }];
 }
