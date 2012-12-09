@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class JotItem;
+
 @interface ItemListController : UITableViewController
+
+- (void)selectJot:(JotItem *)jot;
 
 @end

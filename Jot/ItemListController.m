@@ -54,17 +54,20 @@
     return cell;
 }
 
-
-- (void)addNewItem:(id)sender {
-    JotItem *newItem = [[JotItemStore defaultStore] createItem];
-    
-    int lastRow = [[[JotItemStore defaultStore] allItems] indexOfObject:newItem];
+- (void)selectJot:(JotItem *)jot {
+    int lastRow = [[[JotItemStore defaultStore] allItems] indexOfObject:jot];
     
     NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
     
     [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
                             withRowAnimation:UITableViewRowAnimationTop];
     [self selectRowAtIndexPath:ip andAnimateTableViewScrollPosition:YES];
+}
+
+
+- (void)addNewItem:(id)sender {
+    JotItem *newItem = [[JotItemStore defaultStore] createItem];
+    [self selectJot:newItem];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
