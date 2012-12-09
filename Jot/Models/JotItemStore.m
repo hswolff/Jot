@@ -165,6 +165,7 @@
     double newOrderValue = (lowerBound + upperBound) / 2.0;
     
     NSLog(@"moving to order %f", newOrderValue);
+    currentIndex = to;
     [p setOrderingValue:newOrderValue];
 }
 
