@@ -57,13 +57,13 @@
     [super viewDidLoad];
     
     self.centered = YES;
-//    [self.jotTextView addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
-//        if (_jotTextView.editable) {
-//            CGRect newFrame = _jotTextView.frame;
-//            newFrame.size.height = keyboardFrameInView.origin.y - _jotTextView.contentOffset.y;
-//            _jotTextView.frame = newFrame;
-//        }
-//    }];
+    [self.jotTextView addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+        if (_jotTextView.editable) {
+            CGRect newFrame = _jotTextView.frame;
+            newFrame.size.height = keyboardFrameInView.origin.y - _jotTextView.contentOffset.y;
+            _jotTextView.frame = newFrame;
+        }
+    }];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changeGesture:)];
     [self.jotTextView addGestureRecognizer:panGesture];
