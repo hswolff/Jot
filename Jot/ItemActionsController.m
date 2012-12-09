@@ -11,8 +11,11 @@
 #import "JotItemStore.h"
 #import "JotItem.h"
 #import "IIViewDeckController.h"
-
 #import "SettingsController.h"
+
+
+static int const FACEBOOK_INDEX = 5;
+static int const TWITTER_INDEX = 6;
 
 
 int word_count(NSString* s) {
@@ -83,7 +86,8 @@ int word_count(NSString* s) {
     
     self.view.backgroundColor = [UIColor whiteColor];
     menuItems = [[NSArray alloc] initWithObjects:
-                 @"Word Count",
+                 @"Character Count:",
+                 @"Word Count:",
                  @"E-mail",
                  @"SMS",
                  @"Copy to Clipboard",
@@ -106,14 +110,14 @@ int word_count(NSString* s) {
     if (self.tableView.indexPathForSelectedRow) {
         NSIndexPath *ip = self.tableView.indexPathForSelectedRow;
 
-        // Row 4 is Facebook, do facebook action if clicked OK
-        if (ip.row == 4 && buttonIndex == 1) {
+        // Row is Facebook, do facebook action if clicked OK
+        if (ip.row == FACEBOOK_INDEX && buttonIndex == 1) {
             [self postToFacebook];
             return;
         }
         
-        // Row 5 is Twitter, do Twitter action if clicked OK
-        if (ip.row == 5 && buttonIndex == 1) {
+        // Row is Twitter, do Twitter action if clicked OK
+        if (ip.row == TWITTER_INDEX && buttonIndex == 1) {
             [self tweet];
             return;
         }
@@ -203,16 +207,26 @@ int word_count(NSString* s) {
     if (!cell) {
         cell = [[TestCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
-        cell.textLabel.font = [UIFont fontWithName:@"Palatino" size:20.0];
     }
     NSString *actionText = [menuItems objectAtIndex:indexPath.row];
     JotItem *currentItem = [[JotItemStore defaultStore] getCurrentItem];
+    
     if (indexPath.row == 0) {
+//        actionText = [actionText stringByAppendingFormat:@":  %i", currentItem.text.length];
+        
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+        lbl.text = [NSString stringWithFormat:@"%i", currentItem.text.length];
+        lbl.font = cell.textLabel.font;
+        cell.accessoryView = lbl;
+    } else if (indexPath.row == 1) {
         int count = word_count(currentItem.text);
-        actionText = [actionText stringByAppendingFormat:@":  %i", count];
-    }
-
-    if ([currentItem.shared count] > 0) {
+//        actionText = [actionText stringByAppendingFormat:@":  %i", count];
+        
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+        lbl.text = [NSString stringWithFormat:@"%i", count];
+        lbl.font = cell.textLabel.font;
+        cell.accessoryView = lbl;
+    } else if ([currentItem.shared count] > 0) {
         if ([actionText isEqualToString:@"Post to Facebook"]) {
             NSLog(@"currentItem.shared: %@",currentItem.shared);
             for (NSString *share in currentItem.shared) {
@@ -243,15 +257,16 @@ int word_count(NSString* s) {
     
     switch (indexPath.row) {
         case 0:
+        case 1:
             [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
             break;
-        case 1:
+        case 2:
             [self sendEmail];
             break;
-        case 2:
+        case 3:
             [self sendSMS];
             break;
-        case 3: {
+        case 4: {
             UIPasteboard *pb = [UIPasteboard generalPasteboard];
             JotItem *item = [[JotItemStore defaultStore] getCurrentItem];
             if (item) {
@@ -264,9 +279,10 @@ int word_count(NSString* s) {
                                                     otherButtonTitles:nil];
         }
             break;
-        case 4: {
+        case FACEBOOK_INDEX: {
             if ([facebookActivityIndicator isAnimating] ||
-                [self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
+                [self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark)
+            {
                 [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
                 break;
             }
@@ -277,9 +293,10 @@ int word_count(NSString* s) {
                                                   otherButtonTitles:@"Post", nil];
         }
             break;
-        case 5: {
+        case TWITTER_INDEX: {
             if ([twitterActivityIndicator isAnimating] ||
-                [self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
+                [self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark)
+            {
                 [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
                 break;
             }
