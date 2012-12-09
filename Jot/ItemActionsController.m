@@ -212,20 +212,20 @@ int word_count(NSString* s) {
     JotItem *currentItem = [[JotItemStore defaultStore] getCurrentItem];
     
     if (indexPath.row == 0) {
-//        actionText = [actionText stringByAppendingFormat:@":  %i", currentItem.text.length];
+        actionText = [actionText stringByAppendingFormat:@" %i", currentItem.text.length];
         
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-        lbl.text = [NSString stringWithFormat:@"%i", currentItem.text.length];
-        lbl.font = cell.textLabel.font;
-        cell.accessoryView = lbl;
+//        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 20)];
+//        lbl.text = [NSString stringWithFormat:@"%i", currentItem.text.length];
+//        lbl.font = cell.textLabel.font;
+//        cell.accessoryView = lbl;
     } else if (indexPath.row == 1) {
         int count = word_count(currentItem.text);
-//        actionText = [actionText stringByAppendingFormat:@":  %i", count];
+        actionText = [actionText stringByAppendingFormat:@" %i", count];
         
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-        lbl.text = [NSString stringWithFormat:@"%i", count];
-        lbl.font = cell.textLabel.font;
-        cell.accessoryView = lbl;
+//        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 20)];
+//        lbl.text = [NSString stringWithFormat:@"%i", count];
+//        lbl.font = cell.textLabel.font;
+//        cell.accessoryView = lbl;
     } else if ([currentItem.shared count] > 0) {
         if ([actionText isEqualToString:@"Post to Facebook"]) {
             NSLog(@"currentItem.shared: %@",currentItem.shared);
