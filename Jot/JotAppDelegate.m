@@ -43,6 +43,8 @@
     self.deckController.leftSize = LEFT_LEDGE_SIZE;
     self.deckController.rightSize = RIGHT_LEDGE_SIZE;
     
+    [self showJotWelcomeMessageIfNeed];
+    
     self.window.rootViewController = self.deckController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -142,6 +144,43 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [FBSession.activeSession handleDidBecomeActive];
+}
+
+- (void)showJotWelcomeMessageIfNeed {
+    static NSString *welcomeMessageKey = @"welcomeMessageVersionShown";
+    NSString *appVersionNumber = [self appVersionNumberDisplayString];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    if (![appVersionNumber isEqualToString:[ud stringForKey:welcomeMessageKey]]) {
+        JotItem *jot = [[JotItemStore defaultStore] createItemWithText:[self newVersionText]];
+        [((ItemListController *)self.leftController.topViewController) selectJot:jot];
+        [ud setValue:appVersionNumber forKey:welcomeMessageKey];
+    }
+}
+
+- (NSString *)appVersionNumberDisplayString {
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
+    
+    return [NSString stringWithFormat:@"%@ (%@)", majorVersion, minorVersion];
+}
+
+- (NSString *)newVersionText {
+    return @"Welcome to Jot!\n\
+\n\
+Let me show you around:\n\
+\n\
+Here is where you read and write your Jot.\n\
+\n\
+Swipe down on the keyboard to hide it.\n\
+\n\
+Swipe to the right to see your list of Jots.\n\
+\n\
+Swipe to the left to see actions you can perform on your Jot.\n\
+\n\
+And that's it!\n\
+\n\
+Thank you for using Jot. :)";
 }
 
 @end
