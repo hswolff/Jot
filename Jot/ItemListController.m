@@ -59,15 +59,18 @@
     
     NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
     
-    [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
-                            withRowAnimation:UITableViewRowAnimationTop];
     [self selectRowAtIndexPath:ip andAnimateTableViewScrollPosition:YES];
 }
 
 
 - (void)addNewItem:(id)sender {
     JotItem *newItem = [[JotItemStore defaultStore] createItem];
-    [self selectJot:newItem];
+    int lastRow = [[[JotItemStore defaultStore] allItems] indexOfObject:newItem];
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    
+    [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
+                            withRowAnimation:UITableViewRowAnimationTop];
+    [self selectRowAtIndexPath:ip andAnimateTableViewScrollPosition:YES];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -108,8 +111,8 @@
         // We also remove that row from the table view with an animation
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];
-//        [[JotItemStore defaultStore] setCurrentItem:nil];
-        [(ItemViewController *)self.viewDeckController.centerController setItem:nil];
+
+        [self selectJot:[items objectAtIndex:[ps currentIndex]]];
     }
 }
 

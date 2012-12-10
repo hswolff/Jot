@@ -97,6 +97,12 @@
 
 - (void)removeItem:(JotItem *)item {
     [context deleteObject:item];
+    int indexOfJot = [allItems indexOfObject:item];
+    if (currentIndex == indexOfJot) {
+        currentIndex = 0;
+    } else if (indexOfJot < currentIndex) {
+        currentIndex -= 1;
+    }
     [allItems removeObjectIdenticalTo:item];
 }
 
