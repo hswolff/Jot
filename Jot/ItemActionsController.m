@@ -146,20 +146,20 @@ int word_count(NSString* s) {
     switch (result)
     {
         case MFMailComposeResultCancelled:
-            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+//            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
             break;
         case MFMailComposeResultSaved:
-            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+//            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
             break;
         case MFMailComposeResultSent:
-            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+//            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
             message = @"E-mail Sent!";
             break;
         case MFMailComposeResultFailed:
-            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+//            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
             break;
         default:
-            NSLog(@"Mail not sent.");
+//            NSLog(@"Mail not sent.");
             break;
     }
     // Remove the mail view
@@ -228,7 +228,7 @@ int word_count(NSString* s) {
 //        cell.accessoryView = lbl;
     } else if ([currentItem.shared count] > 0) {
         if ([actionText isEqualToString:@"Post to Facebook"]) {
-            NSLog(@"currentItem.shared: %@",currentItem.shared);
+//            NSLog(@"currentItem.shared: %@",currentItem.shared);
             for (NSString *share in currentItem.shared) {
                 if ([share isEqualToString:@"Facebook"]) {
                      cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -442,7 +442,7 @@ int word_count(NSString* s) {
                 }
             }
         } else {
-            NSLog(@"no success: %@", error);
+//            NSLog(@"no success: %@", error);
             NSString *errorMessage = nil;
             if ([error code] == 6) {
                 errorMessage = @"Account not found. Please setup your account in Settings.";
@@ -497,7 +497,7 @@ int word_count(NSString* s) {
 //    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(completePost:) userInfo:nil repeats:NO];
 //    return;
     
-    NSLog(@"FBSession isOpen? %@", FBSession.activeSession.isOpen?@"YES":@"NO");
+//    NSLog(@"FBSession isOpen? %@", FBSession.activeSession.isOpen?@"YES":@"NO");
     
     if (FBSession.activeSession.isOpen) {
         [self postFacebookStatus];
@@ -576,19 +576,19 @@ int word_count(NSString* s) {
     switch (state) {
         case FBSessionStateOpen:
         case FBSessionStateOpenTokenExtended: {
-            NSLog(@"FBSessionStateOpen");
+//            NSLog(@"FBSessionStateOpen");
             [self postFacebookStatus];
         }
             break;
         case FBSessionStateClosed:
         case FBSessionStateClosedLoginFailed: {
-            NSLog(@"FBSessionStateClosedLoginFailed");
+//            NSLog(@"FBSessionStateClosedLoginFailed");
             [facebookActivityIndicator stopAnimating];
             errorMessage = @"Failed to login to Facebook";
         }
             break;
         default:
-            NSLog(@"Default");
+//            NSLog(@"Default");
             break;
     }
     

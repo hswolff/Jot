@@ -79,7 +79,7 @@
         order = [[allItems lastObject] orderingValue] + 1.0;
     }
     
-    NSLog(@"Adding after %d items, order = %.2f", [allItems count], order);
+//    NSLog(@"Adding after %d items, order = %.2f", [allItems count], order);
 
 
     JotItem *p = [NSEntityDescription insertNewObjectForEntityForName:@"JotItem" inManagedObjectContext:context];
@@ -110,7 +110,7 @@
     NSError *err = nil;
     BOOL successful = [context save:&err];
     if (!successful) {
-        NSLog(@"Error saving: %@", [err localizedDescription]);
+//        NSLog(@"Error saving: %@", [err localizedDescription]);
     }
     return successful;
 }
@@ -170,7 +170,7 @@
     
     double newOrderValue = (lowerBound + upperBound) / 2.0;
     
-    NSLog(@"moving to order %f", newOrderValue);
+//    NSLog(@"moving to order %f", newOrderValue);
     currentIndex = to;
     [p setOrderingValue:newOrderValue];
 }
