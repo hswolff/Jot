@@ -1,0 +1,44 @@
+@import url('bootstrap.css');
+
+.container {
+	max-width: 800px;
+	&.focus {
+		margin-top: 50px;
+	}
+}
+
+h1 {
+	$font-size: 96px;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	font-size: $font-size;
+	font-weight: bold;
+	line-height: $font-size;
+	margin-top: 0;
+}
+
+
+.header {
+	p {
+		$size: 24px;
+		font-size: $size;
+		line-height: $size;
+		margin-bottom: 25px;
+	}
+
+	.content .title {
+		margin-bottom: 25px
+	}
+
+	.download-link {
+		text-align: right;
+	}
+}
+
+
+.body-wrapper {
+	margin-top: 10px;
+	padding-top: 10px;
+	background: url('../images/gray_jean.png') repeat;
+	border-top: 1px solid #ccc;
+	padding-bottom: 50px;
+}
