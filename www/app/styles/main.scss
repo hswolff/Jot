@@ -2,9 +2,10 @@
 
 .container {
 	max-width: 800px;
-	&.focus {
-		margin-top: 50px;
-	}
+}
+
+.header-container {
+	margin-top: 50px;
 }
 
 h1 {
@@ -16,8 +17,29 @@ h1 {
 	margin-top: 0;
 }
 
+.jot-icon {
+	// border-radius: 8px;
+	// border: 1px solid #000;
+	// margin-top: -10px;
+	position: absolute;
+	right: -25px;
+	bottom: -10px;
+	width: 200px;
+}
+
+.social-icons {
+	margin-top: 30px;
+	&, & .fb-like {
+		z-index: 10;
+	}
+	.twitter-share-button {
+		margin-top: 30px;
+	}
+}
+
 
 .header {
+	position: relative;
 	p {
 		$size: 24px;
 		font-size: $size;
@@ -25,12 +47,12 @@ h1 {
 		margin-bottom: 45px;
 	}
 
-	.content .title {
+	.header-content .title-container {
 		margin-bottom: 45px
 	}
 
 	.download-link {
-		text-align: right;
+		// text-align: right;
 	}
 }
 
@@ -41,4 +63,38 @@ h1 {
 	background: url('../images/gray_jean.png') repeat;
 	border-top: 1px solid #ccc;
 	padding-bottom: 50px;
+}
+
+
+.reasons {
+	h3 {
+		padding-left: 47px;
+		background-repeat: no-repeat;
+		background-position: 0 4px;
+		margin-top: 45px;
+		&:first-child {
+			margin-top: 10px;
+		}
+	}
+	.ready-to-go {
+		background-image: url('../images/icons/star.png')
+	}
+	.fast-gestures {
+		background-image: url('../images/icons/clock.png')
+	}
+	.act-on-your-jots {
+		background-image: url('../images/icons/outgoing.png')
+	}
+	ul li {
+		margin-bottom: 5px;
+	}
+}
+
+.release {
+	p {
+		font-weight: bold;
+	}
+	ul {
+		list-style-type: square;
+	}
 }
