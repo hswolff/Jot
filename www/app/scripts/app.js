@@ -1,3 +1,7 @@
 define([], function() {
-  return 'Hello from Yeoman!';
+
+	$('.carousel').carousel({
+	  interval: 3500
+	});
+
 });
