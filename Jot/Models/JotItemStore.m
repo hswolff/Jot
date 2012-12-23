@@ -98,12 +98,16 @@
 - (void)removeItem:(JotItem *)item {
     [context deleteObject:item];
     int indexOfJot = [allItems indexOfObject:item];
-    if (currentIndex == indexOfJot) {
+    [allItems removeObjectIdenticalTo:item];
+    
+    if (![allItems count]) {
+        currentIndex = -1;
+    } else if (currentIndex == indexOfJot) {
         currentIndex = 0;
     } else if (indexOfJot < currentIndex) {
         currentIndex -= 1;
     }
-    [allItems removeObjectIdenticalTo:item];
+
 }
 
 - (BOOL)saveChanges {

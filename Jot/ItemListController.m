@@ -111,8 +111,14 @@
         // We also remove that row from the table view with an animation
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];
-
-        [self selectJot:[items objectAtIndex:[ps currentIndex]]];
+        
+        int currentIndex = [ps currentIndex];
+        if (currentIndex >= 0) {
+            [self selectJot:[items objectAtIndex:currentIndex]];
+        } else {
+            [self addNewItem:nil];
+        }
+    
     }
 }
 
