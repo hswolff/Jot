@@ -100,24 +100,28 @@
                           scrollPosition:(animateTableViewScrollPosition? UITableViewScrollPositionTop : UITableViewScrollPositionNone)];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     // If the table view is asking to commit a delete command...
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        JotItemStore *ps = [JotItemStore defaultStore];
-        NSArray *items = [ps allItems];
+        JotItemStore *itemStore = [JotItemStore defaultStore];
+        NSArray *items = [itemStore allItems];
         JotItem *p = [items objectAtIndex:[indexPath row]];
-        [ps removeItem:p];
+        [itemStore removeItem:p];
         
         // We also remove that row from the table view with an animation
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];
         
-        int currentIndex = [ps currentIndex];
+        int currentIndex = [itemStore currentIndex];
         if (currentIndex >= 0) {
             [self selectJot:[items objectAtIndex:currentIndex]];
         } else {
             [self addNewItem:nil];
         }
+        
     
     }
 }
