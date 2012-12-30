@@ -103,9 +103,13 @@
     if (![allItems count]) {
         // if there are no jots left in the store
         currentIndex = -1;
-    } else if (indexOfDeletedJot <= currentIndex) {
+    } else if (indexOfDeletedJot == 0) {
         // if you're deleting the jot that is currently selected
-        // or if it is before the currently selected jot
+        // and it's at the top of the list
+        // don't set index to less than 0
+        currentIndex = 0;
+    } else if (indexOfDeletedJot <= currentIndex) {
+        // if you're deleting the jot that is before the currently selected jot
         currentIndex -= 1;
     }
 
