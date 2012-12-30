@@ -16,9 +16,9 @@
     
     NSManagedObjectContext *context;
     NSManagedObjectModel *model;
-    
-    NSInteger currentIndex;
 }
+
+@property (nonatomic) NSInteger currentIndex;
 
 + (JotItemStore *) defaultStore;
 
@@ -36,9 +36,5 @@
 - (void)moveItemAtIndex:(int)from
                 toIndex:(int)to;
 
-- (void)setCurrentItem:(NSInteger)i;
-
 - (JotItem *)getCurrentItem;
-
-- (NSInteger)currentIndex;
 @end

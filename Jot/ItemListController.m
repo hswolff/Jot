@@ -88,10 +88,11 @@
     [self selectRowAtIndexPath:indexPath andAnimateTableViewScrollPosition:NO];
 }
 
-- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath andAnimateTableViewScrollPosition:(BOOL)animateTableViewScrollPosition {
+- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath andAnimateTableViewScrollPosition:(BOOL)animateTableViewScrollPosition
+{
     NSArray *items = [[JotItemStore defaultStore] allItems];
     JotItem *selectedItem = [items objectAtIndex:[indexPath row]];
-    [[JotItemStore defaultStore] setCurrentItem:indexPath.row];
+    [[JotItemStore defaultStore] setCurrentIndex:indexPath.row];
     [(ItemViewController *)self.viewDeckController.centerController setItem:selectedItem];
     [self.viewDeckController closeLeftViewAnimated:YES];
     

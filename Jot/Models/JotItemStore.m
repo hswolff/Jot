@@ -102,15 +102,15 @@
     
     if (![allItems count]) {
         // if there are no jots left in the store
-        currentIndex = -1;
+        self.currentIndex = -1;
     } else if (indexOfDeletedJot == 0) {
         // if you're deleting the jot that is currently selected
         // and it's at the top of the list
         // don't set index to less than 0
-        currentIndex = 0;
-    } else if (indexOfDeletedJot <= currentIndex) {
+        self.currentIndex = 0;
+    } else if (indexOfDeletedJot <= self.currentIndex) {
         // if you're deleting the jot that is before the currently selected jot
-        currentIndex -= 1;
+        self.currentIndex -= 1;
     }
 
 }
@@ -180,21 +180,13 @@
     double newOrderValue = (lowerBound + upperBound) / 2.0;
     
 //    NSLog(@"moving to order %f", newOrderValue);
-    currentIndex = to;
+    self.currentIndex = to;
     [p setOrderingValue:newOrderValue];
-}
-
-- (NSInteger)currentIndex {
-    return currentIndex;
-}
-
-- (void)setCurrentItem:(NSInteger)i {
-    currentIndex = i;
 }
 
 - (JotItem *)getCurrentItem {
     if ([allItems count] > 0) {
-        return [allItems objectAtIndex:currentIndex];
+        return [allItems objectAtIndex:self.currentIndex];
     } else {
         return nil;
     }

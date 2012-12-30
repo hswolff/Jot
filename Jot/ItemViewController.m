@@ -94,7 +94,7 @@
 - (void)textViewDidChange:(UITextView *)textView {
     if (!self.item) {
         JotItem *newItem = [[JotItemStore defaultStore] createItemWithText:textView.text];
-        [[JotItemStore defaultStore] setCurrentItem:0];
+        [[JotItemStore defaultStore] setCurrentIndex:0];
         self.item = newItem;
     }
     self.item.text = textView.text;
