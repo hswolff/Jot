@@ -95,16 +95,17 @@
     return item;
 }
 
-- (void)removeItem:(JotItem *)item {
-    [context deleteObject:item];
-    int indexOfJot = [allItems indexOfObject:item];
-    [allItems removeObjectIdenticalTo:item];
+- (void)removeItem:(JotItem *)jotToDelete {
+    [context deleteObject:jotToDelete];
+    int indexOfDeletedJot = [allItems indexOfObject:jotToDelete];
+    [allItems removeObjectIdenticalTo:jotToDelete];
     
     if (![allItems count]) {
+        // if there are no jots left in the store
         currentIndex = -1;
-    } else if (currentIndex == indexOfJot) {
-        currentIndex = 0;
-    } else if (indexOfJot < currentIndex) {
+    } else if (indexOfDeletedJot <= currentIndex) {
+        // if you're deleting the jot that is currently selected
+        // or if it is before the currently selected jot
         currentIndex -= 1;
     }
 
