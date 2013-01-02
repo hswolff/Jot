@@ -8,6 +8,8 @@
 
 #import "JotItem.h"
 
+#define DESCRIPTION_TRUNCATION_LENGTH 50
+
 
 @implementation JotItem
 
@@ -40,7 +42,11 @@
 
 - (NSString *) description {
     if (self.text && [self.text length] >= 1) {
-        return self.text;
+        NSString *description = [self.text substringToIndex:MIN([self.text length], DESCRIPTION_TRUNCATION_LENGTH)];
+        if ([self.text length] > DESCRIPTION_TRUNCATION_LENGTH) {
+            description = [description stringByAppendingString:@"..."];
+        }
+        return description;
     } else {
         return [self formattedDateCreated];
     }
