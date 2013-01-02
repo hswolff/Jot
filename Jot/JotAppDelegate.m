@@ -151,8 +151,7 @@
     NSString *appVersionNumber = [self appVersionNumberDisplayString];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     if (![appVersionNumber isEqualToString:[ud stringForKey:welcomeMessageKey]]) {
-        JotItem *jot = [[JotItemStore defaultStore] createItemWithText:[self newVersionText]];
-        [((ItemListController *)self.leftController.topViewController) selectJot:jot andOpen:YES];
+        [((ItemListController *)self.leftController.topViewController) showHowToUseInstructions];
         [ud setValue:appVersionNumber forKey:welcomeMessageKey];
     }
 }
@@ -165,22 +164,6 @@
     return [NSString stringWithFormat:@"%@ (%@)", majorVersion, minorVersion];
 }
 
-- (NSString *)newVersionText {
-    return @"Welcome to Jot!\n\
-\n\
-Let me show you around:\n\
-\n\
-Here is where you read and write your Jot.\n\
-\n\
-Swipe down on the keyboard to hide it.\n\
-\n\
-Swipe to the right to see your list of Jots.\n\
-\n\
-Swipe to the left to see actions you can perform on your Jot.\n\
-\n\
-And that's it!\n\
-\n\
-Thank you for using Jot. :)";
-}
+
 
 @end

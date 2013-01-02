@@ -14,4 +14,6 @@
 
 - (void)selectJot:(JotItem *)jot andOpen:(BOOL)open;
 
+- (void)showHowToUseInstructions;
+
 @end
