@@ -152,7 +152,7 @@
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     if (![appVersionNumber isEqualToString:[ud stringForKey:welcomeMessageKey]]) {
         JotItem *jot = [[JotItemStore defaultStore] createItemWithText:[self newVersionText]];
-        [((ItemListController *)self.leftController.topViewController) selectJot:jot];
+        [((ItemListController *)self.leftController.topViewController) openJot:jot];
         [ud setValue:appVersionNumber forKey:welcomeMessageKey];
     }
 }

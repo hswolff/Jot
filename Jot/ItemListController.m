@@ -54,7 +54,7 @@
     return cell;
 }
 
-- (void)selectJot:(JotItem *)jot {
+- (void)openJot:(JotItem *)jot {
     int lastRow = [[[JotItemStore defaultStore] allItems] indexOfObject:jot];
     
     NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
@@ -116,7 +116,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         int currentIndex = [itemStore currentIndex];
         if (currentIndex >= 0) {
-            [self selectJot:[items objectAtIndex:currentIndex]];
+            [self openJot:[items objectAtIndex:currentIndex]];
         } else {
             [self addNewItem:nil];
         }

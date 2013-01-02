@@ -12,6 +12,6 @@
 
 @interface ItemListController : UITableViewController
 
-- (void)selectJot:(JotItem *)jot;
+- (void)openJot:(JotItem *)jot;
 
 @end
