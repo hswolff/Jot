@@ -63,6 +63,8 @@
     
     NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
     
+    [[JotItemStore defaultStore] setCurrentIndex:ip.row];
+    
     [self.tableView selectRowAtIndexPath:ip animated:YES
                           scrollPosition:(open? UITableViewScrollPositionTop: UITableViewScrollPositionNone)];
     
@@ -117,7 +119,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         int currentIndex = [itemStore currentIndex];
         if (currentIndex >= 0) {
-            [self selectJot:p andOpen:NO];
+            [self selectJot:[items objectAtIndex:currentIndex] andOpen:NO];
         }
     }
 }
