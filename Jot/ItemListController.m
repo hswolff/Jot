@@ -76,9 +76,9 @@
     JotItem *newItem = [[JotItemStore defaultStore] createItem];
     int lastRow = [[[JotItemStore defaultStore] allItems] indexOfObject:newItem];
     NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
-    
+
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
-                            withRowAnimation:UITableViewRowAnimationTop];
+                          withRowAnimation:UITableViewRowAnimationTop];
     [self selectJot:newItem andOpen:YES];
 }
 
@@ -118,11 +118,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         int currentIndex = [itemStore currentIndex];
         if (currentIndex >= 0) {
             [self selectJot:p andOpen:NO];
-        } else {
-            [self addNewItem:nil];
         }
-        
-    
     }
 }
 
