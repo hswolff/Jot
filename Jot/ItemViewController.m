@@ -68,7 +68,10 @@
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changeGesture:)];
     [self.jotTextView addGestureRecognizer:panGesture];
     
-    [self setItem:[[JotItemStore defaultStore] getCurrentItem]];
+    JotItemStore *defaultStore = [JotItemStore defaultStore];
+    [self setItem:[defaultStore getCurrentItem]];
+    
+    [defaultStore addObserver:self forKeyPath:@"currentIndex" options:0 context:nil];
 
     // Immediately show keyboard
     [self.jotTextView becomeFirstResponder];
@@ -81,6 +84,19 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+
+    if ([keyPath isEqualToString:@"currentIndex"]) {
+        JotItemStore *defaultStore = (JotItemStore *)object;
+        [self setItem:[defaultStore getCurrentItem]];
+        
+    }
 }
 
 #pragma mark -
