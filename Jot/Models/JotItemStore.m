@@ -178,10 +178,25 @@
     }
     
     double newOrderValue = (lowerBound + upperBound) / 2.0;
-    
-//    NSLog(@"moving to order %f", newOrderValue);
-    self.currentIndex = to;
+
+//    NSLog(@"to: %i", to);
+//    NSLog(@"newOrderValue: %f", newOrderValue);
     [p setOrderingValue:newOrderValue];
+    if (self.currentIndex == from) {
+        // if we're moving the currentIndex item then we have to
+        // update the currentIndex to the to location
+        self.currentIndex = to;
+    } else if (self.currentIndex < from && self.currentIndex >= to) {
+        // if we're moving an item after the currentIndex
+        // to the currentIndex location or before it we have to
+        // increase the currentIndex position by 1
+        self.currentIndex++;
+    } else if (self.currentIndex > from && self.currentIndex <= to) {
+        // if we're moving an item before the currentIndex
+        // to the currentIndex location or after it we have to
+        // decrease the currentIndex position by 1
+        self.currentIndex--;
+    }
 }
 
 - (JotItem *)getCurrentItem {
