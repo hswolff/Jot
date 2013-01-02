@@ -25,7 +25,7 @@
 
 - (id)init {
     self = [super init];
-    if(self) {
+    if (self) {
         // read in Jot.xcdatamodeld
         model = [NSManagedObjectModel mergedModelFromBundles:nil];
         
@@ -54,6 +54,8 @@
         [context setUndoManager:nil];
         
         [self loadAllItems];
+        
+        self.currentIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"currentIndex"];
     }
     return self;
 }
@@ -205,6 +207,11 @@
     } else {
         return nil;
     }
+}
+
+- (void)setCurrentIndex:(NSInteger)currentIndex {
+    _currentIndex = currentIndex;
+    [[NSUserDefaults standardUserDefaults] setInteger:currentIndex forKey:@"currentIndex"];
 }
 
 @end
