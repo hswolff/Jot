@@ -156,6 +156,13 @@ Thank you for using Jot. :)";
 
 - (void)showUpgradeMessageAndOpen:(BOOL)open {
     NSString *upgradeText = @"\
+1.2.0\n\
+------\n\
+Fix crash when you delete the last remaining Jot\n\
+Persist last selected Jot in-between boots\n\
+Smarter handling of currently selected Jot\n\
+When e-mailing a Jot the Subject line truncates the Jot's contents\n\
+\n\
 1.0.0\n\
 ------\n\
 Initial Release!\n\
