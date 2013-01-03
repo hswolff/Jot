@@ -43,7 +43,7 @@
     self.deckController.leftSize = LEFT_LEDGE_SIZE;
     self.deckController.rightSize = RIGHT_LEDGE_SIZE;
     
-    [self showJotWelcomeMessageIfNeed];
+    [self showJotWelcomeMessagesIfNeeded];
     
     self.window.rootViewController = self.deckController;
     self.window.backgroundColor = [UIColor whiteColor];
@@ -146,13 +146,27 @@
     [FBSession.activeSession handleDidBecomeActive];
 }
 
-- (void)showJotWelcomeMessageIfNeed {
-    static NSString *welcomeMessageKey = @"welcomeMessageVersionShown";
-    NSString *appVersionNumber = [self appVersionNumberDisplayString];
+- (void)showJotWelcomeMessagesIfNeeded {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    if (![appVersionNumber isEqualToString:[ud stringForKey:welcomeMessageKey]]) {
+    BOOL openUpgradeMessage = YES;
+    BOOL showHowToUseInstructions = NO;
+    
+    static NSString *instructionsMessageKey = @"instructionsMessageShown";
+    if (![ud boolForKey:instructionsMessageKey]) {
+        showHowToUseInstructions = YES;
+        [ud setBool:YES forKey:instructionsMessageKey];
+        openUpgradeMessage = NO;
+    }
+    
+    static NSString *applicationVersionMessage = @"applicationVersionMessage";
+    NSString *appVersionNumber = [self appVersionNumberDisplayString];
+    if (![appVersionNumber isEqualToString:[ud stringForKey:applicationVersionMessage]]) {
+        [((ItemListController *)self.leftController.topViewController) showUpgradeMessageAndOpen:openUpgradeMessage];
+        [ud setValue:appVersionNumber forKey:applicationVersionMessage];
+    }
+    
+    if (showHowToUseInstructions) {
         [((ItemListController *)self.leftController.topViewController) showHowToUseInstructions];
-        [ud setValue:appVersionNumber forKey:welcomeMessageKey];
     }
 }
 

@@ -133,12 +133,7 @@ moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
 }
 
 - (void)showHowToUseInstructions {
-    JotItem *jot = [[JotItemStore defaultStore] createItemWithText:[self newVersionText]];
-    [self selectJot:jot andOpen:YES];
-}
-
-- (NSString *)newVersionText {
-    return @"Welcome to Jot!\n\
+    NSString *instructionsText = @"Welcome to Jot!\n\
 \n\
 Let me show you around:\n\
 \n\
@@ -153,6 +148,26 @@ Swipe to the left to see actions you can perform on your Jot.\n\
 And that's it!\n\
 \n\
 Thank you for using Jot. :)";
+    JotItem *jot = [[JotItemStore defaultStore] createItemWithText:instructionsText];
+    [self selectJot:jot andOpen:NO];
+}
+
+
+
+- (void)showUpgradeMessageAndOpen:(BOOL)open {
+    NSString *upgradeText = @"\
+1.0.0\n\
+------\n\
+Initial Release!\n\
+Add, remove, re-arrange Jots\n\
+Hide keyboard by swiping down\n\
+Share Jots to Twitter and Facebook\n\
+Make the app go full screen\n\
+Killed all the bugs (I found)\n\
+Did the happy dance";
+
+    JotItem *jot = [[JotItemStore defaultStore] createItemWithText:upgradeText];
+    [self selectJot:jot andOpen:open];
 }
 
 @end

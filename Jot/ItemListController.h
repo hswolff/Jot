@@ -16,4 +16,6 @@
 
 - (void)showHowToUseInstructions;
 
+- (void)showUpgradeMessageAndOpen:(BOOL)open;
+
 @end
