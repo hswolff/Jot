@@ -10,7 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 @interface SettingsController : UITableViewController <UIAlertViewDelegate> {
-    NSArray *settingItems;
+    NSDictionary *settingItems;
 }
 
 @end

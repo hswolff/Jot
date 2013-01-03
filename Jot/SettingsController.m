@@ -26,11 +26,15 @@
 {
     self = [super initWithStyle:style];
     if (self) {
+        NSArray *sections = [[NSArray alloc] initWithObjects:@"General", @"Appearance", nil];
+        
         NSArray *generalOptions = [[NSArray alloc] initWithObjects:@"Full Screen", @"Logout of Facebook", nil];
         
-//        NSArray *styleOptions = [[NSArray alloc] initWithObjects:@"Font Size", @"Font Color", nil];
+        NSArray *appearanceOptions = [[NSArray alloc] initWithObjects:@"Background Color", @"Font", @"Font Size", @"Font Color", nil];
         
-        settingItems = [[NSArray alloc] initWithObjects:generalOptions, nil];
+        NSDictionary *rows = [[NSDictionary alloc] initWithObjectsAndKeys:generalOptions, @"General", appearanceOptions, @"Appearance", nil];
+
+        settingItems = [[NSDictionary alloc] initWithObjectsAndKeys:sections, @"Sections", rows, @"Rows", nil];
 
     }
     return self;
@@ -57,16 +61,22 @@
 
 #pragma mark - Table view data source
 
+- (NSArray *)arrayOfRowsInSection:(NSInteger)section {
+    NSString *sectionName = [[settingItems objectForKey:@"Sections"] objectAtIndex:section];
+    return [[settingItems objectForKey:@"Rows"] objectForKey:sectionName];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return [settingItems count];
+    return [[settingItems objectForKey:@"Sections"] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[settingItems objectAtIndex:section] count];
+    
+    return [[self arrayOfRowsInSection:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,7 +86,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    NSString *text = [[settingItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSString *text = [[self arrayOfRowsInSection:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = text;
     
     if (indexPath.section == 0 && indexPath.row == 0) {
@@ -91,17 +101,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *title = [[NSString alloc] init];
-    switch (section) {
-        case 0:
-            title = @"General";
-            break;
-            
-        default:
-            title = @"Default";
-            break;
-    }
-    return title;
+    return [[settingItems objectForKey:@"Sections"] objectAtIndex:section];
 }
 
 
@@ -109,14 +109,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row) {
-        case 1:
-            [self facebookLogout];
-            break;
-        default:
-            break;
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 1:
+                [self facebookLogout];
+                break;
+            default:
+                break;
+        }
+    } else if (indexPath.section == 1) {
+        
     }
-
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
