@@ -7,6 +7,7 @@
 //
 
 #import "SettingsController.h"
+#import "SettingsAppearanceController.h"
 
 @interface SettingsController ()
 
@@ -118,7 +119,8 @@
                 break;
         }
     } else if (indexPath.section == 1) {
-        
+        UIViewController *appearance = [[SettingsAppearanceController alloc] initWithIndexPath:indexPath];
+        [self.navigationController pushViewController:appearance animated:YES];
     }
 }
 

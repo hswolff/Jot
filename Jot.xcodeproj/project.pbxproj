@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E103CE43169BCE07009EDECD /* SettingsAppearanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = E103CE42169BCE07009EDECD /* SettingsAppearanceController.m */; };
 		E10BF1B4163BA32F0008BA81 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10BF1B1163BA3240008BA81 /* MessageUI.framework */; };
 		E1362B6215AA3B2B0034A2EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1362B6115AA3B2B0034A2EC /* UIKit.framework */; };
 		E1362B6415AA3B2B0034A2EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1362B6315AA3B2B0034A2EC /* Foundation.framework */; };
@@ -40,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E103CE41169BCE07009EDECD /* SettingsAppearanceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAppearanceController.h; sourceTree = "<group>"; };
+		E103CE42169BCE07009EDECD /* SettingsAppearanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAppearanceController.m; sourceTree = "<group>"; };
 		E10BF1B1163BA3240008BA81 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E1362B5D15AA3B2B0034A2EC /* Jot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1362B6115AA3B2B0034A2EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -159,6 +162,8 @@
 				E1BE1DA015F2F56500271A2D /* ItemActionsController.m */,
 				E1F65B02164EC8A100983129 /* SettingsController.h */,
 				E1F65B03164EC8A100983129 /* SettingsController.m */,
+				E103CE41169BCE07009EDECD /* SettingsAppearanceController.h */,
+				E103CE42169BCE07009EDECD /* SettingsAppearanceController.m */,
 			);
 			path = Jot;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				E1BA5978162137EF00653159 /* IIWrapController.m in Sources */,
 				E1F65B04164EC8A100983129 /* SettingsController.m in Sources */,
 				E15B2B7F16752F7E00FFCF00 /* Constants.m in Sources */,
+				E103CE43169BCE07009EDECD /* SettingsAppearanceController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
