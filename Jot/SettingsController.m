@@ -85,7 +85,7 @@
     static NSString *CellIdentifier = @"SettingsCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:(indexPath.section == 0 ? UITableViewCellStyleDefault : UITableViewCellStyleValue1) reuseIdentifier:CellIdentifier];
     }
     NSString *text = [[self arrayOfRowsInSection:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = text;
@@ -95,6 +95,23 @@
         [fullScreenSwitch addTarget:self action:@selector(setFullScreen:) forControlEvents:UIControlEventValueChanged];
         [fullScreenSwitch setOn:[UIApplication sharedApplication].statusBarHidden];
         cell.accessoryView = fullScreenSwitch;
+    } else if (indexPath.section == 1) {
+        NSString *detailTextLabelText;
+        switch (indexPath.row) {
+//            case 0:
+//                detailTextLabelText = [[NSUserDefaults standardUserDefaults] stringForKey:@"fontFamily"];
+//                break;
+            case 1:
+                detailTextLabelText = [[NSUserDefaults standardUserDefaults] stringForKey:@"fontFamily"];
+                break;
+            case 2:
+                detailTextLabelText = [[NSUserDefaults standardUserDefaults] stringForKey:@"fontSize"];
+                break;
+                
+            default:
+                break;
+        }
+        cell.detailTextLabel.text = detailTextLabelText;
     }
     
     
@@ -120,6 +137,8 @@
         }
     } else if (indexPath.section == 1) {
         UIViewController *appearance = [[SettingsAppearanceController alloc] initWithIndexPath:indexPath];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        appearance.navigationItem.title = cell.textLabel.text;
         [self.navigationController pushViewController:appearance animated:YES];
     }
 }

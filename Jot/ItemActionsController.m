@@ -102,6 +102,8 @@ int word_count(NSString* s) {
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if ([viewController isKindOfClass:[self class]] && self.viewDeckController.rightSize != RIGHT_LEDGE_SIZE) {
         [self.viewDeckController setRightSize:RIGHT_LEDGE_SIZE];
+    } else if ([viewController isKindOfClass:[SettingsController class]]) {
+        [((SettingsController *)viewController).tableView reloadData];
     }
 }
 
