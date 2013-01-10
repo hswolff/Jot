@@ -86,7 +86,12 @@
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [newOptions objectAtIndex:indexPath.row]];
     
-    // Configure the cell...
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *currentSetting = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:settingsAppearanceKey]];
+    if ([cell.textLabel.text isEqualToString:currentSetting]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
     
     return cell;
 }
@@ -119,6 +124,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *newPreference = [newOptions objectAtIndex:indexPath.row];
     [userDefaults setObject:newPreference forKey:settingsAppearanceKey];
