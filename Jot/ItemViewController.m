@@ -11,6 +11,7 @@
 #import "IIViewDeckController.h"
 #import "Models/JotItemStore.h"
 #import "JotItem.h"
+#import "Constants.h"
 
 @implementation UITextView (AllowMultiTouches)
 
@@ -42,13 +43,14 @@
 - (void)loadView {
     CGRect frame = [[UIScreen mainScreen] bounds];
     self.view = [[UIView alloc] initWithFrame:frame];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [Constants backgroundColor];
     
     self.jotTextView = [[UITextView alloc] initWithFrame:frame];
     self.jotTextView.delegate = self;
     self.jotTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.jotTextView.font = [UIFont fontWithName:@"Palatino" size:20.0];
+    self.jotTextView.font = [Constants fontSettings];
     self.jotTextView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
+    self.jotTextView.backgroundColor = [Constants backgroundColor];
     
     [self.view addSubview:self.jotTextView];
 }
@@ -72,6 +74,11 @@
     [self setItem:[defaultStore getCurrentItem]];
     
     [defaultStore addObserver:self forKeyPath:@"currentIndex" options:0 context:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(defaultsChanged:)
+                                              name:NSUserDefaultsDidChangeNotification
+                                              object:nil];
 
     // Immediately show keyboard
     [self.jotTextView becomeFirstResponder];
@@ -97,6 +104,12 @@
         [self setItem:[defaultStore getCurrentItem]];
         
     }
+}
+
+- (void)defaultsChanged:(NSNotification *)notification {
+    self.view.backgroundColor = [Constants backgroundColor];
+    self.jotTextView.backgroundColor = [Constants backgroundColor];
+    self.jotTextView.font = [Constants fontSettings];
 }
 
 #pragma mark -
