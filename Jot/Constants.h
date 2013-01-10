@@ -14,4 +14,6 @@
 
 + (UIFont *)fontSettings;
 
++ (UIColor *)backgroundColor;
+
 @end
