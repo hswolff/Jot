@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsAppearanceController : UITableViewController {
-    NSArray *fonts;
+    NSArray *newOptions;
+    NSString *settingsAppearanceKey;
 }
 
 - (id)initWithIndexPath:(NSIndexPath *)indexPath;

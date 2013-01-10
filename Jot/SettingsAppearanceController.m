@@ -18,9 +18,26 @@
 {
     self = [self initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        NSArray *titles = @[@"Background Color", @"Font", @"Font Size", @"Font Color"];
-        self.navigationItem.title = [titles objectAtIndex:indexPath.row];
-        fonts = [[NSArray alloc] initWithObjects:@"Helvetica", @"Arial", nil];
+        switch (indexPath.row) {
+            case 0:
+                settingsAppearanceKey = @"backgroundColor";
+                newOptions = @[@"Options Uno", @"Option Dos"];
+                break;
+            case 1:
+                settingsAppearanceKey = @"fontFamily";
+                newOptions = [[NSArray alloc] initWithObjects:@"Arial", @"Helvetica", @"Palatino", nil];
+                break;
+            case 2:
+                settingsAppearanceKey = @"fontSize";
+                newOptions = @[@16, @17, @18, @19, @20, @21, @22, @23, @24, @25];
+                break;
+            case 3:
+                settingsAppearanceKey = @"fontColor";
+                newOptions = @[@"Options Uno", @"Option Dos"];
+                break;
+            default:
+                break;
+        }
     }
     return self;
 }
@@ -57,7 +74,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [fonts count];
+    return [newOptions count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,7 +84,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = [fonts objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [newOptions objectAtIndex:indexPath.row]];
     
     // Configure the cell...
     
@@ -103,24 +120,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    switch (indexPath.row) {
-        case 0:
-            [userDefaults setObject:@"gray" forKey:@"backgroundColor"];
-            break;
-        case 1:
-            [userDefaults setObject:@"white" forKey:@"backgroundColor"];
-            break;
-        default:
-            break;
-    }
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    NSString *newPreference = [newOptions objectAtIndex:indexPath.row];
+    [userDefaults setObject:newPreference forKey:settingsAppearanceKey];
+    [userDefaults synchronize];
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 @end
