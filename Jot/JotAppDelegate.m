@@ -24,7 +24,17 @@
 @synthesize deckController = _deckController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[UIApplication sharedApplication] setStatusBarHidden:[[NSUserDefaults standardUserDefaults] boolForKey:@"fullScreen"] withAnimation:UIStatusBarAnimationSlide];    
+    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+    
+    [standardDefaults registerDefaults:@{
+        @"fullScreen": @NO,
+        @"fontFamily": @"Palatino",
+        @"fontSize": @20.0,
+        @"fontColor": @"black",
+        @"backgroundColor": @"white"
+     }];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:[standardDefaults boolForKey:@"fullScreen"] withAnimation:UIStatusBarAnimationSlide];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
