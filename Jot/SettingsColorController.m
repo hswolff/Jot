@@ -21,17 +21,7 @@
     if (self) {
         self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
         
-        colorPicker = [[RSColorPickerView alloc] initWithFrame:CGRectMake(10.0, 40.0, 300.0, 300.0)];
-        [colorPicker setDelegate:self];
-        [colorPicker setBrightness:1.0];
-        [colorPicker setCropToCircle:NO]; // Defaults to YES (and you can set BG color)
-        [colorPicker setBackgroundColor:[UIColor clearColor]];
-        
-        brightnessSlider = [[RSBrightnessSlider alloc] initWithFrame:CGRectMake(10.0, 360.0, 300.0, 30.0)];
-        [brightnessSlider setColorPicker:colorPicker];
-        [brightnessSlider setUseCustomSlider:YES]; // Defaults to NO
-        
-        colorPatch = [[UIView alloc] initWithFrame:CGRectMake(10.0, 400.0, 300.0, 30.0)];
+        colorPatch = [[UIView alloc] initWithFrame:CGRectMake(10.0, 10.0, 300.0, 30.0)];
         if (indexPath.row == 2) {
             colorPatch.backgroundColor = [Constants fontColor];
             settingsAppearanceKey = @"fontColor";
@@ -40,15 +30,45 @@
             settingsAppearanceKey = @"backgroundColor";
         }
         
+        colorPicker = [[RSColorPickerView alloc] initWithFrame:CGRectMake(10.0, 50.0, 300.0, 300.0)];
+        [colorPicker setDelegate:self];
+        [colorPicker setBrightness:1.0];
+        [colorPicker setCropToCircle:NO]; // Defaults to YES (and you can set BG color)
+        [colorPicker setBackgroundColor:[UIColor clearColor]];
+        
+        brightnessSlider = [[RSBrightnessSlider alloc] initWithFrame:CGRectMake(10.0, 370.0, 300.0, 30.0)];
+        [brightnessSlider setColorPicker:colorPicker];
+        [brightnessSlider setUseCustomSlider:YES]; // Defaults to NO
+        
+        UIView *blackPatch = [[UIView alloc] initWithFrame:CGRectMake(10.0, 410.0, 140.0, 30.0)];
+        blackPatch.backgroundColor = [UIColor blackColor];
+        UITapGestureRecognizer *blackTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setToBlack:)];
+        [blackPatch addGestureRecognizer:blackTap];
+        
+        UIView *whitePatch = [[UIView alloc] initWithFrame:CGRectMake(170.0, 410.0, 140.0, 30.0)];
+        whitePatch.backgroundColor = [UIColor whiteColor];
+        UITapGestureRecognizer *whiteTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setToWhite:)];
+        [whitePatch addGestureRecognizer:whiteTap];
+        
+        [self.view addSubview:colorPatch];
         [self.view addSubview:colorPicker];
         [self.view addSubview:brightnessSlider];
-        [self.view addSubview:colorPatch];
+        [self.view addSubview:blackPatch];
+        [self.view addSubview:whitePatch];
     }
     return self;
 }
 
 -(void)colorPickerDidChangeSelection:(RSColorPickerView *)cp {
 	colorPatch.backgroundColor = [cp selectionColor];
+}
+
+- (void)setToBlack:(UITapGestureRecognizer *)sender {
+    colorPatch.backgroundColor = [UIColor blackColor];
+}
+
+- (void)setToWhite:(UITapGestureRecognizer *)sender {
+    colorPatch.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
