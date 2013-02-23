@@ -31,7 +31,7 @@
         
         NSArray *generalOptions = [[NSArray alloc] initWithObjects:@"Full Screen", @"Logout of Facebook", nil];
         
-        NSArray *appearanceOptions = [[NSArray alloc] initWithObjects:@"Background Color", @"Font", @"Font Size", @"Font Color", nil];
+        NSArray *appearanceOptions = [[NSArray alloc] initWithObjects: @"Font", @"Font Size", @"Font Color", @"Background Color", nil];
         
         NSDictionary *rows = [[NSDictionary alloc] initWithObjectsAndKeys:generalOptions, @"General", appearanceOptions, @"Appearance", nil];
 
@@ -98,16 +98,12 @@
     } else if (indexPath.section == 1) {
         NSString *detailTextLabelText;
         switch (indexPath.row) {
-//            case 0:
-//                detailTextLabelText = [[NSUserDefaults standardUserDefaults] stringForKey:@"fontFamily"];
-//                break;
-            case 1:
+            case 0:
                 detailTextLabelText = [[NSUserDefaults standardUserDefaults] stringForKey:@"fontFamily"];
                 break;
-            case 2:
+            case 1:
                 detailTextLabelText = [[NSUserDefaults standardUserDefaults] stringForKey:@"fontSize"];
                 break;
-                
             default:
                 break;
         }
