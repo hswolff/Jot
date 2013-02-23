@@ -21,19 +21,11 @@
         switch (indexPath.row) {
             case 0:
                 settingsAppearanceKey = @"fontFamily";
-                newOptions = [[NSArray alloc] initWithObjects:@"Arial", @"Helvetica", @"Palatino", nil];
+                newOptions = [[NSArray alloc] initWithObjects:@"Arial", @"Baskerville", @"Georgia", @"Helvetica", @"Palatino", @"Verdana", nil];
                 break;
             case 1:
                 settingsAppearanceKey = @"fontSize";
-                newOptions = @[@16, @17, @18, @19, @20, @21, @22, @23, @24, @25];
-                break;
-            case 2:
-                settingsAppearanceKey = @"fontColor";
-                newOptions = @[@"Options Uno", @"Option Dos"];
-                break;
-            case 3:
-                settingsAppearanceKey = @"backgroundColor";
-                newOptions = @[@"Options Uno", @"Option Dos"];
+                newOptions = @[@15, @16, @17, @18, @19, @20, @21, @22, @23, @24, @25];
                 break;
             default:
                 break;
@@ -85,6 +77,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [newOptions objectAtIndex:indexPath.row]];
+    
+    if ([settingsAppearanceKey isEqualToString:@"fontFamily"]) {
+        cell.textLabel.font = [UIFont fontWithName:cell.textLabel.text size:20];
+    }
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *currentSetting = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:settingsAppearanceKey]];
