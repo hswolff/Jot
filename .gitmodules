@@ -4,3 +4,6 @@
 [submodule "Jot/Vendor/ViewDeck"]
 	path = Jot/Vendor/ViewDeck
 	url = https://github.com/Inferis/ViewDeck.git
+[submodule "Jot/Vendor/RSColorPicker"]
+	path = Jot/Vendor/RSColorPicker
+	url = git@github.com:RSully/RSColorPicker.git

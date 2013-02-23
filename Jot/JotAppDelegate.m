@@ -26,12 +26,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
     
+    UIColor *fontColor = [UIColor blackColor];
+    NSData *fontColorData = [NSKeyedArchiver archivedDataWithRootObject:fontColor];
+    
+    UIColor *backgroundColor = [UIColor whiteColor];
+    NSData *backgroundColorData = [NSKeyedArchiver archivedDataWithRootObject:backgroundColor];
+
     [standardDefaults registerDefaults:@{
         @"fullScreen": @NO,
         @"fontFamily": @"Palatino",
         @"fontSize": @20.0,
-        @"fontColor": @"black",
-        @"backgroundColor": @"white"
+        @"fontColor": fontColorData,
+        @"backgroundColor": backgroundColorData
      }];
     
     [[UIApplication sharedApplication] setStatusBarHidden:[standardDefaults boolForKey:@"fullScreen"] withAnimation:UIStatusBarAnimationSlide];

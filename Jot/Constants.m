@@ -19,14 +19,13 @@
 }
 
 + (UIColor *)backgroundColor {
-    NSString *color = [[NSUserDefaults standardUserDefaults] stringForKey:@"backgroundColor"];
-    UIColor *backgroundColor = nil;
-    if ([color isEqualToString:@"gray"]) {
-        backgroundColor = [UIColor grayColor];
-    } else {
-        backgroundColor = [UIColor whiteColor];
-    }
-    return backgroundColor;
+    NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"backgroundColor"];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+}
+
++ (UIColor *)fontColor {
+    NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"fontColor"];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
 }
 
 @end

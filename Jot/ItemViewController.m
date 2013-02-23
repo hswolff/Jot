@@ -43,14 +43,12 @@
 - (void)loadView {
     CGRect frame = [[UIScreen mainScreen] bounds];
     self.view = [[UIView alloc] initWithFrame:frame];
-    self.view.backgroundColor = [Constants backgroundColor];
     
     self.jotTextView = [[UITextView alloc] initWithFrame:frame];
     self.jotTextView.delegate = self;
     self.jotTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.jotTextView.font = [Constants fontSettings];
     self.jotTextView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
-    self.jotTextView.backgroundColor = [Constants backgroundColor];
+    [self setJotTextViewUserSettings];
     
     [self.view addSubview:self.jotTextView];
 }
@@ -106,10 +104,15 @@
     }
 }
 
-- (void)defaultsChanged:(NSNotification *)notification {
+- (void)setJotTextViewUserSettings {
     self.view.backgroundColor = [Constants backgroundColor];
-    self.jotTextView.backgroundColor = [Constants backgroundColor];
     self.jotTextView.font = [Constants fontSettings];
+    self.jotTextView.textColor = [Constants fontColor];
+    self.jotTextView.backgroundColor = [Constants backgroundColor];
+}
+
+- (void)defaultsChanged:(NSNotification *)notification {
+    [self setJotTextViewUserSettings];
 }
 
 #pragma mark -

@@ -16,4 +16,6 @@
 
 + (UIColor *)backgroundColor;
 
++ (UIColor *)fontColor;
+
 @end

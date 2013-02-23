@@ -8,6 +8,8 @@
 
 #import "SettingsController.h"
 #import "SettingsAppearanceController.h"
+#import "SettingsColorController.h"
+#import "Constants.h"
 
 @interface SettingsController ()
 
@@ -96,21 +98,28 @@
         [fullScreenSwitch setOn:[UIApplication sharedApplication].statusBarHidden];
         cell.accessoryView = fullScreenSwitch;
     } else if (indexPath.section == 1) {
-        NSString *detailTextLabelText;
-        switch (indexPath.row) {
-            case 0:
+        
+        if (indexPath.row == 0 || indexPath.row == 1) {
+            NSString *detailTextLabelText;
+            if (indexPath.row == 0) {           // font
                 detailTextLabelText = [[NSUserDefaults standardUserDefaults] stringForKey:@"fontFamily"];
-                break;
-            case 1:
+            } else {                            // font size
                 detailTextLabelText = [[NSUserDefaults standardUserDefaults] stringForKey:@"fontSize"];
-                break;
-            default:
-                break;
+            }
+            cell.detailTextLabel.text = detailTextLabelText;
+        } else {
+            CGRect cellFrame = cell.contentView.frame;
+            UIView *accessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, cellFrame.size.height/4, cellFrame.size.width/4, cellFrame.size.height/2)];
+            if (indexPath.row == 2) {           // font color
+                accessoryView.backgroundColor = [Constants fontColor];
+            } else {                            // background color
+                accessoryView.backgroundColor = [Constants backgroundColor];
+            }
+            cell.accessoryView = accessoryView;
         }
-        cell.detailTextLabel.text = detailTextLabelText;
+
     }
-    
-    
+
     return cell;
 }
 
@@ -132,10 +141,22 @@
                 break;
         }
     } else if (indexPath.section == 1) {
-        UIViewController *appearance = [[SettingsAppearanceController alloc] initWithIndexPath:indexPath];
+        UIViewController *settingController;
+        switch (indexPath.row) {
+            case 0:
+            case 1:
+                settingController = [[SettingsAppearanceController alloc] initWithIndexPath:indexPath];
+                break;
+            case 2:
+            case 3:
+                settingController = [[SettingsColorController alloc] initWithIndexPath:indexPath];
+            default:
+                break;
+        }
+        
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        appearance.navigationItem.title = cell.textLabel.text;
-        [self.navigationController pushViewController:appearance animated:YES];
+        settingController.navigationItem.title = cell.textLabel.text;
+        [self.navigationController pushViewController:settingController animated:YES];
     }
 }
 
