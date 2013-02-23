@@ -156,6 +156,14 @@ Thank you for using Jot. :)";
 
 - (void)showUpgradeMessageAndOpen:(BOOL)open {
     NSString *upgradeText = @"\
+1.3.0\n\
+------\n\
+Appearance settings!\n\
+Set your font\n\
+Set your text size\n\
+Set your text color\n\
+Set your background color\n\
+\n\
 1.2.0\n\
 ------\n\
 Fix crash when you delete the last remaining Jot\n\
