@@ -21,12 +21,16 @@
         switch (indexPath.row) {
             case 0:
                 settingsAppearanceKey = @"fontFamily";
-                newOptions = [[NSArray alloc] initWithObjects:@"Arial", @"Baskerville", @"Georgia", @"Helvetica", @"Palatino", @"Verdana", nil];
+                newOptions = [[NSMutableArray alloc] initWithObjects:@"AmericanTypewriter", @"Arial", @"Baskerville", @"Georgia", @"Helvetica", @"Palatino", @"Verdana", nil];
                 break;
-            case 1:
+            case 1: {
                 settingsAppearanceKey = @"fontSize";
-                newOptions = @[@15, @16, @17, @18, @19, @20, @21, @22, @23, @24, @25];
+                newOptions = [NSMutableArray new];
+                for (int startNum = 15; startNum <= 35; startNum++) {
+                    [newOptions addObject:[NSNumber numberWithInt:startNum]];
+                }
                 break;
+            }
             default:
                 break;
         }
@@ -86,6 +90,8 @@
     NSString *currentSetting = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:settingsAppearanceKey]];
     if ([cell.textLabel.text isEqualToString:currentSetting]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
     return cell;
