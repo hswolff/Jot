@@ -22,6 +22,14 @@
         self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
         self.view.autoresizesSubviews = YES;
         
+        CGRect viewFrame = self.view.frame;
+        float staticPatchWidth = 140.0;
+        float staticPatchHeight = 44.0;
+        float staticPatchY = viewFrame.size.height-staticPatchHeight-10;
+        
+        float brightnessSliderHeight = 30.0;
+        float brightnessSliderY = 360.0; //staticPatchY - brightnessSliderHeight - 10;
+        
         colorPatch = [[UIView alloc] initWithFrame:CGRectMake(10.0, 10.0, 300.0, 30.0)];
         colorPatch.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         if (indexPath.row == 2) {
@@ -39,18 +47,18 @@
         [colorPicker setCropToCircle:NO]; // Defaults to YES (and you can set BG color)
         [colorPicker setBackgroundColor:[UIColor clearColor]];
         
-        brightnessSlider = [[RSBrightnessSlider alloc] initWithFrame:CGRectMake(10.0, 370.0, 300.0, 30.0)];
+        brightnessSlider = [[RSBrightnessSlider alloc] initWithFrame:CGRectMake(8.0, brightnessSliderY, 304.0, brightnessSliderHeight)];
         brightnessSlider.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         [brightnessSlider setColorPicker:colorPicker];
         [brightnessSlider setUseCustomSlider:YES]; // Defaults to NO
         
-        UIView *blackPatch = [[UIView alloc] initWithFrame:CGRectMake(10.0, 410.0, 140.0, 30.0)];
+        UIView *blackPatch = [[UIView alloc] initWithFrame:CGRectMake(10.0, staticPatchY, staticPatchWidth, staticPatchHeight)];
         blackPatch.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
         blackPatch.backgroundColor = [UIColor blackColor];
         UITapGestureRecognizer *blackTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setToBlack:)];
         [blackPatch addGestureRecognizer:blackTap];
         
-        UIView *whitePatch = [[UIView alloc] initWithFrame:CGRectMake(170.0, 410.0, 140.0, 30.0)];
+        UIView *whitePatch = [[UIView alloc] initWithFrame:CGRectMake(170.0, staticPatchY, staticPatchWidth, staticPatchHeight)];
         whitePatch.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
         whitePatch.backgroundColor = [UIColor whiteColor];
         UITapGestureRecognizer *whiteTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setToWhite:)];
@@ -88,10 +96,5 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end
