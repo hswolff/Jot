@@ -74,7 +74,11 @@
 }
 
 -(void)colorPickerDidChangeSelection:(RSColorPickerView *)cp {
-	colorPatch.backgroundColor = [cp selectionColor];
+    if (!firstLoad) {
+        firstLoad = YES;
+    } else {
+        colorPatch.backgroundColor = [cp selectionColor];
+    }
 }
 
 - (void)setToBlack:(UITapGestureRecognizer *)sender {

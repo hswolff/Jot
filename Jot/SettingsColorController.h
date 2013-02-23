@@ -16,6 +16,8 @@
     RSColorPickerView *colorPicker;
 	RSBrightnessSlider *brightnessSlider;
     UIView *colorPatch;
+    
+    bool firstLoad;
 }
 
 - (id)initWithIndexPath:(NSIndexPath *)indexPath;
