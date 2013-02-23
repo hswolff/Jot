@@ -26,9 +26,9 @@
         float staticPatchWidth = 140.0;
         float staticPatchHeight = 44.0;
         float staticPatchY = viewFrame.size.height-staticPatchHeight-10;
-        
-        float brightnessSliderHeight = 30.0;
+    
         float brightnessSliderY = 360.0; //staticPatchY - brightnessSliderHeight - 10;
+        float brightnessSliderHeight = staticPatchY - brightnessSliderY - 10; //30.0;
         
         colorPatch = [[UIView alloc] initWithFrame:CGRectMake(10.0, 10.0, 300.0, 30.0)];
         colorPatch.autoresizingMask = UIViewAutoresizingFlexibleWidth;
