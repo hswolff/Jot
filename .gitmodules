@@ -7,3 +7,6 @@
 [submodule "Jot/Vendor/RSColorPicker"]
 	path = Jot/Vendor/RSColorPicker
 	url = git@github.com:RSully/RSColorPicker.git
+[submodule "Jot/Vendor/FacebookSDK"]
+	path = Jot/Vendor/FacebookSDK
+	url = git@github.com:facebook/facebook-ios-sdk.git

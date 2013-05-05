@@ -32,8 +32,8 @@
 		E1362B6E15AA3B2B0034A2EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B6D15AA3B2B0034A2EC /* main.m */; };
 		E1362B7215AA3B2B0034A2EC /* JotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */; };
 		E1362B7515AA3B2B0034A2EC /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1362B7415AA3B2B0034A2EC /* ItemViewController.m */; };
-		E13901A11644CEAF00D8BE3E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13901A01644CEAF00D8BE3E /* FacebookSDK.framework */; };
-		E13901A41644CF1500D8BE3E /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E13901A31644CF1500D8BE3E /* FacebookSDKResources.bundle */; };
+		E1364CD71735F9C200686383 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1364CD61735F9C200686383 /* FacebookSDK.framework */; };
+		E1364CD91735F9DD00686383 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E1364CD81735F9DD00686383 /* FacebookSDKResources.bundle */; };
 		E13901AA1644CF6800D8BE3E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13901A91644CF6800D8BE3E /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E13901AC1644CF7D00D8BE3E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13901AB1644CF7D00D8BE3E /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E13901AE1644CF9600D8BE3E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13901AD1644CF9600D8BE3E /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -104,8 +104,8 @@
 		E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotAppDelegate.m; sourceTree = "<group>"; };
 		E1362B7315AA3B2B0034A2EC /* ItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		E1362B7415AA3B2B0034A2EC /* ItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
-		E13901A01644CEAF00D8BE3E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../github/FacebookSDK/build/FacebookSDK.framework; sourceTree = "<group>"; };
-		E13901A31644CF1500D8BE3E /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../github/FacebookSDK/build/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		E1364CD61735F9C200686383 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Jot/Vendor/FacebookSDK/build/FacebookSDK.framework; sourceTree = "<group>"; };
+		E1364CD81735F9DD00686383 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = Jot/Vendor/FacebookSDK/build/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		E13901A91644CF6800D8BE3E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		E13901AB1644CF7D00D8BE3E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		E13901AD1644CF9600D8BE3E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -154,7 +154,7 @@
 				E1362B6415AA3B2B0034A2EC /* Foundation.framework in Frameworks */,
 				E1362B6615AA3B2B0034A2EC /* CoreGraphics.framework in Frameworks */,
 				E10BF1B4163BA32F0008BA81 /* MessageUI.framework in Frameworks */,
-				E13901A11644CEAF00D8BE3E /* FacebookSDK.framework in Frameworks */,
+				E1364CD71735F9C200686383 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,13 +257,13 @@
 		E1362B6015AA3B2B0034A2EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1364CD81735F9DD00686383 /* FacebookSDKResources.bundle */,
+				E1364CD61735F9C200686383 /* FacebookSDK.framework */,
 				E1223F1E16D93E30007EEF5B /* QuartzCore.framework */,
 				E1E6A1B0164C987400839427 /* Twitter.framework */,
 				E13901AD1644CF9600D8BE3E /* Social.framework */,
 				E13901AB1644CF7D00D8BE3E /* AdSupport.framework */,
 				E13901A91644CF6800D8BE3E /* Accounts.framework */,
-				E13901A31644CF1500D8BE3E /* FacebookSDKResources.bundle */,
-				E13901A01644CEAF00D8BE3E /* FacebookSDK.framework */,
 				E10BF1B1163BA3240008BA81 /* MessageUI.framework */,
 				E168A38216112B8800A6AEB8 /* CoreData.framework */,
 				E1362B6115AA3B2B0034A2EC /* UIKit.framework */,
@@ -422,10 +422,10 @@
 				E1362B6C15AA3B2B0034A2EC /* InfoPlist.strings in Resources */,
 				E1BE1D8015F2654500271A2D /* icon@2x.png in Resources */,
 				E1B2E4AF16135E5C0073C3CE /* Default-568h@2x.png in Resources */,
-				E13901A41644CF1500D8BE3E /* FacebookSDKResources.bundle in Resources */,
 				E15633FE166121BF00B227EA /* icon.png in Resources */,
 				E1563400166121C700B227EA /* Default.png in Resources */,
 				E1563402166121CA00B227EA /* Default@2x.png in Resources */,
+				E1364CD91735F9DD00686383 /* FacebookSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +548,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../github/FacebookSDK/build\"",
+					"\"$(SRCROOT)/Jot/Vendor/FacebookSDK/build\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jot/Jot-Prefix.pch";
@@ -566,6 +567,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../github/FacebookSDK/build\"",
+					"\"$(SRCROOT)/Jot/Vendor/FacebookSDK/build\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jot/Jot-Prefix.pch";
