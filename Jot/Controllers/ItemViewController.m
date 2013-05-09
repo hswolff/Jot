@@ -57,11 +57,12 @@
     [super viewDidLoad];
     
     self.centered = YES;
+    UITextView *jotTextView = self.jotTextView;
     [self.jotTextView addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
-        if (_jotTextView.editable) {
-            CGRect newFrame = _jotTextView.frame;
-            newFrame.size.height = keyboardFrameInView.origin.y - _jotTextView.contentOffset.y;
-            _jotTextView.frame = newFrame;
+        if (jotTextView.editable) {
+            CGRect newFrame = jotTextView.frame;
+            newFrame.size.height = keyboardFrameInView.origin.y - jotTextView.contentOffset.y;
+            jotTextView.frame = newFrame;
         }
     }];
     

@@ -90,8 +90,9 @@
     if (editing) {
         [self.viewDeckController setLeftSize:0];
     } else {
+        id tableView = self.tableView;
         [self.viewDeckController setLeftSize:LEFT_LEDGE_SIZE completion:^(BOOL finished){
-            [self.tableView reloadData];
+            [tableView reloadData];
         }];
     }
 }
