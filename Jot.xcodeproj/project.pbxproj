@@ -58,8 +58,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E103CE41169BCE07009EDECD /* SettingsAppearanceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAppearanceController.h; sourceTree = "<group>"; };
-		E103CE42169BCE07009EDECD /* SettingsAppearanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAppearanceController.m; sourceTree = "<group>"; };
+		E103CE41169BCE07009EDECD /* SettingsAppearanceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsAppearanceController.h; path = Controllers/SettingsAppearanceController.h; sourceTree = "<group>"; };
+		E103CE42169BCE07009EDECD /* SettingsAppearanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsAppearanceController.m; path = Controllers/SettingsAppearanceController.m; sourceTree = "<group>"; };
 		E10BF1B1163BA3240008BA81 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E1223EE216D93D2D007EEF5B /* ANImageBitmapRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANImageBitmapRep.h; sourceTree = "<group>"; };
 		E1223EE316D93D2D007EEF5B /* ANImageBitmapRep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANImageBitmapRep.m; sourceTree = "<group>"; };
@@ -90,8 +90,8 @@
 		E1223F0016D93D2D007EEF5B /* RSColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSColorPickerView.h; sourceTree = "<group>"; };
 		E1223F0116D93D2D007EEF5B /* RSColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSColorPickerView.m; sourceTree = "<group>"; };
 		E1223F1E16D93E30007EEF5B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E1223F2016D941D6007EEF5B /* SettingsColorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsColorController.h; sourceTree = "<group>"; };
-		E1223F2116D941D6007EEF5B /* SettingsColorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsColorController.m; sourceTree = "<group>"; };
+		E1223F2016D941D6007EEF5B /* SettingsColorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsColorController.h; path = Controllers/SettingsColorController.h; sourceTree = "<group>"; };
+		E1223F2116D941D6007EEF5B /* SettingsColorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsColorController.m; path = Controllers/SettingsColorController.m; sourceTree = "<group>"; };
 		E1362B5D15AA3B2B0034A2EC /* Jot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1362B6115AA3B2B0034A2EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E1362B6315AA3B2B0034A2EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -102,8 +102,8 @@
 		E1362B6F15AA3B2B0034A2EC /* Jot-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jot-Prefix.pch"; sourceTree = "<group>"; };
 		E1362B7015AA3B2B0034A2EC /* JotAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JotAppDelegate.h; sourceTree = "<group>"; };
 		E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JotAppDelegate.m; sourceTree = "<group>"; };
-		E1362B7315AA3B2B0034A2EC /* ItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
-		E1362B7415AA3B2B0034A2EC /* ItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
+		E1362B7315AA3B2B0034A2EC /* ItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ItemViewController.h; path = Controllers/ItemViewController.h; sourceTree = "<group>"; };
+		E1362B7415AA3B2B0034A2EC /* ItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ItemViewController.m; path = Controllers/ItemViewController.m; sourceTree = "<group>"; };
 		E1364CD61735F9C200686383 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Jot/Vendor/FacebookSDK/build/FacebookSDK.framework; sourceTree = "<group>"; };
 		E1364CD81735F9DD00686383 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = Jot/Vendor/FacebookSDK/build/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		E13901A91644CF6800D8BE3E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -130,13 +130,13 @@
 		E1BA5975162137EF00653159 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IIWrapController.h; path = Jot/Vendor/ViewDeck/ViewDeck/IIWrapController.h; sourceTree = SOURCE_ROOT; };
 		E1BA5976162137EF00653159 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IIWrapController.m; path = Jot/Vendor/ViewDeck/ViewDeck/IIWrapController.m; sourceTree = SOURCE_ROOT; };
 		E1BE1D7F15F2654500271A2D /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Resources/icon@2x.png"; sourceTree = "<group>"; };
-		E1BE1D9F15F2F56500271A2D /* ItemActionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemActionsController.h; path = Jot/ItemActionsController.h; sourceTree = SOURCE_ROOT; };
-		E1BE1DA015F2F56500271A2D /* ItemActionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemActionsController.m; path = Jot/ItemActionsController.m; sourceTree = SOURCE_ROOT; };
-		E1BE1DA215F2F6E400271A2D /* ItemListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemListController.h; sourceTree = "<group>"; };
-		E1BE1DA315F2F6E400271A2D /* ItemListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemListController.m; sourceTree = "<group>"; };
+		E1BE1D9F15F2F56500271A2D /* ItemActionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemActionsController.h; path = Jot/Controllers/ItemActionsController.h; sourceTree = SOURCE_ROOT; };
+		E1BE1DA015F2F56500271A2D /* ItemActionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemActionsController.m; path = Jot/Controllers/ItemActionsController.m; sourceTree = SOURCE_ROOT; };
+		E1BE1DA215F2F6E400271A2D /* ItemListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemListController.h; path = Controllers/ItemListController.h; sourceTree = "<group>"; };
+		E1BE1DA315F2F6E400271A2D /* ItemListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemListController.m; path = Controllers/ItemListController.m; sourceTree = "<group>"; };
 		E1E6A1B0164C987400839427 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		E1F65B02164EC8A100983129 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
-		E1F65B03164EC8A100983129 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
+		E1F65B02164EC8A100983129 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsController.h; path = Controllers/SettingsController.h; sourceTree = "<group>"; };
+		E1F65B03164EC8A100983129 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsController.m; path = Controllers/SettingsController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,22 +278,11 @@
 			children = (
 				E1BE1D8E15F265EE00271A2D /* Vendor */,
 				E165FA9D15F1BE3200080DAA /* Resources */,
-				E168A38016112B2300A6AEB8 /* Models */,
 				E1362B6815AA3B2B0034A2EC /* Supporting Files */,
+				E168A38016112B2300A6AEB8 /* Models */,
+				E1672182173B40DF0007397C /* Controllers */,
 				E1362B7015AA3B2B0034A2EC /* JotAppDelegate.h */,
 				E1362B7115AA3B2B0034A2EC /* JotAppDelegate.m */,
-				E1BE1DA215F2F6E400271A2D /* ItemListController.h */,
-				E1BE1DA315F2F6E400271A2D /* ItemListController.m */,
-				E1362B7315AA3B2B0034A2EC /* ItemViewController.h */,
-				E1362B7415AA3B2B0034A2EC /* ItemViewController.m */,
-				E1BE1D9F15F2F56500271A2D /* ItemActionsController.h */,
-				E1BE1DA015F2F56500271A2D /* ItemActionsController.m */,
-				E1F65B02164EC8A100983129 /* SettingsController.h */,
-				E1F65B03164EC8A100983129 /* SettingsController.m */,
-				E103CE41169BCE07009EDECD /* SettingsAppearanceController.h */,
-				E103CE42169BCE07009EDECD /* SettingsAppearanceController.m */,
-				E1223F2016D941D6007EEF5B /* SettingsColorController.h */,
-				E1223F2116D941D6007EEF5B /* SettingsColorController.m */,
 			);
 			path = Jot;
 			sourceTree = "<group>";
@@ -321,6 +310,25 @@
 				E1BE1D7F15F2654500271A2D /* icon@2x.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		E1672182173B40DF0007397C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1BE1DA215F2F6E400271A2D /* ItemListController.h */,
+				E1BE1DA315F2F6E400271A2D /* ItemListController.m */,
+				E1362B7315AA3B2B0034A2EC /* ItemViewController.h */,
+				E1362B7415AA3B2B0034A2EC /* ItemViewController.m */,
+				E1BE1D9F15F2F56500271A2D /* ItemActionsController.h */,
+				E1BE1DA015F2F56500271A2D /* ItemActionsController.m */,
+				E1F65B02164EC8A100983129 /* SettingsController.h */,
+				E1F65B03164EC8A100983129 /* SettingsController.m */,
+				E103CE41169BCE07009EDECD /* SettingsAppearanceController.h */,
+				E103CE42169BCE07009EDECD /* SettingsAppearanceController.m */,
+				E1223F2016D941D6007EEF5B /* SettingsColorController.h */,
+				E1223F2116D941D6007EEF5B /* SettingsColorController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		E168A38016112B2300A6AEB8 /* Models */ = {

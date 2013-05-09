@@ -9,7 +9,7 @@
 #import "Constants.h"
 #import "ItemListController.h"
 #import "JotItem.h"
-#import "Models/JotItemStore.h"
+#import "JotItemStore.h"
 #import "IIViewDeckController.h"
 #import "ItemViewController.h"
 
