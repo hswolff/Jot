@@ -8,6 +8,14 @@ Jot is the fastest way to write on your iPhone.  Every time you open Jot it's re
 Only optimized for iOS6 at the moment.  iOS7 support coming in the future.
 
 
+# Development
+
+1. Clone repo locally
+1. `git submodule update --init --recursive`
+1. ???
+1. Profit?
+
+
 # 3rd-party libraries used
 
 [ViewDeck](https://github.com/Inferis/ViewDeck)
